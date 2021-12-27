@@ -516,6 +516,13 @@ section {
   line-height: 1;
   margin-bottom: 15px;
 }
+
+.services .icon i span{
+  font-size: 48px;
+  line-height: 1;
+  margin-bottom: 15px;
+}
+
 .services .title {
   font-weight: 700;
   margin-bottom: 15px;
@@ -553,6 +560,14 @@ section {
 .services .icon-box-blue:hover {
   border-color: #2282ff;
 }
+
+.services .icon-box-orange .icon i {
+  color: orange;
+}
+.services .icon-box-orange:hover {
+  border-color: orange;
+}
+
 
 /*--------------------------------------------------------------
 # Portfolio
