@@ -1,6 +1,17 @@
+<?php
+  // Initialize the session
+  session_start();
+  
+  // Check if the user is logged in, if not then redirect him to login page
+  if(!isset($_SESSION["email"])){
+    header("location: dashboardLogin.html");
+    exit;
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -35,10 +46,11 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
 </head>
 
 <body>
-
+  
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
@@ -100,7 +112,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href='assets/classes/logout.php'>
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -111,7 +123,6 @@
 
       </ul>
     </nav><!-- End Icons Navigation -->
-
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
@@ -388,15 +399,22 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Recent Sales <span>| Today</span></h5>
+                  <h5 class="card-title">Inventory</h5>
 
                   <table class="table table-borderless datatable">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Customer</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
+                        <th scope="col">sku</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Colour</th>
+                        <th scope="col">Size</th>
+                        <th scope="col">Weight</th>
+                        <th scope="col">Dimension</th>
+                        <th scope="col">Stored Date</th>
+                        <th scope="col">Sent Date</th>
+                        <th scope="col">Delivered Date</th>
                         <th scope="col">Status</th>
                       </tr>
                     </thead>
@@ -555,6 +573,9 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/inventory.js"></script>
+
+  
 
 </body>
 

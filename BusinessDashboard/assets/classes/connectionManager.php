@@ -7,12 +7,9 @@ class ConnectionManager {
       //LocalHost
       $servername = 'localhost';
       $username = 'root';
-      // $password = ''; 
       $password = 'root';
-      $dbname = 'lms'; 
+      $dbname = 'onestorep'; 
     
-
-        
       // Create connection
       //$conn = new PDO("mysql:host=$servername;dbname=$dbname;port=$port", $username, $password);     
       $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);     
