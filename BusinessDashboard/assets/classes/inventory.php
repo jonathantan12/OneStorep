@@ -20,7 +20,7 @@ class Inventory {
         $this->account_id = $account_id;
         $this->product_name = $product_name;
         $this->product_brand = $product_brand;
-        $this->type_of_product = $product_type;
+        $this->product_type = $product_type;
         $this->product_colour = $product_colour;
         $this->product_size = $product_size;
         $this->product_weight = $product_weight;

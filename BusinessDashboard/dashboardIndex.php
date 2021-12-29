@@ -8,6 +8,14 @@
     exit;
   }
 
+  if ($_SESSION["account_id"] != $_GET['account_id']){
+    $account_id = $_SESSION["account_id"];
+    header("location: dashboardIndex.php?account_id=$account_id");
+    exit;
+  }
+
+  $company_name = $_SESSION['company_name'];
+
 ?>
 
 <!DOCTYPE html>
@@ -55,8 +63,8 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="d-flex align-items-center justify-content-between">
       <a href="dashboardIndex.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">One<span style="color: #009cea;">Storep</span> Business Dashboard</span>
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <span class="d-none d-lg-block">One<span style="color: #009cea;">Storep</span> Business</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -67,18 +75,12 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+            <!-- <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
+            <i class="bx bxs-user"></i>
+            <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $company_name; ?></span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
 
             <li>
               <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
@@ -395,25 +397,12 @@
               </div>
             </div><!-- End Recent Sales -->
 
-            <!-- Top Selling -->
+            <!-- Consolidated Inventory -->
             <div class="col-12">
               <div class="card top-selling">
 
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
                 <div class="card-body pb-0">
-                  <h5 class="card-title">Top Selling <span>| Today</span></h5>
+                  <h5 class="card-title">Consolidated Inventory</h5>
 
                   <table class="table table-borderless">
                     <thead>
