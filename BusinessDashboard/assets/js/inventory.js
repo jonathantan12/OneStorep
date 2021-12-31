@@ -9,6 +9,7 @@ function inventoryDashboard(account_id) {
         if( this.readyState == 4 && this.status == 200 ) {
             let obj = JSON.parse(this.responseText);
             getInventory(obj);
+            getInventoryCount(obj);
         }
     }
 
@@ -18,9 +19,10 @@ function inventoryDashboard(account_id) {
 
 function getInventory(obj) {
     var inventoryDisplay = `<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for product name">
-                    <table id="myTable" class="table table-striped">
+                    <div class="scrollable">
+                    <table id="inventoryDisplay" class="table table-striped-responsive">
                     <tr class="header">
-                      <th style="width:10%;">SKU</th>
+                      <th>SKU</th>
                       <th>Name</th>
                       <th>Brand</th>
                       <th>Category</th>
@@ -76,12 +78,46 @@ function getInventory(obj) {
                                 <td><span class="badge bg-${status_colour}">${obj[i].status}</span></td>
                             </tr>`;
     }
-    inventoryDisplay += `</table>`;
+    inventoryDisplay += `</table>
+                        </div>`;
 
     // console.log(document.getElementById('displayDashboard').innerHTML);
     document.getElementById('displayDashboard').innerHTML = inventoryDisplay;   
     
 }   
 
+function getInventoryCount(obj) {
+    let dict = {};
 
+    for (var i=0; i < obj.length; i++){
+
+        // Checking if value exist or not
+        if(obj[i].product_name in dict){
+            dict[obj[i].product_name] += 1
+        } else{
+            dict[obj[i].product_name] = 1
+        }
+    }
+
+    console.log(dict);
+
+    var inventoryCountDisplay = `<input type="text" id="inventoryCountInput" onkeyup="searchFunctionConsolidatedInventory()" placeholder="Search for product name">
+                    <table id="inventoryCountDisplay" class="table table-striped-responsive">
+                    <tr class="header">
+                      <th style="width:70%";>Product Name</th>
+                      <th>Quantity</th>
+                    </tr>`;   
+
+    for (var key in dict){
+        // console.log(dict[key]);
+        // console.log(key);
+        inventoryCountDisplay += `<tr>
+                                <td>${key}</td>
+                                <td>${dict[key]}</td>
+                            </tr>`;
+    }         
+    inventoryCountDisplay += `</table>`;
+
+    document.getElementById('displayInventoryCount').innerHTML = inventoryCountDisplay;          
+}
 

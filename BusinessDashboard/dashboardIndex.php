@@ -62,7 +62,7 @@
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="d-flex align-items-center justify-content-between">
-      <a href="dashboardIndex.html" class="logo d-flex align-items-center">
+      <a href="dashboardIndex.php?account_id=$account_id" class="logo d-flex align-items-center">
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <span class="d-none d-lg-block">One<span style="color: #009cea;">Storep</span> Business</span>
       </a>
@@ -78,11 +78,11 @@
             <!-- <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
             <i class="bx bxs-user"></i>
             <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $company_name; ?></span>
-          </a><!-- End Profile Iamge Icon -->
+          </a><!-- End Profile Image Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 
-            <li>
+            <!-- <li>
               <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
@@ -100,10 +100,10 @@
             </li>
             <li>
               <hr class="dropdown-divider">
-            </li>
+            </li> -->
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+              <a class="dropdown-item d-flex align-items-center" href="pages-contact.php">
                 <i class="bi bi-question-circle"></i>
                 <span>Need Help?</span>
               </a>
@@ -119,8 +119,10 @@
               </a>
             </li>
 
-          </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
+          </ul>
+          <!-- End Profile Dropdown Items -->
+        </li>
+        <!-- End Profile Nav -->
 
       </ul>
     </nav><!-- End Icons Navigation -->
@@ -132,13 +134,14 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link " href="dashboardIndex.php?account_id=$account_id">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
-      </li><!-- End Dashboard Nav -->
+      </li>
+      <!-- End Dashboard Nav -->
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -214,9 +217,10 @@
             </a>
           </li>
         </ul>
-      </li><!-- End Components Nav -->
+      </li> -->
+      <!-- End Components Nav -->
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -242,9 +246,10 @@
             </a>
           </li>
         </ul>
-      </li><!-- End Forms Nav -->
+      </li> -->
+      <!-- End Forms Nav -->
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -260,9 +265,10 @@
             </a>
           </li>
         </ul>
-      </li><!-- End Tables Nav -->
+      </li> -->
+      <!-- End Tables Nav -->
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-bar-chart"></i><span>Charts</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -283,9 +289,10 @@
             </a>
           </li>
         </ul>
-      </li><!-- End Charts Nav -->
+      </li> -->
+      <!-- End Charts Nav -->
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -306,58 +313,66 @@
             </a>
           </li>
         </ul>
-      </li><!-- End Icons Nav -->
+      </li> -->
+      <!-- End Icons Nav -->
 
-      <li class="nav-heading">Pages</li>
+      <!-- <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="users-profile.html">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
-      </li><!-- End Profile Page Nav -->
+      </li> -->
+      <!-- End Profile Page Nav -->
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="pages-faq.html">
           <i class="bi bi-question-circle"></i>
           <span>F.A.Q</span>
         </a>
-      </li><!-- End F.A.Q Page Nav -->
+      </li> -->
+      <!-- End F.A.Q Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
+        <a class="nav-link collapsed" href="pages-contact.php">
           <i class="bi bi-envelope"></i>
-          <span>Contact</span>
+          <span>Contact the Team</span>
         </a>
-      </li><!-- End Contact Page Nav -->
+      </li>
+      <!-- End Contact Page Nav -->
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="pages-register.html">
           <i class="bi bi-card-list"></i>
           <span>Register</span>
         </a>
-      </li><!-- End Register Page Nav -->
+      </li> -->
+      <!-- End Register Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>Login</span>
+        <a class="nav-link collapsed" href='assets/classes/logout.php'>
+          <i class="bi bi-box-arrow-right"></i>
+          <span>Sign Out</span>
         </a>
-      </li><!-- End Login Page Nav -->
+      </li>
+      <!-- End Login Page Nav -->
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="pages-error-404.html">
           <i class="bi bi-dash-circle"></i>
           <span>Error 404</span>
         </a>
-      </li><!-- End Error 404 Page Nav -->
+      </li> -->
+      <!-- End Error 404 Page Nav -->
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="pages-blank.html">
           <i class="bi bi-file-earmark"></i>
           <span>Blank</span>
         </a>
-      </li><!-- End Blank Page Nav -->
+      </li> -->
+      <!-- End Blank Page Nav -->
 
     </ul>
 
@@ -366,12 +381,13 @@
   <main id="main" class="main">
     <div class="pagetitle">
       <h1>Dashboard</h1>
-      <nav>
+      <br>
+      <!-- <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
           <li class="breadcrumb-item active">Dashboard</li>
         </ol>
-      </nav>
+      </nav> -->
     </div><!-- End Page Title -->
    
     <section class="section dashboard">
@@ -380,7 +396,22 @@
         <!-- Left side columns -->
         <div class="col-lg">
           <div class="row">
-            
+
+            <!-- Consolidated Inventory -->
+            <div class="col-12">
+              <div class="card">
+
+                <div class="card-body">
+                  <h5 class="card-title">Consolidated Inventory</h5>
+                  
+                  <!-- Javascript table display -->
+                  <div id="displayInventoryCount"> </div>
+
+                </div>
+
+              </div>
+            </div><!-- Consolidated Inventory -->
+
             <!-- Inventory Dashboard -->
             <div class="col-12">
               <div class="card">
@@ -388,75 +419,13 @@
                 <div class="card-body">
                   <h5 class="card-title">Inventory</h5>
 
+                  <!-- Javascript table display -->
                   <div id="displayDashboard"> </div>
-                  
-                  </table>
-              <!-- End Table with stripped rows -->
+              
                 </div>
 
               </div>
-            </div><!-- End Recent Sales -->
-
-            <!-- Consolidated Inventory -->
-            <div class="col-12">
-              <div class="card top-selling">
-
-                <div class="card-body pb-0">
-                  <h5 class="card-title">Consolidated Inventory</h5>
-
-                  <table class="table table-borderless">
-                    <thead>
-                      <tr>
-                        <th scope="col">Preview</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Sold</th>
-                        <th scope="col">Revenue</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-1.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                        <td>$64</td>
-                        <td class="fw-bold">124</td>
-                        <td>$5,828</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-2.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
-                        <td>$46</td>
-                        <td class="fw-bold">98</td>
-                        <td>$4,508</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-3.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
-                        <td>$59</td>
-                        <td class="fw-bold">74</td>
-                        <td>$4,366</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-4.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
-                        <td>$32</td>
-                        <td class="fw-bold">63</td>
-                        <td>$2,016</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-5.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
-                        <td>$79</td>
-                        <td class="fw-bold">41</td>
-                        <td>$3,239</td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                </div>
-
-              </div>
-            </div><!-- End Top Selling -->
+            </div><!-- End Inventory Dashboard -->
 
           </div>
         </div><!-- End Left side columns -->
