@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`account_id`, `email`, `password`, `company_name`) VALUES
 (1, 'jonathan@hotmail.com', '0000', 'Nike'),
-(2, 'ryan@hotmail.com', '0000', 'New Era');
+(2, 'ryan@hotmail.com', '0000', 'New Era'),
+(3, 'dylan@hotmail.com', '0000', 'Adidas');
 
 COMMIT;

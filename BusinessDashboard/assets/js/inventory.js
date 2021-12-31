@@ -51,7 +51,6 @@ function getInventory(obj) {
             delivered_date = '-';
         }
         
-
         // For status colour change
         if (obj[i].status == 'sent') {
             status_colour = 'warning';
