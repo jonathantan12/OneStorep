@@ -10,7 +10,7 @@
 
   if ($_SESSION["account_id"] != $_GET['account_id']){
     $account_id = $_SESSION["account_id"];
-    header("location: dashboardIndex.php?account_id=$account_id");
+    header("location: index.php?account_id=$account_id");
     exit;
   }
 
@@ -62,7 +62,7 @@
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="d-flex align-items-center justify-content-between">
-      <a href="dashboardIndex.php?account_id=$account_id" class="logo d-flex align-items-center">
+      <a href="index.php?account_id=$account_id" class="logo d-flex align-items-center">
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <span class="d-none d-lg-block">One<span style="color: #009cea;">Storep</span> Business</span>
       </a>
@@ -134,7 +134,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="dashboardIndex.php?account_id=$account_id">
+        <a class="nav-link " href="index.php?account_id=$account_id">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>

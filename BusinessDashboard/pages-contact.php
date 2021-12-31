@@ -62,7 +62,7 @@
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="d-flex align-items-center justify-content-between">
-      <a href="dashboardIndex.php?account_id=$account_id" class="logo d-flex align-items-center">
+      <a href="index.php?account_id=$account_id" class="logo d-flex align-items-center">
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <span class="d-none d-lg-block">One<span style="color: #009cea;">Storep</span> Business</span>
       </a>
@@ -113,7 +113,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="dashboardIndex.php?account_id=$account_id">
+        <a class="nav-link collapsed" href="index.php?account_id=$account_id">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>

@@ -29,7 +29,7 @@
         if($success){
             $_SESSION["user"] = $email;
             // $_SESSION["account_id"] = $account_id;
-            header("Location: ../../dashboardIndex.php?account_id=$account_id");
+            header("Location: ../../index.php?account_id=$account_id");
             
             exit;
         }
