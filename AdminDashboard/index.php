@@ -64,7 +64,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.php" class="logo d-flex align-items-center">
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <span class="d-none d-lg-block">One<span style="color: #009cea;">Storep</span> Business</span>
+        <span class="d-none d-lg-block">One<span style="color: #009cea;">Storep</span> Admin</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -82,12 +82,12 @@
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 
-            <li>
+            <!-- <li>
               <a class="dropdown-item d-flex align-items-center" href="pages-contact.php">
                 <i class="bi bi-question-circle"></i>
                 <span>Contact the Team</span>
               </a>
-            </li>
+            </li> -->
             <li>
               <hr class="dropdown-divider">
             </li>
@@ -121,12 +121,12 @@
       </li>
       <!-- End Dashboard Nav -->
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="pages-contact.php">
           <i class="bi bi-envelope"></i>
           <span>Contact the Team</span>
         </a>
-      </li>
+      </li> -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href='assets/classes/logout.php'>

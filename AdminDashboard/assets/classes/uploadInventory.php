@@ -3,7 +3,7 @@
     require_once("inventoryDAO.php");
     require_once("connectionManager.php");
 
-    // session_start();
+    session_start();
     
     $sku = '111111111';
     $floatingCompanyId = (int)$_POST['floatingCompanyId'];
@@ -40,10 +40,12 @@
     // var_dump($insertOK);
     
     if ($insertOK) {
-        echo "<script>alert('Product successfully added!'); window.location.href = '../../companyInformation.php';</script>";
+        // echo "<script>alert('Product successfully added!'); javascript:history.go(-1); location.reload(); </script>";
+        echo "<script>alert('Product successfully added!'); document.referrer ? window.location = document.referrer : history.back(); </script>";
+
     } 
     else{
-        echo "<script>alert('Item failed to be added!'); window.location.href = '../../companyInformation.php';</script>";
+        echo "<script>alert('Item failed to be added!'); document.referrer ? window.location = document.referrer : history.back();</script>";
     }
 
 ?>
