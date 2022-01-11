@@ -14,7 +14,7 @@ class InventoryDAO {
         $result = [];
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         while($row = $stmt->fetch()) {
-            $result[] = new Inventory($row['sku'], $row['account_id'], $row['product_name'], $row['product_brand'] ,$row['product_type']
+            $result[] = new Inventory($row['id'], $row['sku'], $row['account_id'], $row['product_name'], $row['product_brand'] ,$row['product_type']
             , $row['product_colour'], $row['product_size'], $row['product_weight'], $row['product_dimension'], $row['stored_date'], $row['sent_date']
             , $row['delivered_date'], $row['status']);
         }
@@ -22,6 +22,56 @@ class InventoryDAO {
         $pdo = null;
         
         return $result;
+    }
+
+    public function uploadInventory($sku, $floatingCompanyId, $floatingName, $floatingBrand, $floatingCategory, $floatingColour, $floatingSize, $floatingWeight, $floatingDimension, $floatingStoredDate, $sent_date, $delivered_date, $status) {
+        $connMgr = new ConnectionManager();
+        $pdo = $connMgr->getConnection();
+
+        // var_dump($sku);
+        // var_dump((int)$floatingCompanyId);
+        // var_dump($floatingName);
+        // var_dump($floatingBrand);
+        // var_dump($floatingCategory);
+        // var_dump($floatingColour);
+        // var_dump($floatingSize);
+        // var_dump($floatingWeight);
+        // var_dump($floatingDimension);
+        // var_dump($floatingStoredDate);
+        // var_dump($sent_date);
+        // var_dump($delivered_date);
+        // var_dump($status);
+
+        $sql = "insert into inventory (sku, account_id, product_name, product_brand, product_type, product_colour, product_size, product_weight, product_dimension, stored_date, sent_date, delivered_date, status) 
+                values (:sku, :account_id, :product_name, :product_brand, :product_type, :product_colour, :product_size, :product_weight, :product_dimension, :stored_date, :sent_date, :delivered_date, :status)";
+        $stmt = $pdo->prepare($sql);
+
+        $stmt->bindParam(":sku",$sku,PDO::PARAM_STR);
+        $stmt->bindParam(":account_id",$floatingCompanyId,PDO::PARAM_INT);
+        $stmt->bindParam(":product_name",$floatingName,PDO::PARAM_STR);
+        $stmt->bindParam(":product_brand",$floatingBrand,PDO::PARAM_STR);
+        $stmt->bindParam(":product_type",$floatingCategory,PDO::PARAM_STR);
+        $stmt->bindParam(":product_colour",$floatingColour,PDO::PARAM_STR);
+        $stmt->bindParam(":product_size",$floatingSize,PDO::PARAM_STR);
+        $stmt->bindParam(":product_weight",$floatingWeight,PDO::PARAM_STR);
+        $stmt->bindParam(":product_dimension",$floatingDimension,PDO::PARAM_STR);
+        $stmt->bindParam(":stored_date",$floatingStoredDate,PDO::PARAM_STR);
+        $stmt->bindParam(":sent_date",$sent_date,PDO::PARAM_STR);
+        $stmt->bindParam(":delivered_date",$delivered_date,PDO::PARAM_STR);
+        $stmt->bindParam(":status",$status,PDO::PARAM_STR);
+        
+        $isAddOK = $stmt->execute();
+        $stmt = null;
+        $pdo = null;    
+
+        return $isAddOK;
+
+        // if ($isAddOK) {
+        //     echo "<script>alert('Product successfully added!'); location.reload();</script>";
+        // } 
+        // else{
+        //     echo "<script>alert('Failed login, please try again!'); location.reload();</script>";
+        // }
     }
 }
 

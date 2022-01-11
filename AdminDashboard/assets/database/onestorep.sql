@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `user` (
     `password` varchar(64) NOT NULL,
     `company_name` varchar(64) NOT NULL,
     PRIMARY KEY (`account_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`

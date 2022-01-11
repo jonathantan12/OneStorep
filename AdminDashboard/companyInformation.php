@@ -181,6 +181,104 @@
         <div class="col-lg">
           <div class="row">
 
+            <!-- Upload Inventory Form -->
+            <div class="col-12">
+              <div class="card">
+
+                <div class="card-body">
+                  <h5 class="card-title">Upload Inventory</h5>
+                  <!-- Floating Labels Form -->
+                  <form class="row g-3" action="assets/classes/uploadInventory.php" method="post">
+                      <div class="col-md-2">
+                        <div class="form-floating">
+                          <!-- <input type="text" class="form-control" id="floatingCompanyId" name="floatingCompanyId"> -->
+                          <input type="text" class="form-control" id="floatingCompanyId" name="floatingCompanyId" readonly>
+                          <label for="floatingCompanyId">Company ID</label>
+                        </div>
+                      </div>
+                      <div class="col-md-10"></div>
+                      
+                    <!-- <div class="col-md-10">
+                        <div class="form-floating mb-6">
+                          <select class="form-select" id="floatingSelect" name="floatingSelect" aria-label="company">
+                            <option selected>New Era</option>
+                            <option value="Nike">Nike</option>
+                            <option value="Adidas">Adidas</option>
+                          </select>
+                          <label for="floatingSelect">Company</label>
+                        </div>
+                      </div> -->
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingName" name="floatingName" placeholder="Product Name">
+                          <label for="floatingName">Product Name</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingBrand" name="floatingBrand" placeholder="Product Brand">
+                          <label for="floatingBrand">Product Brand</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingCategory" name="floatingCategory" placeholder="Product Category">
+                          <label for="floatingCategory">Product Category</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingColour" name="floatingColour" placeholder="Colour">
+                          <label for="floatingColour">Colour</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingSize" name="floatingSize" placeholder="Size">
+                          <label for="floatingSize">Size</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingWeight" name="floatingWeight" placeholder="Product Weight">
+                          <label for="floatingWeight">Product Weight</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingDimension" name="floatingDimension" placeholder="Product Dimension">
+                          <label for="floatingDimension">Product Dimension</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="date" class="form-control" id="floatingStoredDate" name="floatingStoredDate" placeholder="Stored Date">
+                          <label for="floatingStoredDate">Stored Date</label>
+                        </div>
+                      </div>
+            
+                      <!-- <div class="col-md-2">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingZip" placeholder="Zip">
+                          <label for="floatingZip">Zip</label>
+                        </div>
+                      </div> -->
+                  
+                      <div class="text-center">
+                        <button type="submit" class="btn btn-dark">Submit</button>
+                        <!-- <button type="reset" class="btn btn-secondary">Reset</button> -->
+                      </div>
+                  </form><!-- End floating Labels Form -->
+
+                  <!-- Javascript table display -->
+                  <div id="uploadInventoryForm"> </div>
+
+                </div>
+
+              </div>
+            </div>
+            <!-- Upload Inventory Form -->
+
             <!-- Consolidated Inventory -->
             <div class="col-12">
               <div class="card">
@@ -194,7 +292,8 @@
                 </div>
 
               </div>
-            </div><!-- Consolidated Inventory -->
+            </div>
+            <!-- Consolidated Inventory -->
             
             <!-- Inventory Dashboard -->
             <div class="col-12">
@@ -209,7 +308,8 @@
                 </div>
 
               </div>
-            </div><!-- End Inventory Dashboard -->
+            </div>
+            <!-- End Inventory Dashboard -->
 
           </div>
         </div><!-- End Left side columns -->
@@ -258,6 +358,8 @@
         var params = new URLSearchParams(location.search);
         var company_name = params.get('company_name');
         document.getElementById('DisplayCompanyName').innerHTML = company_name + ' Dashboard';
+      
+        document.getElementById('floatingCompanyId').value = atob(account_id);
     };
 
   </script>

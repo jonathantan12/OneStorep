@@ -176,19 +176,19 @@
             </div><!-- Consolidated Inventory -->
 
             <!-- Inventory Dashboard -->
-            <div class="col-12">
+            <!-- <div class="col-12">
               <div class="card">
 
                 <div class="card-body">
                   <h5 class="card-title">Inventory</h5>
 
-                  <!-- Javascript table display -->
                   <div id="displayDashboard"> </div>
               
                 </div>
 
               </div>
-            </div><!-- End Inventory Dashboard -->
+            </div> -->
+            <!-- End Inventory Dashboard -->
 
           </div>
         </div><!-- End Left side columns -->

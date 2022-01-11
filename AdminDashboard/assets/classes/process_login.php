@@ -39,6 +39,6 @@
     if (!$success){
         // header("Location: ../../dashboardLogin.html");
         // echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>';
-        echo "<script>alert('Failed login, please try again!'); window.location.href = '../../dashboardLogin.html';</script>";
+        echo "<script>alert('Failed login, please try again!'); window.location.href = '../../adminLogin.html';</script>";
     }
 ?>
