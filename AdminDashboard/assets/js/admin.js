@@ -37,7 +37,7 @@ function retrieveAllUsers(obj) {
                               <td>${obj[i]['email']}</td>
                               <td>${obj[i]['account_id']}</td>
                               <td>${obj[i]['contact_number']}</td>
-                              <td><a class="btn btn-dark" href="companyInformation.php?account_id=${account_id}&company_name=${obj[i]['company_name']}" role="button">More</a></td>
+                              <td><a class="btn btn-success" href="companyInformation.php?account_id=${account_id}&company_name=${obj[i]['company_name']}" role="button">More</a></td>
                           </tr>`;
     }         
     displayCompanies += `</table>`;
