@@ -1,5 +1,4 @@
 <?php
-
 require_once("connectionManager.php");
 require_once("user.php");
 
@@ -18,7 +17,7 @@ class UserDAO {
 
         $result = [];
         while ($row = $stmt->fetch()){
-            $result[] = new User($row['account_id'], $row['email'], $row['password'] ,$row['company_name']);
+            $result[] = new User($row['account_id'], $row['email'], $row['password'] ,$row['company_name'], $row['contact_number']);
         }
         
         $stmt = null;
@@ -26,7 +25,32 @@ class UserDAO {
         return $result;
     }
 
+    public function addUser($email, $password, $companyName, $contactNumber) {
+        $connMgr = new ConnectionManager();
+        $pdo = $connMgr->getConnection();
 
+        $sql = "insert into user (email, password, company_name, contact_number) 
+                values (:email, :password, :company_name, :contact_number)";
+        $stmt = $pdo->prepare($sql);
+
+        $stmt->bindParam(":email",$email,PDO::PARAM_STR);
+        $stmt->bindParam(":password",$password,PDO::PARAM_STR);
+        $stmt->bindParam(":company_name",$companyName,PDO::PARAM_STR);
+        $stmt->bindParam(":contact_number",$contactNumber,PDO::PARAM_STR);
+        
+        $isAddOK = $stmt->execute();
+        $stmt = null;
+        $pdo = null;    
+
+        return $isAddOK;
+
+        // if ($isAddOK) {
+        //     echo "<script>alert('Product successfully added!'); location.reload();</script>";
+        // } 
+        // else{
+        //     echo "<script>alert('Failed login, please try again!'); location.reload();</script>";
+        // }
+    }
     // public function createTable() {
     //     $connMgr = new ConnectionManager();
     //     $pdo = $connMgr->getConnection();

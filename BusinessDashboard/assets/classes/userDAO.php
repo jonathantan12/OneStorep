@@ -37,7 +37,7 @@ class UserDAO {
 
         $result = [];
         while ($row = $stmt->fetch()){
-            $result[] = new User($row['account_id'], $row['email'], $row['password'] ,$row['company_name']);
+            $result[] = new User($row['account_id'], $row['email'], $row['password'] ,$row['company_name'], $row['contact_number']);
         }
         
         $stmt = null;

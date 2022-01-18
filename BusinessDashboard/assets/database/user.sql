@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS `user` (
     `email` varchar(64) NOT NULL,
     `password` varchar(64) NOT NULL,
     `company_name` varchar(64) NOT NULL,
+    `contact_number` varchar(64) NOT NULL,
     PRIMARY KEY (`account_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -22,9 +23,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`account_id`, `email`, `password`, `company_name`) VALUES
-(1, 'jonathan@hotmail.com', '0000', 'Nike'),
-(2, 'ryan@hotmail.com', '0000', 'New Era'),
-(3, 'dylan@hotmail.com', '0000', 'Adidas');
+INSERT INTO `user` (`account_id`, `email`, `password`, `company_name`, `contact_number`) VALUES
+(1, 'jonathan@hotmail.com', '0000', 'Nike', '12345678'),
+(2, 'ryan@hotmail.com', '0000', 'New Era', '12345678'),
+(3, 'dylan@hotmail.com', '0000', 'Adidas', '12345678');
 
 COMMIT;

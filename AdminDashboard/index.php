@@ -121,12 +121,12 @@
       </li>
       <!-- End Dashboard Nav -->
 
-      <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.php">
-          <i class="bi bi-envelope"></i>
-          <span>Contact the Team</span>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="addUserPage.php">
+          <i class="bi bi-arrow-up-square"></i>
+          <span>Add User</span>
         </a>
-      </li> -->
+      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href='assets/classes/logout.php'>

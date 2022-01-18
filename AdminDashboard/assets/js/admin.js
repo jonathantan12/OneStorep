@@ -25,6 +25,7 @@ function retrieveAllUsers(obj) {
                       <th onclick="sortUserTable(0)" style="width:50%";>Company Name</th>
                       <th>Email</th>
                       <th>Account ID</th>
+                      <th>Contact Number</th>
                       <th></th>
                     </tr>`;   
 
@@ -35,6 +36,7 @@ function retrieveAllUsers(obj) {
                               <td>${obj[i]['company_name']}</td>
                               <td>${obj[i]['email']}</td>
                               <td>${obj[i]['account_id']}</td>
+                              <td>${obj[i]['contact_number']}</td>
                               <td><a class="btn btn-dark" href="companyInformation.php?account_id=${account_id}&company_name=${obj[i]['company_name']}" role="button">More</a></td>
                           </tr>`;
     }         

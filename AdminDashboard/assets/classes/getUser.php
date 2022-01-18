@@ -12,6 +12,7 @@
         $item["email"] = $aProduct->getEmail();
         $item["password"] = $aProduct->getPassword();
         $item["company_name"] = $aProduct->getCompanyName();
+        $item["contact_number"] = $aProduct->getContactNumber();
         $items[] = $item;
     }
 

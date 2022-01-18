@@ -6,7 +6,7 @@ CREATE DATABASE IF NOT EXISTS `onestorep` DEFAULT CHARACTER SET utf8 COLLATE utf
 USE `onestorep`;
 
 --
--- USER table
+-- ADMIN table
 --
 
 DROP TABLE IF EXISTS `admin`;
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`account_id`, `email`, `password`, `user_name`) VALUES
