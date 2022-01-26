@@ -29,18 +29,18 @@ class InventoryDAO {
         $pdo = $connMgr->getConnection();
        
         // var_dump($sku);
-        var_dump((int)$floatingCompanyId);
-        var_dump($floatingName);
-        var_dump($floatingBrand);
-        var_dump($floatingCategory);
-        var_dump($floatingColour);
-        var_dump($floatingSize);
-        var_dump($floatingWeight);
-        var_dump($floatingDimension);
-        var_dump($floatingStoredDate);
-        var_dump($sent_date);
-        var_dump($delivered_date);
-        var_dump($status);
+        // var_dump((int)$floatingCompanyId);
+        // var_dump($floatingName);
+        // var_dump($floatingBrand);
+        // var_dump($floatingCategory);
+        // var_dump($floatingColour);
+        // var_dump($floatingSize);
+        // var_dump($floatingWeight);
+        // var_dump($floatingDimension);
+        // var_dump($floatingStoredDate);
+        // var_dump($sent_date);
+        // var_dump($delivered_date);
+        // var_dump($status);
 
         $sql = "insert into inventory (account_id, product_name, product_brand, product_type, product_colour, product_size, product_weight, product_dimension, stored_date, sent_date, delivered_date, status) 
                 values (:account_id, :product_name, :product_brand, :product_type, :product_colour, :product_size, :product_weight, :product_dimension, :stored_date, :sent_date, :delivered_date, :status)";
