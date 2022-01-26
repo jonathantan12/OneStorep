@@ -15,7 +15,7 @@
   // }
 
   $user_name = $_SESSION['user_name'];
-
+  
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>OneStorep Business Dashboard</title>
+  <title>OneStorep Admin Dashboard</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -83,14 +83,34 @@
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 
             <!-- <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Account Settings</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li> -->
+
+            <!-- <li>
               <a class="dropdown-item d-flex align-items-center" href="pages-contact.php">
                 <i class="bi bi-question-circle"></i>
                 <span>Contact the Team</span>
               </a>
-            </li> -->
+            </li>
             <li>
               <hr class="dropdown-divider">
-            </li>
+            </li> -->
 
             <li>
               <a class="dropdown-item d-flex align-items-center" href='assets/classes/logout.php'>
@@ -114,7 +134,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.php">
+        <a class="nav-link " href="index.php?account_id=$account_id">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -127,6 +147,7 @@
           <span>Add User</span>
         </a>
       </li>
+      <!-- End Contact Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href='assets/classes/logout.php'>
@@ -134,8 +155,7 @@
           <span>Sign Out</span>
         </a>
       </li>
-      <!-- End Login Page Nav -->
-
+    
 
     </ul>
 
@@ -143,7 +163,8 @@
 
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Dashboard</h1>
+      <!-- <h1>Dashboard</h1> -->
+      <h1 id="DisplayCompanyName"></h1>
       <br>
       <!-- <nav>
         <ol class="breadcrumb">
@@ -159,41 +180,27 @@
         <!-- Left side columns -->
         <div class="col-lg">
           <div class="row">
-
-            <!-- Consolidated Inventory -->
+            
+            <!-- Inventory Dashboard -->
             <div class="col-12">
               <div class="card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Companies</h5>
-                  
+                  <h5 class="card-title">Inventory Update</h5>
+
                   <!-- Javascript table display -->
-                  <div id="displayCompanies"> </div>
-
-                </div>
-
-              </div>
-            </div><!-- Consolidated Inventory -->
-
-            <!-- Inventory Dashboard -->
-            <!-- <div class="col-12">
-              <div class="card">
-
-                <div class="card-body">
-                  <h5 class="card-title">Inventory</h5>
-
-                  <div id="displayDashboard"> </div>
+                  <div id="displayCompanyInventorySent"> </div>
               
                 </div>
 
               </div>
-            </div> -->
+            </div>
             <!-- End Inventory Dashboard -->
 
           </div>
         </div><!-- End Left side columns -->
 
-
+      
       </div>
     </section>
 
@@ -232,7 +239,13 @@
 
   <script type="text/javascript">
     window.onload = function(){
-      adminDashboard(account_id);
+        companyInventorySentDashboard(account_id);
+
+        var params = new URLSearchParams(location.search);
+        var company_name = params.get('company_name');
+        document.getElementById('DisplayCompanyName').innerHTML = company_name + ' Dashboard';
+      
+        document.getElementById('floatingCompanyId').value = atob(account_id);
     };
 
   </script>

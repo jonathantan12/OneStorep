@@ -29,8 +29,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <!-- <link href="assets/img/" rel="icon"> -->
-  <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+  <link href="assets/img/OneStorep.png" rel="icon">
+  <link href="assets/img/OneStorep.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -182,33 +182,22 @@
           <div class="row">
 
             <!-- Upload Inventory Form -->
-            <div class="col-12">
+            <!-- <div class="col-12">
               <div class="card">
 
                 <div class="card-body">
                   <h5 class="card-title">Upload Inventory</h5>
-                  <!-- Floating Labels Form -->
+                 
                   <form class="row g-3" action="assets/classes/uploadInventory.php" method="post">
                       <div class="col-md-2">
                         <div class="form-floating">
-                          <!-- <input type="text" class="form-control" id="floatingCompanyId" name="floatingCompanyId"> -->
                           <input type="text" class="form-control" id="floatingCompanyId" name="floatingCompanyId" readonly>
                           <label for="floatingCompanyId">Company ID</label>
                         </div>
                       </div>
                       <div class="col-md-10"></div>
                       
-                    <!-- <div class="col-md-10">
-                        <div class="form-floating mb-6">
-                          <select class="form-select" id="floatingSelect" name="floatingSelect" aria-label="company">
-                            <option selected>New Era</option>
-                            <option value="Nike">Nike</option>
-                            <option value="Adidas">Adidas</option>
-                          </select>
-                          <label for="floatingSelect">Company</label>
-                        </div>
-                      </div> -->
-                      <div class="col-md-6">
+                      <div class="col-md-12">
                         <div class="form-floating">
                           <input type="text" class="form-control" id="floatingName" name="floatingName" placeholder="Product Name">
                           <label for="floatingName">Product Name</label>
@@ -256,27 +245,23 @@
                           <label for="floatingStoredDate">Stored Date</label>
                         </div>
                       </div>
-            
-                      <!-- <div class="col-md-2">
+                      <div class="col-md-6">
                         <div class="form-floating">
-                          <input type="text" class="form-control" id="floatingZip" placeholder="Zip">
-                          <label for="floatingZip">Zip</label>
+                          <input type="text" class="form-control" id="floatingQuantity" name="floatingQuantity" placeholder="Quantity">
+                          <label for="floatingQuantity">Quantity</label>
                         </div>
-                      </div> -->
-                  
-                      <div class="text-center">
-                        <button type="submit" class="btn btn-dark">Submit</button>
-                        <!-- <button type="reset" class="btn btn-secondary">Reset</button> -->
                       </div>
-                  </form><!-- End floating Labels Form -->
-
-                  <!-- Javascript table display -->
-                  <div id="uploadInventoryForm"> </div>
-
+                      
+                      <div class="text-end">
+                        <button type="submit" class="btn btn-dark">Submit</button>
+                      </div>  
+                     
+                  </form>
+                  
                 </div>
 
               </div>
-            </div>
+            </div> -->
             <!-- Upload Inventory Form -->
 
             <!-- Consolidated Inventory -->

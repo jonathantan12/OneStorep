@@ -13,7 +13,7 @@ $products = $dao->getInventory($account_id);
 
 $items = [];
 foreach ( $products as $aProduct ) {
-    $item["sku"] = $aProduct->getSku();
+    $item["product_id"] = $aProduct->getProductId();
     $item["account_id"] = $aProduct->getAccountId();
     $item["product_name"] = $aProduct->getProductName();
     $item["product_brand"] = $aProduct->getProductBrand();

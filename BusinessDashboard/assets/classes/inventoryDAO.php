@@ -14,7 +14,7 @@ class InventoryDAO {
         $result = [];
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         while($row = $stmt->fetch()) {
-            $result[] = new Inventory($row['sku'], $row['account_id'], $row['product_name'], $row['product_brand'] ,$row['product_type']
+            $result[] = new Inventory($row['product_id'], $row['account_id'], $row['product_name'], $row['product_brand'] ,$row['product_type']
             , $row['product_colour'], $row['product_size'], $row['product_weight'], $row['product_dimension'], $row['stored_date'], $row['sent_date']
             , $row['delivered_date'], $row['status']);
         }

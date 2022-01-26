@@ -1,7 +1,7 @@
 <?php
 
 class Inventory {
-    private $sku;
+    private $product_id;
     private $account_id;
     private $product_name;
     private $product_brand;
@@ -15,8 +15,8 @@ class Inventory {
     private $delivered_date;
     private $status;
 
-    public function __construct($sku, $account_id, $product_name, $product_brand ,$product_type, $product_colour, $product_size, $product_weight ,$product_dimension, $stored_date, $sent_date, $delivered_date, $status) {
-        $this->sku = $sku;
+    public function __construct($product_id, $account_id, $product_name, $product_brand ,$product_type, $product_colour, $product_size, $product_weight ,$product_dimension, $stored_date, $sent_date, $delivered_date, $status) {
+        $this->product_id = $product_id;
         $this->account_id = $account_id;
         $this->product_name = $product_name;
         $this->product_brand = $product_brand;
@@ -31,9 +31,10 @@ class Inventory {
         $this->status = $status;
     }
 
-    public function getSku() {
-        return $this->sku;
+    public function getProductId() {
+        return $this->product_id;
     }
+
     public function getAccountId() {
         return $this->account_id;
     }

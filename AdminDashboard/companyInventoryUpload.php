@@ -15,7 +15,7 @@
   // }
 
   $user_name = $_SESSION['user_name'];
-
+  
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>OneStorep Business Dashboard</title>
+  <title>OneStorep Admin Dashboard</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -83,14 +83,34 @@
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 
             <!-- <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Account Settings</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li> -->
+
+            <!-- <li>
               <a class="dropdown-item d-flex align-items-center" href="pages-contact.php">
                 <i class="bi bi-question-circle"></i>
                 <span>Contact the Team</span>
               </a>
-            </li> -->
+            </li>
             <li>
               <hr class="dropdown-divider">
-            </li>
+            </li> -->
 
             <li>
               <a class="dropdown-item d-flex align-items-center" href='assets/classes/logout.php'>
@@ -114,7 +134,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.php">
+        <a class="nav-link " href="index.php?account_id=$account_id">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -127,6 +147,7 @@
           <span>Add User</span>
         </a>
       </li>
+      <!-- End Contact Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href='assets/classes/logout.php'>
@@ -134,8 +155,7 @@
           <span>Sign Out</span>
         </a>
       </li>
-      <!-- End Login Page Nav -->
-
+    
 
     </ul>
 
@@ -143,7 +163,8 @@
 
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Dashboard</h1>
+      <!-- <h1>Dashboard</h1> -->
+      <h1 id="DisplayCompanyName"></h1>
       <br>
       <!-- <nav>
         <ol class="breadcrumb">
@@ -160,40 +181,148 @@
         <div class="col-lg">
           <div class="row">
 
+            <!-- Upload Inventory Form -->
+            <div class="col-12">
+              <div class="card">
+
+                <div class="card-body">
+                  <h5 class="card-title">Upload Inventory</h5>
+                  <!-- Floating Labels Form -->
+                  <form class="row g-3" action="assets/classes/uploadInventory.php" method="post">
+                      <div class="col-md-2">
+                        <div class="form-floating">
+                          <!-- <input type="text" class="form-control" id="floatingCompanyId" name="floatingCompanyId"> -->
+                          <input type="text" class="form-control" id="floatingCompanyId" name="floatingCompanyId" readonly>
+                          <label for="floatingCompanyId">Company ID</label>
+                        </div>
+                      </div>
+                      <div class="col-md-10"></div>
+                      
+                    <!-- <div class="col-md-10">
+                        <div class="form-floating mb-6">
+                          <select class="form-select" id="floatingSelect" name="floatingSelect" aria-label="company">
+                            <option selected>New Era</option>
+                            <option value="Nike">Nike</option>
+                            <option value="Adidas">Adidas</option>
+                          </select>
+                          <label for="floatingSelect">Company</label>
+                        </div>
+                      </div> -->
+                      <div class="col-md-12">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingName" name="floatingName" placeholder="Product Name">
+                          <label for="floatingName">Product Name</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingBrand" name="floatingBrand" placeholder="Product Brand">
+                          <label for="floatingBrand">Product Brand</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingCategory" name="floatingCategory" placeholder="Product Category">
+                          <label for="floatingCategory">Product Category</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingColour" name="floatingColour" placeholder="Colour">
+                          <label for="floatingColour">Colour</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingSize" name="floatingSize" placeholder="Size">
+                          <label for="floatingSize">Size</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingWeight" name="floatingWeight" placeholder="Product Weight">
+                          <label for="floatingWeight">Product Weight</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingDimension" name="floatingDimension" placeholder="Product Dimension">
+                          <label for="floatingDimension">Product Dimension</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="date" class="form-control" id="floatingStoredDate" name="floatingStoredDate" placeholder="Stored Date">
+                          <label for="floatingStoredDate">Stored Date</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingQuantity" name="floatingQuantity" placeholder="Quantity">
+                          <label for="floatingQuantity">Quantity</label>
+                        </div>
+                      </div>
+            
+                      <!-- <div class="col-md-2">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingZip" placeholder="Zip">
+                          <label for="floatingZip">Zip</label>
+                        </div>
+                      </div> -->
+                      
+                      
+                      <div class="text-end">
+                        <button type="submit" class="btn btn-dark">Submit</button>
+                        <!-- <button type="reset" class="btn btn-secondary">Reset</button> -->
+                      </div>  
+                     
+                  </form><!-- End floating Labels Form -->
+
+                  <!-- Javascript table display -->
+                  <div id="uploadInventoryForm"> </div>
+
+                </div>
+
+              </div>
+            </div>
+            <!-- Upload Inventory Form -->
+
             <!-- Consolidated Inventory -->
             <div class="col-12">
               <div class="card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Companies</h5>
+                  <h5 class="card-title">Consolidated Inventory</h5>
                   
                   <!-- Javascript table display -->
-                  <div id="displayCompanies"> </div>
+                  <div id="displayInventoryCount"> </div>
 
                 </div>
 
               </div>
-            </div><!-- Consolidated Inventory -->
-
+            </div>
+            <!-- Consolidated Inventory -->
+            
             <!-- Inventory Dashboard -->
-            <!-- <div class="col-12">
+            <div class="col-12">
               <div class="card">
 
                 <div class="card-body">
                   <h5 class="card-title">Inventory</h5>
 
+                  <!-- Javascript table display -->
                   <div id="displayDashboard"> </div>
               
                 </div>
 
               </div>
-            </div> -->
+            </div>
             <!-- End Inventory Dashboard -->
 
           </div>
         </div><!-- End Left side columns -->
 
-
+      
       </div>
     </section>
 
@@ -232,7 +361,13 @@
 
   <script type="text/javascript">
     window.onload = function(){
-      adminDashboard(account_id);
+        inventoryDashboard(account_id);
+
+        var params = new URLSearchParams(location.search);
+        var company_name = params.get('company_name');
+        document.getElementById('DisplayCompanyName').innerHTML = company_name + ' Dashboard';
+      
+        document.getElementById('floatingCompanyId').value = atob(account_id);
     };
 
   </script>

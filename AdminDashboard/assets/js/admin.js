@@ -27,6 +27,8 @@ function retrieveAllUsers(obj) {
                       <th>Account ID</th>
                       <th>Contact Number</th>
                       <th></th>
+                      <th></th>
+                      <th></th>
                     </tr>`;   
 
     for (var i=0; i < obj.length; i++){
@@ -37,7 +39,9 @@ function retrieveAllUsers(obj) {
                               <td>${obj[i]['email']}</td>
                               <td>${obj[i]['account_id']}</td>
                               <td>${obj[i]['contact_number']}</td>
-                              <td><a class="btn btn-success" href="companyInformation.php?account_id=${account_id}&company_name=${obj[i]['company_name']}" role="button">More</a></td>
+                              <td><a class="btn btn-info" href="companyInventory.php?account_id=${account_id}&company_name=${obj[i]['company_name']}" role="button">Inventory</a></td>
+                              <td><a class="btn btn-primary" href="companyInventoryUpload.php?account_id=${account_id}&company_name=${obj[i]['company_name']}" role="button">Upload</a></td>
+                              <td><a class="btn btn-secondary" href="companyInventorySent.php?account_id=${account_id}&company_name=${obj[i]['company_name']}" role="button">Edit</a></td>
                           </tr>`;
     }         
     displayCompanies += `</table>`;

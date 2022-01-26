@@ -9,6 +9,6 @@
     session_destroy();
     
     // Redirect to login page
-    header("location: ../../dashboardLogin.html");
+    header("location: ../../adminLogin.html");
     exit;
 ?>
