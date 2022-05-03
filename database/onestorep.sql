@@ -1,6 +1,9 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+CREATE DATABASE IF NOT EXISTS onestorep;
+USE onestorep;
+
 --
 -- USER table
 --
@@ -12,6 +15,7 @@ CREATE TABLE IF NOT EXISTS `user` (
     `password` varchar(64) NOT NULL,
     `company_name` varchar(64) NOT NULL,
     `contact_number` varchar(64) NOT NULL,
+    `role` varchar(64) NOT NULL,
     PRIMARY KEY (`account_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -19,10 +23,10 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`account_id`, `email`, `password`, `company_name`, `contact_number`) VALUES
-(1, 'jonathan@hotmail.com', '0000', 'Nike', '12345678'),
-(2, 'ryan@hotmail.com', '0000', 'New Era', '12345678'),
-(3, 'dylan@hotmail.com', '0000', 'Adidas', '12345678');
+INSERT INTO `user` (`account_id`, `email`, `password`, `company_name`, `contact_number`, `role`) VALUES
+(1, 'jonathan@hotmail.com', '0000', 'Nike', '12345678', 'user'),
+(2, 'ryan@hotmail.com', '0000', 'New Era', '12345678', 'user'),
+(3, 'dylan@hotmail.com', '0000', 'Adidas', '12345678', 'user');
 
 COMMIT;
 
@@ -77,6 +81,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
     `email` varchar(64) NOT NULL,
     `password` varchar(64) NOT NULL,
     `user_name` varchar(64) NOT NULL,
+    `role` varchar(64) NOT NULL,
     PRIMARY KEY (`account_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -84,9 +89,9 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`account_id`, `email`, `password`, `user_name`) VALUES
-(1, 'vivian@hotmail.com', '0000', 'Vivian'),
-(2, 'cherwee@hotmail.com', '0000', 'Cher Wee'),
-(3, 'benson@hotmail.com', '0000', 'Benson');
+INSERT INTO `admin` (`account_id`, `email`, `password`, `user_name`, `role`) VALUES
+(1, 'vivian@hotmail.com', '0000', 'Vivian', 'admin'),
+(2, 'cherwee@hotmail.com', '0000', 'Cher Wee', 'admin'),
+(3, 'benson@hotmail.com', '0000', 'Benson', 'admin');
 
 COMMIT;

@@ -14,6 +14,11 @@
     exit;
   }
 
+  if($_SESSION['role'] != 'user'){
+    header("location: dashboardLogin.html");
+    exit;
+  }
+
   $company_name = $_SESSION['company_name'];
 
 ?>

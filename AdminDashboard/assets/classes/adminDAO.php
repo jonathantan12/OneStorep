@@ -38,7 +38,7 @@ class AdminDAO {
 
         $result = [];
         while ($row = $stmt->fetch()){
-            $result[] = new Admin($row['account_id'], $row['email'], $row['password'] ,$row['user_name']);
+            $result[] = new Admin($row['account_id'], $row['email'], $row['password'] ,$row['user_name'], $row['role']);
         }
         
         $stmt = null;
@@ -60,7 +60,7 @@ class AdminDAO {
 
         $result = [];
         while ($row = $stmt->fetch()){
-            $result[] = new Admin($row['account_id'], $row['email'], $row['password'] ,$row['user_name']);
+            $result[] = new Admin($row['account_id'], $row['email'], $row['password'] ,$row['user_name'], $row['role']);
         }
         
         $stmt = null;

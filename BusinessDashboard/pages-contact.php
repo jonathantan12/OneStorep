@@ -7,12 +7,11 @@
     header("location: dashboardLogin.html");
     exit;
   }
-
-  // if ($_SESSION["account_id"] != $_GET['account_id']){
-  //   $account_id = $_SESSION["account_id"];
-  //   header("location: dashboardIndex.php?account_id=$account_id");
-  //   exit;
-  // }
+  
+  if($_SESSION['role'] != 'user'){
+    header("location: dashboardLogin.html");
+    exit;
+  }
 
   $company_name = $_SESSION['company_name'];
 

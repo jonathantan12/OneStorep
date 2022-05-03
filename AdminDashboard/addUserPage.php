@@ -14,6 +14,11 @@
   //   exit;
   // }
 
+  if($_SESSION['role'] != 'admin'){
+    header("location: adminLogin.html");
+    exit;
+  }
+
   $user_name = $_SESSION['user_name'];
   
 ?>

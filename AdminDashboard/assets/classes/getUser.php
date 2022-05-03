@@ -4,15 +4,16 @@
     require_once('userDAO.php');
 
     $dao = new UserDAO();
-    $products = $dao->retrieveAllUsers();
+    $user = $dao->retrieveAllUsers();
 
     $items = [];
-    foreach ( $products as $aProduct ) {
-        $item["account_id"] = $aProduct->getAccountId();
-        $item["email"] = $aProduct->getEmail();
-        $item["password"] = $aProduct->getPassword();
-        $item["company_name"] = $aProduct->getCompanyName();
-        $item["contact_number"] = $aProduct->getContactNumber();
+    foreach ( $user as $aUser ) {
+        $item["account_id"] = $aUser->getAccountId();
+        $item["email"] = $aUser->getEmail();
+        $item["password"] = $aUser->getPassword();
+        $item["company_name"] = $aUser->getCompanyName();
+        $item["contact_number"] = $aUser->getContactNumber();
+        $item["role"] = $aUser->getRole();
         $items[] = $item;
     }
 

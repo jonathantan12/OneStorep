@@ -16,6 +16,7 @@
         $item["email"] = $aProduct->getEmail();
         $item["password"] = $aProduct->getPassword();
         $item["user_name"] = $aProduct->getUserName();
+        $item["role"] = $aProduct->getRole();
         $items[] = $item;
     }
 

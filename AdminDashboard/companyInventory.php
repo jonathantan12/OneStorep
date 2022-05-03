@@ -7,13 +7,17 @@
     header("location: adminLogin.html");
     exit;
   }
-
   // if ($_SESSION["account_id"] != $_GET['account_id']){
   //   $account_id = $_SESSION["account_id"];
   //   header("location: index.php?account_id=$account_id");
   //   exit;
   // }
-
+  
+  if($_SESSION['role'] != 'admin'){
+    header("location: adminLogin.html");
+    exit;
+  }
+  
   $user_name = $_SESSION['user_name'];
   
 ?>
@@ -345,7 +349,11 @@
         document.getElementById('DisplayCompanyName').innerHTML = company_name + ' Dashboard';
       
         document.getElementById('floatingCompanyId').value = atob(account_id);
+
+        document.forms['member_signup'].submit();
     };
+
+    
 
   </script>
 

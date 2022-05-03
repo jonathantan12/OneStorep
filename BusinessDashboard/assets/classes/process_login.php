@@ -22,6 +22,9 @@
         $company_name = $userDetails[0]->getCompanyName(); //new
         $_SESSION["company_name"] = $company_name; // SESSION THE COMPANY NAME
 
+        $role = $userDetails[0]->getRole(); // role
+        $_SESSION["role"] = $role; // SESSION THE ROLE
+        
         // $hashed = $userDetails[0]["hashed"];
         // $success = password_verify($password,$hashed); 
         $success = True; 

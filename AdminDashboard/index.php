@@ -8,6 +8,11 @@
     exit;
   }
 
+  if($_SESSION['role'] != 'admin'){
+    header("location: adminLogin.html");
+    exit;
+  }
+
   // if ($_SESSION["account_id"] != $_GET['account_id']){
   //   $account_id = $_SESSION["account_id"];
   //   header("location: index.php?account_id=$account_id");
@@ -15,6 +20,8 @@
   // }
 
   $user_name = $_SESSION['user_name'];
+  $email = $_SESSION['email'];
+  $role = $_SESSION['role'];
 
 ?>
 

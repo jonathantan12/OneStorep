@@ -9,9 +9,10 @@
     $password = $_POST['password'];
     $companyName = $_POST['companyName'];
     $contactNumber = $_POST['contactNumber'];
+    $role = 'user';
 
     $dao = new UserDAO();
-    $insertOK = $dao->addUser($email, $password, $companyName, $contactNumber);
+    $insertOK = $dao->addUser($email, $password, $companyName, $contactNumber, $role);
     // var_dump($insertOK);
     
     if ($insertOK) {

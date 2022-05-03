@@ -22,6 +22,9 @@
         $user_name = $userDetails[0]->getUserName(); //new
         $_SESSION["user_name"] = $user_name; // SESSION THE COMPANY NAME
 
+        $role = $userDetails[0]->getRole(); // role
+        $_SESSION["role"] = $role; // SESSION THE ROLE
+
         // $hashed = $userDetails[0]["hashed"];
         // $success = password_verify($password,$hashed); 
         $success = True; 
@@ -29,7 +32,7 @@
         if($success){
             $_SESSION["user"] = $email;
             // $_SESSION["account_id"] = $account_id;
-            header("Location: ../../index.php");
+            header("Location: ../../index.php?account_id=$account_id");
             
             exit;
         }

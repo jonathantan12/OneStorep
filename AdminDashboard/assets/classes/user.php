@@ -6,13 +6,15 @@ class User {
     private $password;
     private $company_name;
     private $contact_number;
+    private $role;
 
-    public function __construct($account_id, $email, $password, $company_name, $contact_number) {
+    public function __construct($account_id, $email, $password, $company_name, $contact_number, $role) {
         $this->account_id = $account_id;
         $this->email = $email;
         $this->password = $password;
         $this->company_name = $company_name;
         $this->contact_number = $contact_number;
+        $this->role = $role;
     }
 
     public function getAccountId() {
@@ -33,6 +35,10 @@ class User {
 
     public function getContactNumber() {
         return $this->contact_number;
+    }
+
+    public function getRole() {
+        return $this->role;
     }
 }
 ?>
