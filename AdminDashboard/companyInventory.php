@@ -190,7 +190,7 @@
               <div class="card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Consolidated Inventory</h5>
+                  <h5 class="card-title">Current Inventory</h5>
                   
                   <!-- Javascript table display -->
                   <div id="displayInventoryCount"> </div>
@@ -260,7 +260,7 @@
   <script type="text/javascript">
     window.onload = function(){
         inventoryDashboard(account_id);
-
+        
         var params = new URLSearchParams(location.search);
         var company_name = params.get('company_name');
         document.getElementById('DisplayCompanyName').innerHTML = company_name + ' Dashboard';

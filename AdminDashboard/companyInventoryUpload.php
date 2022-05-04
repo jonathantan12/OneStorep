@@ -284,7 +284,7 @@
                   </form><!-- End floating Labels Form -->
 
                   <!-- Javascript table display -->
-                  <div id="uploadInventoryForm"> </div>
+                  <!-- <div id="uploadInventoryForm"> </div> -->
 
                 </div>
 
@@ -292,37 +292,7 @@
             </div>
             <!-- Upload Inventory Form -->
 
-            <!-- Consolidated Inventory -->
-            <div class="col-12">
-              <div class="card">
-
-                <div class="card-body">
-                  <h5 class="card-title">Consolidated Inventory</h5>
-                  
-                  <!-- Javascript table display -->
-                  <div id="displayInventoryCount"> </div>
-
-                </div>
-
-              </div>
-            </div>
-            <!-- Consolidated Inventory -->
-            
-            <!-- Inventory Dashboard -->
-            <div class="col-12">
-              <div class="card">
-
-                <div class="card-body">
-                  <h5 class="card-title">Inventory</h5>
-
-                  <!-- Javascript table display -->
-                  <div id="displayDashboard"> </div>
-              
-                </div>
-
-              </div>
-            </div>
-            <!-- End Inventory Dashboard -->
+      
 
           </div>
         </div><!-- End Left side columns -->

@@ -98,6 +98,22 @@ class InventoryDAO {
 
         return $isUpdateOK;
     }
+
+    public function deleteInventory($product_id) {
+        $connMgr = new ConnectionManager();
+        $pdo = $connMgr->getConnection();
+
+        $sql = 'DELETE FROM inventory WHERE product_id=:product_id';
+        
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':product_id', $product_id, PDO::PARAM_STR);
+        
+        $isDeleteOK = $stmt->execute();
+        $stmt = null;
+        $pdo = null;    
+
+        return $isDeleteOK;
+    }
 }
 
 ?>

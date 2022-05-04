@@ -105,11 +105,11 @@ function getInventory(obj) {
 
 function getInventoryCount(obj) {
     let dict = {};
+    // console.log(obj);
 
     for (var i=0; i < obj.length; i++){
-
         // Checking if value exist or not
-        if(obj[i].product_name in dict){
+        if(obj[i].product_name in dict && obj[i].delivered_date == null){
             dict[obj[i].product_name] += 1
         } else{
             dict[obj[i].product_name] = 1
@@ -143,6 +143,7 @@ function companyInventorySent(obj) {
                   <div class="scrollable">
                   <table id="inventoryDisplay" class="table table-striped-responsive">
                   <tr class="header">
+                    <th></th>
                     <th></th>
                     <th>Name</th>
                     <th>Brand</th>
@@ -185,6 +186,11 @@ function companyInventorySent(obj) {
       }
 
       displayCompanyInventorySent += `<tr>
+                              <td>
+                              <form class="row g-3" action="assets/classes/deleteInventory.php?product_id=${obj[i].product_id}" method="post">      
+                                <button type="submit" class="btn-sm btn-danger">Delete</button>
+                              </form>
+                              </td>
                               <td>${i+1}</td>
                               <td>${obj[i].product_name}</td>
                               <td>${obj[i].product_brand}</td>
@@ -201,7 +207,6 @@ function companyInventorySent(obj) {
                               <form class="row g-3" action="assets/classes/updateInventoryStatus.php?product_id=${obj[i].product_id}" method="post">
                                 <select class="form-select-sm" id="status" name="status" aria-label="status">
                                   <option value="stored">Stored</option>
-                                  <option value="sent">Sent</option>
                                   <option value="delivered">Delivered</option>
                                 </select>
                                 
