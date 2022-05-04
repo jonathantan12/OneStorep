@@ -87,38 +87,38 @@ function getInventory(obj) {
 }   
 
 function getInventoryCount(obj) {
-    let dict = {};
+  let dict = {};
+  // console.log(obj);
 
-    for (var i=0; i < obj.length; i++){
+  for (var i=0; i < obj.length; i++){
+      // Checking if value exist or not
+      if(obj[i].product_name in dict && obj[i].delivered_date == null){
+          dict[obj[i].product_name] += 1
+      } else{
+          dict[obj[i].product_name] = 1
+      }
+  }
 
-        // Checking if value exist or not
-        if(obj[i].product_name in dict){
-            dict[obj[i].product_name] += 1
-        } else{
-            dict[obj[i].product_name] = 1
-        }
-    }
+  // console.log(dict);
 
-    console.log(dict);
+  var inventoryCountDisplay = `<input type="text" id="inventoryCountInput" onkeyup="searchFunctionConsolidatedInventory()" placeholder="Search for product name">
+                  <table id="inventoryCountDisplay" class="table table-striped-responsive">
+                  <tr class="header">
+                    <th style="width:70%";>Product Name</th>
+                    <th>Quantity</th>
+                  </tr>`;   
 
-    var inventoryCountDisplay = `<input type="text" id="inventoryCountInput" onkeyup="searchFunctionConsolidatedInventory()" placeholder="Search for product name">
-                    <table id="inventoryCountDisplay" class="table table-striped-responsive">
-                    <tr class="header">
-                      <th style="width:70%";>Product Name</th>
-                      <th>Quantity</th>
-                    </tr>`;   
+  for (var key in dict){
+      // console.log(dict[key]);
+      // console.log(key);
+      inventoryCountDisplay += `<tr>
+                              <td>${key}</td>
+                              <td>${dict[key]}</td>
+                          </tr>`;
+  }         
+  inventoryCountDisplay += `</table>`;
 
-    for (var key in dict){
-        // console.log(dict[key]);
-        // console.log(key);
-        inventoryCountDisplay += `<tr>
-                                <td>${key}</td>
-                                <td>${dict[key]}</td>
-                            </tr>`;
-    }         
-    inventoryCountDisplay += `</table>`;
-
-    document.getElementById('displayInventoryCount').innerHTML = inventoryCountDisplay;          
+  document.getElementById('displayInventoryCount').innerHTML = inventoryCountDisplay;          
 }
 
 function sortTable(n) {

@@ -106,6 +106,18 @@
             <li>
               <hr class="dropdown-divider">
             </li> -->
+            <li class="nav-item">
+                <a class="dropdown-item d-flex align-items-center" href="index.php?account_id=$account_id">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+                </a>
+            </li>
+            
+            <li>
+                <i class="bi bi-archive"></i>
+                <span>Orders Fulfilled by Month</span>
+              </a>
+            </li>
 
             <li>
               <a class="dropdown-item d-flex align-items-center" href="pages-contact.php">
@@ -113,9 +125,10 @@
                 <span>Contact the Team</span>
               </a>
             </li>
-            <li>
+
+            <!-- <li>
               <hr class="dropdown-divider">
-            </li>
+            </li> -->
 
             <li>
               <a class="dropdown-item d-flex align-items-center" href='assets/classes/logout.php'>
@@ -340,6 +353,14 @@
       <!-- End F.A.Q Page Nav -->
 
       <li class="nav-item">
+        <a class="nav-link collapsed" href="ordersDone.php">
+          <i class="bi bi-archive"></i>
+          <span>Orders Fulfilled by Month</span>
+        </a>
+      </li>
+      <!-- End Orders Fulfilled by Month -->
+
+      <li class="nav-item">
         <a class="nav-link collapsed" href="pages-contact.php">
           <i class="bi bi-envelope"></i>
           <span>Contact the Team</span>
@@ -407,7 +428,7 @@
               <div class="card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Consolidated Inventory</h5>
+                  <h5 class="card-title">Current Inventory</h5>
                   
                   <!-- Javascript table display -->
                   <div id="displayInventoryCount"> </div>
