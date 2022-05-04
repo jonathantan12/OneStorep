@@ -81,8 +81,9 @@
                 <span>Dashboard</span>
                 </a>
             </li>
+
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="ordersDone.php">
+              <a class="dropdown-item d-flex align-items-center" href="ordersDone.php?account_id=$account_id">
                 <i class="bi bi-archive"></i>
                 <span>Orders Fulfilled by Month</span>
               </a>
@@ -170,9 +171,9 @@
               <div class="card">
 
                 <div class="card-body">
-                  
-                  <!-- Javascript table display -->
-                  <div id="displayOrdersDoneTable"> </div>
+                    <h5 class="card-title">Consolidated Orders Fulfilled By Month</h5>
+                    <!-- Javascript table display -->
+                    <div id="displayOrdersDoneTable"> </div>
 
                 </div>
 
@@ -219,13 +220,11 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/ordersDone.js"></script>
 
-  <script type="text/javascript">
+  <script type="text/javascript">    
     window.onload = function(){
         var params = new URLSearchParams(location.search);
         var account_id = params.get('account_id');
-        console.log(account_id);
         ordersDoneDashboard(account_id);
-        console.log(ordersDoneDashboard(account_id));
     };
 
   </script>

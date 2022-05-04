@@ -409,3 +409,4 @@ function searchCompaniesDisplay() {
     }
   }
 }
+

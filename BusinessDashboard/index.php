@@ -114,6 +114,7 @@
             </li>
             
             <li>
+                <a class="dropdown-item d-flex align-items-center" href="ordersDone.php?account_id=$account_id">
                 <i class="bi bi-archive"></i>
                 <span>Orders Fulfilled by Month</span>
               </a>

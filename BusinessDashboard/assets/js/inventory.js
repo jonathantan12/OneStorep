@@ -92,10 +92,12 @@ function getInventoryCount(obj) {
 
   for (var i=0; i < obj.length; i++){
       // Checking if value exist or not
-      if(obj[i].product_name in dict && obj[i].delivered_date == null){
+      if (obj[i].delivered_date == null) {
+        if(obj[i].product_name in dict){
           dict[obj[i].product_name] += 1
-      } else{
+        } else{
           dict[obj[i].product_name] = 1
+        }
       }
   }
 

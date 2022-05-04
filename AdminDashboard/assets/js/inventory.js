@@ -119,6 +119,7 @@ function getInventoryCount(obj) {
     // console.log(dict);
 
     var inventoryCountDisplay = `<input type="text" id="inventoryCountInput" onkeyup="searchFunctionConsolidatedInventory()" placeholder="Search for product name">
+                    <div style="overflow-x:auto;">
                     <table id="inventoryCountDisplay" class="table table-striped-responsive">
                     <tr class="header">
                       <th style="width:70%";>Product Name</th>
@@ -133,7 +134,8 @@ function getInventoryCount(obj) {
                                 <td>${dict[key]}</td>
                             </tr>`;
     }         
-    inventoryCountDisplay += `</table>`;
+    inventoryCountDisplay += `</table>
+    </div>`;
 
     document.getElementById('displayInventoryCount').innerHTML = inventoryCountDisplay;          
 }
