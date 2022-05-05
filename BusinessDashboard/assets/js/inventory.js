@@ -35,6 +35,7 @@ function getInventory(obj) {
                     <th>Sent Date</th>
                     <th>Delivered Date</th>
                     <th onclick="sortTable(11)" style="cursor:pointer;">Status</th>
+                    <th></th>
                   </tr>`;   
 
   for (var i=0; i < obj.length; i++){
@@ -76,6 +77,7 @@ function getInventory(obj) {
                               <td>${sent_date}</td>
                               <td>${delivered_date}</td>
                               <td><span class="badge bg-${status_colour}">${obj[i].status}</span></td>
+                              <td><a class="btn-sm btn-dark" href="arrangeDelivery.php?product_id=${btoa(obj[i].product_id)}" role="button">Arrange Delivery</a></td>
                           </tr>`;
   }
   inventoryDisplay += `</table>

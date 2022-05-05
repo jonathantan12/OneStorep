@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `inventory` (
     `product_weight` varchar(64) NOT NULL,
     `product_dimension` varchar(64) NOT NULL,
     `stored_date` date NOT NULL,
-    `sent_date` date,
+    `sent_date` date, 
     `delivered_date` date,
     `status` varchar(64) NOT NULL,
     PRIMARY KEY (`product_id`)
@@ -93,5 +93,41 @@ INSERT INTO `admin` (`account_id`, `email`, `password`, `user_name`, `role`) VAL
 (1, 'vivian@hotmail.com', '0000', 'Vivian', 'admin'),
 (2, 'cherwee@hotmail.com', '0000', 'Cher Wee', 'admin'),
 (3, 'benson@hotmail.com', '0000', 'Benson', 'admin');
+
+COMMIT;
+
+--
+-- Orders table
+--
+
+DROP TABLE IF EXISTS `order`;
+CREATE TABLE IF NOT EXISTS `order` (
+    `order_id` INT(64) NOT NULL AUTO_INCREMENT,
+    `account_id` INT(64) NOT NULL,
+    `product_id` INT(64) NOT NULL,
+    `product_name` varchar(64) NOT NULL,
+    `product_brand` varchar(64) NOT NULL,
+    `product_type` varchar(64) NOT NULL,
+    `product_colour` varchar(64) NOT NULL,
+    `product_size` varchar(64) NOT NULL,
+    `product_weight` varchar(64) NOT NULL,
+    `product_dimension` varchar(64) NOT NULL,
+    `address_line1` varchar(64) NOT NULL,
+    `address_line2` varchar(64),
+    `postal_code` varchar(64) NOT NULL,
+    `unit_number` varchar(64) NOT NULL,
+    PRIMARY KEY (`order_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `order` (`order_id` ,`account_id`, `product_id`, `product_name`, `product_brand`, `product_type`, `product_colour`, `product_size`, `product_weight`, `product_dimension`, `address_line1`, `address_line2`, `postal_code`, `unit_number`) VALUES
+(1, 1, 11, 'New Era LA CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01'),
+(2, 1, 12, 'New Era LA CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01'),
+(3, 1, 13, 'New Era LA CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01'),
+(4, 1, 14, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01'),
+(5, 1, 15, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01'),
 
 COMMIT;
