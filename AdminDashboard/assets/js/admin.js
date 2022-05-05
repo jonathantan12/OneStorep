@@ -22,7 +22,7 @@ function retrieveAllUsers(obj) {
     var displayCompanies = `<input type="text" id="displayCompaniesInput" onkeyup="searchCompaniesDisplay()" placeholder="Search for Company Name">
                     <table id="displayCompaniesTable" class="table table-striped-responsive">
                     <tr class="header">
-                      <th onclick="sortUserTable(0)" style="width:50%";>Company Name</th>
+                      <th onclick="sortUserTable(0)" style="width:50%; cursor:pointer;";>Company Name</th>
                       <th>Email</th>
                       <th>Account ID</th>
                       <th>Contact Number</th>

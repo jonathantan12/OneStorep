@@ -178,8 +178,21 @@
                 </div>
 
               </div>
-            </div><!-- Consolidated Inventory -->
+            </div><!-- End of Consolidated Inventory -->
 
+            <!-- Orders Fulfilled by Month with Individual Breakdown -->
+            <div class="col-12">
+              <div class="card">
+
+                <div class="card-body">
+                    <h5 class="card-title">Orders Fulfilled Monthly Individual Breakdown</h5>
+                    <!-- Javascript table display -->
+                    <div id="displayIndOrdersDoneTable"> </div>
+
+                </div>
+
+              </div>
+            </div><!-- End of Orders Fulfilled by Month with Individual Breakdown-->
 
           </div>
         </div><!-- End Left side columns -->

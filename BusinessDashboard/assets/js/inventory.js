@@ -34,7 +34,7 @@ function getInventory(obj) {
                     <th>Stored Date</th>
                     <th>Sent Date</th>
                     <th>Delivered Date</th>
-                    <th onclick="sortTable(11)">Status</th>
+                    <th onclick="sortTable(11)" style="cursor:pointer;">Status</th>
                   </tr>`;   
 
   for (var i=0; i < obj.length; i++){
