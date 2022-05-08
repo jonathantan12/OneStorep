@@ -16,7 +16,8 @@ function arrangeDeliveryForm(obj) {
     var arrangeDeliveryFormDisplay = `
                 <!-- Arranging Delivery Form -->
                 <br>
-                  <form class="row g-3" action="assets/classes/arrangeDeliveryForm.php" method="post">
+                  <form class="row g-3" action="assets/classes/arrangeOrder.php" method="post">
+                      <input type="hidden" id="floatingAccountId" name="floatingAccountId">
                       <div class="col-md-2">
                         <div class="form-floating">
                           <input type="text" class="form-control" id="floatingProductId" name="floatingProductId" readonly>
@@ -102,6 +103,7 @@ function arrangeDeliveryForm(obj) {
 
     document.getElementById('arrangeDeliveryForm').innerHTML = arrangeDeliveryFormDisplay;  
     
+    document.getElementById('floatingAccountId').value = 11;
     document.getElementById('floatingProductId').value = 11;
     document.getElementById('floatingName').value = 11;
     document.getElementById('floatingBrand').value = 11;

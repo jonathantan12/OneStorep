@@ -4,10 +4,9 @@
     require_once('userDAO.php');
 
     $dao = new UserDAO();
-    $email = 'ryan@hotmail.com';
-    // var_dump($itemname);
+    // $email = 'ryan@hotmail.com';
     $user = $dao->retrieve($email);
-    // var_dump($products);
+    // var_dump($user);
 
     $items = [];
     foreach ( $user as $aUser ) {
@@ -16,6 +15,7 @@
         $item["password"] = $aUser->getPassword();
         $item["company_name"] = $aUser->getCompanyName();
         $item["role"] = $aUser->getRole();
+        $items[] = $item;
     }
 
     // make posts into json and return json data

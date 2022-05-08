@@ -100,8 +100,8 @@ COMMIT;
 -- Orders table
 --
 
-DROP TABLE IF EXISTS `order`;
-CREATE TABLE IF NOT EXISTS `order` (
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE IF NOT EXISTS `orders` (
     `order_id` INT(64) NOT NULL AUTO_INCREMENT,
     `account_id` INT(64) NOT NULL,
     `product_id` INT(64) NOT NULL,
@@ -112,8 +112,8 @@ CREATE TABLE IF NOT EXISTS `order` (
     `product_size` varchar(64) NOT NULL,
     `product_weight` varchar(64) NOT NULL,
     `product_dimension` varchar(64) NOT NULL,
-    `address_line1` varchar(64) NOT NULL,
-    `address_line2` varchar(64),
+    `address1` varchar(64) NOT NULL,
+    `address2` varchar(64),
     `postal_code` varchar(64) NOT NULL,
     `unit_number` varchar(64) NOT NULL,
     PRIMARY KEY (`order_id`)
@@ -123,11 +123,11 @@ CREATE TABLE IF NOT EXISTS `order` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `order` (`order_id` ,`account_id`, `product_id`, `product_name`, `product_brand`, `product_type`, `product_colour`, `product_size`, `product_weight`, `product_dimension`, `address_line1`, `address_line2`, `postal_code`, `unit_number`) VALUES
+INSERT INTO `orders` (`order_id` ,`account_id`, `product_id`, `product_name`, `product_brand`, `product_type`, `product_colour`, `product_size`, `product_weight`, `product_dimension`, `address1`, `address2`, `postal_code`, `unit_number`) VALUES
 (1, 1, 11, 'New Era LA CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01'),
 (2, 1, 12, 'New Era LA CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01'),
 (3, 1, 13, 'New Era LA CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01'),
 (4, 1, 14, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01'),
-(5, 1, 15, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01'),
+(5, 1, 15, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01');
 
 COMMIT;

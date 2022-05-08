@@ -4,7 +4,8 @@ require_once("connectionManager.php");
 require_once('inventoryDAO.php');
 
 $dao = new InventoryDAO();
-$account_id = $_GET['account_id'];
+// $account_id = $_GET['account_id'];
+$account_id = 2;
 // var_dump($account_id);
 $account_id = (int)$account_id;
 // var_dump($account_id);
