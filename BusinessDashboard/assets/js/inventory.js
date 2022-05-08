@@ -32,8 +32,8 @@ function getInventory(obj) {
                     <th>Weight</th>
                     <th>Dimension</th>
                     <th>Stored Date</th>
+                    <th>Arranged Date</th>
                     <th>Sent Date</th>
-                    <th>Delivered Date</th>
                     <th onclick="sortTable(11)" style="cursor:pointer;">Status</th>
                     <th></th>
                   </tr>`;   
@@ -42,22 +42,21 @@ function getInventory(obj) {
       // console.log(obj[i].status);
       var status_colour = '';
       var sent_date = obj[i].sent_date;
-      var delivered_date = obj[i].delivered_date;
+      var arranged_date = obj[i].arranged_date;
 
+      if (obj[i].arranged_date == '0000-00-00') {
+        arranged_date = '-';
+      }
       // Change date for sent date
       if (obj[i].sent_date == '0000-00-00') {
-          sent_date = '-';
-      }
-
-      if (obj[i].delivered_date == '0000-00-00') {
-          delivered_date = '-';
+        sent_date = '-';
       }
       
       // For status colour change
       if (obj[i].status == 'sent') {
           status_colour = 'warning';
       }
-      else if (obj[i].status == 'delivered'){
+      else if (obj[i].status == 'arranged'){
           status_colour = 'success';
       }
       else {
@@ -74,11 +73,21 @@ function getInventory(obj) {
                               <td>${obj[i].product_weight}</td>
                               <td>${obj[i].product_dimension}</td>
                               <td>${obj[i].stored_date}</td>
+                              <td>${arranged_date}</td>
                               <td>${sent_date}</td>
-                              <td>${delivered_date}</td>
-                              <td><span class="badge bg-${status_colour}">${obj[i].status}</span></td>
-                              <td><a class="btn-sm btn-dark" href="arrangeDelivery.php?product_id=${btoa(obj[i].product_id)}" role="button">Arrange Delivery</a></td>
-                          </tr>`;
+                              <td><span class="badge bg-${status_colour}">${obj[i].status}</span></td>`;
+
+      if (obj[i].status == 'stored') {
+        inventoryDisplay += `<td><a class="btn-sm btn-block btn-dark" href="arrangeDelivery.php?product_id=${btoa(obj[i].product_id)}" role="button">Arrange Delivery</a></td></tr>`;
+
+      }
+      else if (obj[i].status == 'arranged'){
+        inventoryDisplay += `<td><a class="btn-sm btn-block btn-dark" href="deliveryInfo.php?product_id=${btoa(obj[i].product_id)}" role="button">Delivery Info</a></td></tr>`;
+      }
+      else {
+        inventoryDisplay += `<td></td></tr>`;
+      }
+                          
   }
   inventoryDisplay += `</table>
                       </div>`;

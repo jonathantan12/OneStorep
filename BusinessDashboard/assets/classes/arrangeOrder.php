@@ -22,11 +22,13 @@
     $dao = new OrderDAO();
     $insertOK = $dao->arrangeOrder($account_id, $product_id, $product_name, $product_brand ,$product_type, $product_colour, $product_size, $product_weight ,$product_dimension, $address1, $address2, $postal_code, $unit_number);
     // var_dump($insertOK);
-    
-    if ($insertOK) {
-        // echo "<script>alert('Product successfully added!'); javascript:history.go(-1); location.reload(); </script>";
-        echo "<script>alert('Delivery successfully placed!'); document.referrer ? window.location = document.referrer : history.back(); </script>";
+    $updateOK = $dao->updateOrderToArranged($product_id);
 
+    if ($insertOK && $updateOK) {
+        // echo "<script>alert('Product successfully added!'); javascript:history.go(-1); location.reload(); </script>";
+        // echo "<script>alert('Delivery successfully placed!'); document.referrer ? window.location = document.referrer : history.back(); </script>";
+        echo "<script>alert('Delivery successfully placed!');</script>";
+        header('Location: ../../index.php');
     } 
     else{
         echo "<script>alert('Delivery failed to be placed!'); document.referrer ? window.location = document.referrer : history.back();</script>";

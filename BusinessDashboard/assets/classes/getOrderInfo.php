@@ -4,8 +4,7 @@ require_once("connectionManager.php");
 require_once('orderDAO.php');
 
 $dao = new OrderDAO();
-$product_id = $_GET['account_id'];
-// $product_id = '12';
+$product_id = $_GET['product_id'];
 $order = $dao->getOrder($product_id); // error here
 
 $items = [];

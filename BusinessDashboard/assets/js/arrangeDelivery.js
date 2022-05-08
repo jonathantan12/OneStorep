@@ -8,7 +8,7 @@ function arrangeDelivery(product_id) {
         }
     }
 
-    request.open("GET", "./assets/classes/getInventory.php?product_id=" + product_id, true);
+    request.open("GET", "./assets/classes/getItemInfo.php?product_id=" + product_id, true);
     request.send();
 }
 
@@ -70,7 +70,7 @@ function arrangeDeliveryForm(obj) {
                       </div>
                       <div class="col-md-6">
                         <div class="form-floating">
-                          <input type="text" class="form-control" id="floatingAddress1" name="floatingAddress1" placeholder="Address Line 1">
+                          <input type="text" class="form-control" id="floatingAddress1" name="floatingAddress1" placeholder="Address Line 1" required>
                           <label for="floatingAddress1">Address Line 1</label>
                         </div>
                       </div>  
@@ -82,35 +82,32 @@ function arrangeDeliveryForm(obj) {
                       </div> 
                       <div class="col-md-6">
                         <div class="form-floating">
-                          <input type="text" class="form-control" id="floatingPostal" name="floatingPostal" placeholder="Postal Code">
+                          <input type="text" class="form-control" id="floatingPostal" name="floatingPostal" placeholder="Postal Code" required>
                           <label for="floatingPostal">Postal Code</label>
                         </div>
                       </div>  
                       <div class="col-md-6">
                         <div class="form-floating">
-                          <input type="text" class="form-control" id="floatingUnit" name="floatingUnit" placeholder="Unit Number">
+                          <input type="text" class="form-control" id="floatingUnit" name="floatingUnit" placeholder="Unit Number" required>
                           <label for="floatingUnit">Unit Number</label>
                         </div>
                       </div>           
                       
                       <div class="text-end">
-                        <button type="submit" class="btn btn-dark">Submit</button>
-                        <!-- <button type="reset" class="btn btn-secondary">Reset</button> -->
-                      </div>  
-                     
+                        <button type="submit" class="btn btn-dark" onclick="return confirm('Please ensure that all the details being submitted is accurate. Otherwise, the details submitted can only be edited by contacting our customer support. Thank you! -OneStorep')">Submit</button>
+                      </div> 
                   </form><!-- Arranging Delivery Form -->
                                     `;
 
     document.getElementById('arrangeDeliveryForm').innerHTML = arrangeDeliveryFormDisplay;  
-    
-    document.getElementById('floatingAccountId').value = 11;
-    document.getElementById('floatingProductId').value = 11;
-    document.getElementById('floatingName').value = 11;
-    document.getElementById('floatingBrand').value = 11;
-    document.getElementById('floatingCategory').value = 11;
-    document.getElementById('floatingColour').value = 11;
-    document.getElementById('floatingSize').value = 11;
-    document.getElementById('floatingWeight').value = 11;
-    document.getElementById('floatingDimension').value = 11;
+    document.getElementById('floatingAccountId').value = obj[0].account_id;
+    document.getElementById('floatingProductId').value = obj[0].product_id;
+    document.getElementById('floatingName').value = obj[0].product_name;
+    document.getElementById('floatingBrand').value = obj[0].product_brand;
+    document.getElementById('floatingCategory').value = obj[0].product_type;
+    document.getElementById('floatingColour').value = obj[0].product_colour;
+    document.getElementById('floatingSize').value = obj[0].product_size;
+    document.getElementById('floatingWeight').value = obj[0].product_weight;
+    document.getElementById('floatingDimension').value = obj[0].product_dimension;
 
 }

@@ -15,8 +15,29 @@ class InventoryDAO {
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         while($row = $stmt->fetch()) {
             $result[] = new Inventory($row['product_id'], $row['account_id'], $row['product_name'], $row['product_brand'] ,$row['product_type']
-            , $row['product_colour'], $row['product_size'], $row['product_weight'], $row['product_dimension'], $row['stored_date'], $row['sent_date']
-            , $row['delivered_date'], $row['status']);
+            , $row['product_colour'], $row['product_size'], $row['product_weight'], $row['product_dimension'], $row['stored_date'], $row['arranged_date']
+            , $row['sent_date'], $row['status']);
+        }
+        $stmt = null;
+        $pdo = null;
+        
+        return $result;
+    }
+
+    public function getItemInfo($product_id) {
+        $connMgr = new ConnectionManager();
+        $pdo = $connMgr->getConnection();
+
+        $sql = 'select * from inventory where product_id=:product_id';
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':product_id', $product_id, PDO::PARAM_STR);
+        $stmt->execute();
+        $result = [];
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        while($row = $stmt->fetch()) {
+            $result[] = new Inventory($row['product_id'], $row['account_id'], $row['product_name'], $row['product_brand'] ,$row['product_type']
+            , $row['product_colour'], $row['product_size'], $row['product_weight'], $row['product_dimension'], $row['stored_date'], $row['arranged_date']
+            , $row['sent_date'], $row['status']);
         }
         $stmt = null;
         $pdo = null;

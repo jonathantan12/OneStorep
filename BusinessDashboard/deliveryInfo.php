@@ -149,7 +149,8 @@
 
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Arrange Delivery</h1>
+      <h1>Delivery Information</h1>
+      <p>Please note that all changes regarding the details after delivery have been placed can only be editted by contacting the Admin. Thank you! - OneStorep</p>
       <br>
     </div><!-- End Page Title -->
    
@@ -166,7 +167,7 @@
 
                 <div class="card-body">
                     <!-- Javascript table display -->
-                    <div id="arrangeDeliveryForm"> </div>
+                    <div id="deliveryInfo"> </div>
 
                 </div>
 
@@ -210,15 +211,13 @@
   
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/arrangeDelivery.js"></script>
+  <script src="assets/js/deliveryInfo.js"></script>
 
   <script type="text/javascript">    
     window.onload = function(){
         var params = new URLSearchParams(location.search);
         var product_id = atob(params.get('product_id'));
-        // console.log(product_id);
-        arrangeDelivery(product_id);
-        // console.log(document.getElementById('arrangeDeliveryForm'));
+        deliveryInfo(product_id);
 
     };
 

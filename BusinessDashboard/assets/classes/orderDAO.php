@@ -53,6 +53,27 @@ class OrderDAO {
 
         return $isAddOK;
     }
+
+    public function updateOrderToArranged($product_id) {
+        $connMgr = new ConnectionManager();
+        $pdo = $connMgr->getConnection();
+        date_default_timezone_set("Asia/Singapore");
+        $arranged_date = date("Y-m-d");
+        $status = 'arranged';
+        
+        $sql = 'UPDATE inventory SET status=:status, arranged_date=:arranged_date WHERE product_id=:product_id';
+        
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+        $stmt->bindParam(':product_id', $product_id, PDO::PARAM_STR);
+        $stmt->bindParam(':arranged_date', $arranged_date, PDO::PARAM_STR);
+        
+        $isUpdateOK = $stmt->execute();
+        $stmt = null;
+        $pdo = null;    
+
+        return $isUpdateOK;
+    }
 }
 
 ?>

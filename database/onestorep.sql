@@ -46,8 +46,8 @@ CREATE TABLE IF NOT EXISTS `inventory` (
     `product_weight` varchar(64) NOT NULL,
     `product_dimension` varchar(64) NOT NULL,
     `stored_date` date NOT NULL,
-    `sent_date` date, 
-    `delivered_date` date,
+    `arranged_date` date, 
+    `sent_date` date,
     `status` varchar(64) NOT NULL,
     PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
@@ -56,11 +56,11 @@ CREATE TABLE IF NOT EXISTS `inventory` (
 -- Dumping data for table `inventory`
 --
 
-INSERT INTO `inventory` (`product_id`, `account_id`, `product_name`, `product_brand`, `product_type`, `product_colour`, `product_size`, `product_weight`, `product_dimension`, `stored_date`, `sent_date`, `delivered_date`, `status`) VALUES
-(1, 2, 'New Era LA CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '2021-02-01', '2021-03-01', '2021-03-03', 'delivered'),
-(2, 2, 'New Era LA CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '2021-02-01', '2021-03-01', '2021-03-03', 'delivered'),
-(3, 2, 'New Era LA CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '2021-02-01', '2021-03-01', null, 'sent'),
-(4, 2, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '2021-02-01', '2021-03-01', null, 'sent'),
+INSERT INTO `inventory` (`product_id`, `account_id`, `product_name`, `product_brand`, `product_type`, `product_colour`, `product_size`, `product_weight`, `product_dimension`, `stored_date`, `arranged_date`, `sent_date`, `status`) VALUES
+(1, 2, 'New Era LA CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '2021-02-01', '2021-03-01', '2021-03-03', 'sent'),
+(2, 2, 'New Era LA CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '2021-02-01', '2021-03-01', '2021-03-03', 'sent'),
+(3, 2, 'New Era LA CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '2021-02-01', '2021-03-01', null, 'arranged'),
+(4, 2, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '2021-02-01', '2021-03-01', null, 'arranged'),
 (5, 2, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '2021-02-01', null, null, 'stored'),
 (6, 2, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '2021-02-01', null, null, 'stored'),
 (7, 2, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '2021-02-01', null, null, 'stored'),

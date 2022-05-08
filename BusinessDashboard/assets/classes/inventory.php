@@ -11,11 +11,11 @@ class Inventory {
     private $product_weight;
     private $product_dimension;
     private $stored_date;
+    private $arranged_date;
     private $sent_date;
-    private $delivered_date;
     private $status;
 
-    public function __construct($product_id, $account_id, $product_name, $product_brand ,$product_type, $product_colour, $product_size, $product_weight ,$product_dimension, $stored_date, $sent_date, $delivered_date, $status) {
+    public function __construct($product_id, $account_id, $product_name, $product_brand ,$product_type, $product_colour, $product_size, $product_weight ,$product_dimension, $stored_date, $arranged_date, $sent_date, $status) {
         $this->product_id = $product_id;
         $this->account_id = $account_id;
         $this->product_name = $product_name;
@@ -26,8 +26,8 @@ class Inventory {
         $this->product_weight = $product_weight;
         $this->product_dimension = $product_dimension;
         $this->stored_date = $stored_date;
+        $this->arranged_date = $arranged_date;
         $this->sent_date = $sent_date;
-        $this->delivered_date = $delivered_date;
         $this->status = $status;
     }
 
@@ -62,11 +62,11 @@ class Inventory {
     public function getStoredDate() {
         return $this->stored_date;
     }
+    public function getArrangedDate() {
+        return $this->arranged_date;
+    }
     public function getSentDate() {
         return $this->sent_date;
-    }
-    public function getDeliveredDate() {
-        return $this->delivered_date;
     }
     public function getStatus() {
         return $this->status;
