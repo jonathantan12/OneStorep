@@ -1,28 +1,28 @@
 var params = new URLSearchParams(location.search);
 var account_id = params.get('account_id');
 // console.log(account_id);
+var company_name = params.get('company_name');
 
-function inventoryDashboard(account_id) {
-    var request = new XMLHttpRequest(); // Prep to make an HTTP request
-    
-    request.onreadystatechange = function() {
-        if( this.readyState == 4 && this.status == 200 ) {
-            let obj = JSON.parse(this.responseText);
-            getInventory(obj);
-            getInventoryCount(obj);
-        }
-    }
+function companyInventorySentDashboard(account_id) {
+  var request = new XMLHttpRequest(); // Prep to make an HTTP request
+  
+  request.onreadystatechange = function() {
+      if( this.readyState == 4 && this.status == 200 ) {
+          let obj = JSON.parse(this.responseText);
+          companyInventorySent(obj);
+      }
+  }
 
-    request.open("GET", "./assets/classes/getInventory.php?account_id=" + account_id, true);
-    request.send();
+  request.open("GET", "./assets/classes/getInventory.php?account_id=" + atob(account_id) + "&company_name=" + company_name, true);
+  request.send();
 }
 
-function getInventory(obj) {
-  var inventoryDisplay = `<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for product name">
-                  <input type="text" id="filterStatus" onkeyup="filterStatus()" placeholder="Filter Status">
+function companyInventorySent(obj) {
+  var displayCompanyInventorySent = `<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for product name">
                   <div class="scrollable">
                   <table id="inventoryDisplay" class="table table-striped-responsive">
                   <tr class="header">
+                    <th></th>
                     <th></th>
                     <th>Name</th>
                     <th>Brand</th>
@@ -43,15 +43,17 @@ function getInventory(obj) {
       var status_colour = '';
       var sent_date = obj[i].sent_date;
       var arranged_date = obj[i].arranged_date;
+      // console.log(sent_date);
+
+      // Change date for sent date
+      if (obj[i].sent_date == null) {
+          sent_date = '-';
+      }
 
       if (obj[i].arranged_date == null) {
         arranged_date = '-';
       }
-      // Change date for sent date
-      if (obj[i].sent_date == null) {
-        sent_date = '-';
-      }
-      
+
       // For status colour change
       if (obj[i].status == 'sent') {
           status_colour = 'warning';
@@ -63,7 +65,12 @@ function getInventory(obj) {
           status_colour = 'info';
       }
 
-      inventoryDisplay += `<tr>
+      displayCompanyInventorySent += `<tr>
+                              <td>
+                              <form class="row g-3" action="assets/classes/deleteInventory.php?product_id=${obj[i].product_id}" method="post">      
+                                <button type="submit" class="btn-sm btn-danger">Delete</button>
+                              </form>
+                              </td>
                               <td>${i+1}</td>
                               <td>${obj[i].product_name}</td>
                               <td>${obj[i].product_brand}</td>
@@ -75,65 +82,32 @@ function getInventory(obj) {
                               <td>${obj[i].stored_date}</td>
                               <td>${arranged_date}</td>
                               <td>${sent_date}</td>
-                              <td style="text-transform: uppercase;"><span class="badge bg-${status_colour}">${obj[i].status}</span></td>`;
-
-      if (obj[i].status == 'stored') {
-        inventoryDisplay += `<td><a class="btn-sm btn-block btn-dark" href="arrangeDelivery.php?product_id=${btoa(obj[i].product_id)}" role="button">Arrange Delivery</a></td></tr>`;
-
-      }
-      else if (obj[i].status == 'arranged'){
-        inventoryDisplay += `<td><a class="btn-sm btn-block btn-dark" href="deliveryInfo.php?product_id=${btoa(obj[i].product_id)}" role="button">Delivery Info</a></td></tr>`;
-      }
-      else {
-        inventoryDisplay += `<td><a class="btn-sm btn-block btn-dark" href="deliveryInfo.php?product_id=${btoa(obj[i].product_id)}" role="button">Delivery Info</a></td></tr>`;
-      }
-                          
+                              <td><span class="badge bg-${status_colour}">${obj[i].status}</span></td>
+                              <td>
+                              <form class="row g-3" action="assets/classes/updateInventoryStatus.php?product_id=${obj[i].product_id}" method="post">
+                                <select class="form-select-sm" id="status" name="status" aria-label="status">
+                                  <option value="stored">Stored</option>
+                                  <option value="sent">Sent</option>
+                                </select>
+                                
+                                <input type="date" class="form-control-sm" id="date" name="date" required>
+                             
+                               
+                                <button type="submit" class="btn-sm btn-dark">Submit</button>
+                                
+                              </form>
+                              </td>
+                          </tr>`;
   }
-  inventoryDisplay += `</table>
+  displayCompanyInventorySent += `</table>
                       </div>`;
 
   // console.log(document.getElementById('displayDashboard').innerHTML);
-  document.getElementById('displayDashboard').innerHTML = inventoryDisplay;   
+  document.getElementById('displayCompanyInventorySent').innerHTML = displayCompanyInventorySent;   
   
 }   
 
-function getInventoryCount(obj) {
-  let dict = {};
-  // console.log(obj);
-
-  for (var i=0; i < obj.length; i++){
-      // Checking if value exist or not
-      if (obj[i].arranged_date == null) {
-        if(obj[i].product_name in dict){
-          dict[obj[i].product_name] += 1
-        } else{
-          dict[obj[i].product_name] = 1
-        }
-      }
-  }
-
-  // console.log(dict);
-
-  var inventoryCountDisplay = `<input type="text" id="inventoryCountInput" onkeyup="searchFunctionConsolidatedInventory()" placeholder="Search for product name">
-                  <table id="inventoryCountDisplay" class="table table-striped-responsive">
-                  <tr class="header">
-                    <th style="width:70%";>Product Name</th>
-                    <th>Quantity</th>
-                  </tr>`;   
-
-  for (var key in dict){
-      // console.log(dict[key]);
-      // console.log(key);
-      inventoryCountDisplay += `<tr>
-                              <td>${key}</td>
-                              <td>${dict[key]}</td>
-                          </tr>`;
-  }         
-  inventoryCountDisplay += `</table>`;
-
-  document.getElementById('displayInventoryCount').innerHTML = inventoryCountDisplay;          
-}
-
+                                 
 function sortTable(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("inventoryDisplay");
@@ -188,4 +162,5 @@ function sortTable(n) {
       }
     }
   }
+
 

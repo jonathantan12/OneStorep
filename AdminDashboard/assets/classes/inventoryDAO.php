@@ -15,8 +15,8 @@ class InventoryDAO {
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         while($row = $stmt->fetch()) {
             $result[] = new Inventory($row['product_id'], $row['account_id'], $row['product_name'], $row['product_brand'] ,$row['product_type']
-            , $row['product_colour'], $row['product_size'], $row['product_weight'], $row['product_dimension'], $row['stored_date'], $row['sent_date']
-            , $row['delivered_date'], $row['status']);
+            , $row['product_colour'], $row['product_size'], $row['product_weight'], $row['product_dimension'], $row['stored_date'], $row['arranged_date']
+            , $row['sent_date'], $row['status']);
         }
         $stmt = null;
         $pdo = null;
@@ -24,7 +24,7 @@ class InventoryDAO {
         return $result;
     }
 
-    public function uploadInventory($floatingCompanyId, $floatingName, $floatingBrand, $floatingCategory, $floatingColour, $floatingSize, $floatingWeight, $floatingDimension, $floatingStoredDate, $sent_date, $delivered_date, $status) {
+    public function uploadInventory($floatingCompanyId, $floatingName, $floatingBrand, $floatingCategory, $floatingColour, $floatingSize, $floatingWeight, $floatingDimension, $floatingStoredDate, $arranged_date, $sent_date, $status) {
         $connMgr = new ConnectionManager();
         $pdo = $connMgr->getConnection();
        
@@ -42,8 +42,8 @@ class InventoryDAO {
         // var_dump($delivered_date);
         // var_dump($status);
 
-        $sql = "insert into inventory (account_id, product_name, product_brand, product_type, product_colour, product_size, product_weight, product_dimension, stored_date, sent_date, delivered_date, status) 
-                values (:account_id, :product_name, :product_brand, :product_type, :product_colour, :product_size, :product_weight, :product_dimension, :stored_date, :sent_date, :delivered_date, :status)";
+        $sql = "insert into inventory (account_id, product_name, product_brand, product_type, product_colour, product_size, product_weight, product_dimension, stored_date, arranged_date, sent_date, status) 
+                values (:account_id, :product_name, :product_brand, :product_type, :product_colour, :product_size, :product_weight, :product_dimension, :stored_date, :arranged_date, :sent_date, :status)";
         $stmt = $pdo->prepare($sql);
         
         $stmt->bindParam(":account_id",$floatingCompanyId,PDO::PARAM_INT);
@@ -55,8 +55,8 @@ class InventoryDAO {
         $stmt->bindParam(":product_weight",$floatingWeight,PDO::PARAM_STR);
         $stmt->bindParam(":product_dimension",$floatingDimension,PDO::PARAM_STR);
         $stmt->bindParam(":stored_date",$floatingStoredDate,PDO::PARAM_STR);
+        $stmt->bindParam(":arranged_date",$arranged_date,PDO::PARAM_STR);
         $stmt->bindParam(":sent_date",$sent_date,PDO::PARAM_STR);
-        $stmt->bindParam(":delivered_date",$delivered_date,PDO::PARAM_STR);
         $stmt->bindParam(":status",$status,PDO::PARAM_STR);
         
         $isAddOK = $stmt->execute();
@@ -78,13 +78,16 @@ class InventoryDAO {
         $pdo = $connMgr->getConnection();
 
         if ($status === 'stored') {
-            $sql = 'UPDATE inventory SET status=:status, stored_date=:date WHERE product_id=:product_id';
+            $sql = 'UPDATE inventory SET status=:status, stored_date=:date WHERE product_id=:product_id; 
+            UPDATE inventory SET arranged_date=null WHERE product_id=:product_id;
+            UPDATE inventory SET sent_date=null WHERE product_id=:product_id;';
+        }
+        elseif ($status === 'arranged') {
+            $sql = 'UPDATE inventory SET status=:status, arranged_date=:date WHERE product_id=:product_id
+            UPDATE inventory SET sent_date=null WHERE product_id=:product_id;';
         }
         elseif ($status === 'sent') {
             $sql = 'UPDATE inventory SET status=:status, sent_date=:date WHERE product_id=:product_id';
-        }
-        elseif ($status === 'delivered') {
-            $sql = 'UPDATE inventory SET status=:status, delivered_date=:date WHERE product_id=:product_id';
         }
         
         $stmt = $pdo->prepare($sql);

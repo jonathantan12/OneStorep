@@ -264,10 +264,6 @@
         var params = new URLSearchParams(location.search);
         var company_name = params.get('company_name');
         document.getElementById('DisplayCompanyName').innerHTML = company_name + ' Dashboard';
-      
-        document.getElementById('floatingCompanyId').value = atob(account_id);
-
-        document.forms['member_signup'].submit();
     };
 
     

@@ -238,7 +238,7 @@
   
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/inventory.js"></script>
+  <script src="assets/js/inventorySent.js"></script>
   <script src="assets/js/admin.js"></script>
 
   <script type="text/javascript">
@@ -248,8 +248,6 @@
         var params = new URLSearchParams(location.search);
         var company_name = params.get('company_name');
         document.getElementById('DisplayCompanyName').innerHTML = company_name + ' Dashboard';
-      
-        document.getElementById('floatingCompanyId').value = atob(account_id);
     };
 
   </script>

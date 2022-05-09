@@ -1219,7 +1219,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ADDED THIS IN */
-#filterDeliveredDate {
+#filterStatus {
   /* background-image: url('/css/searchicon.png'); Add a search icon to input */
   background-position: 10px 12px; /* Position the search icon */
   background-repeat: no-repeat; /* Do not repeat the icon image */

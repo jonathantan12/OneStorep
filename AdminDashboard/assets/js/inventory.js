@@ -11,28 +11,12 @@ function inventoryDashboard(account_id) {
             let obj = JSON.parse(this.responseText);
             getInventory(obj);
             getInventoryCount(obj);
-            companyInventorySent(obj);
         }
     }
 
     request.open("GET", "./assets/classes/getInventory.php?account_id=" + atob(account_id) + "&company_name=" + company_name, true);
     request.send();
 }
-
-function companyInventorySentDashboard(account_id) {
-  var request = new XMLHttpRequest(); // Prep to make an HTTP request
-  
-  request.onreadystatechange = function() {
-      if( this.readyState == 4 && this.status == 200 ) {
-          let obj = JSON.parse(this.responseText);
-          companyInventorySent(obj);
-      }
-  }
-
-  request.open("GET", "./assets/classes/getInventory.php?account_id=" + atob(account_id) + "&company_name=" + company_name, true);
-  request.send();
-}
-
 
 function getInventory(obj) {
     var inventoryDisplay = `<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for product name">
@@ -49,8 +33,8 @@ function getInventory(obj) {
                       <th>Weight</th>
                       <th>Dimension</th>
                       <th>Stored Date</th>
+                      <th>Arranged Date</th>
                       <th>Sent Date</th>
-                      <th>Delivered Date</th>
                       <th onclick="sortTable(11)" style="cursor:pointer;">Status</th>
                     </tr>`;   
 
@@ -58,22 +42,22 @@ function getInventory(obj) {
         // console.log(obj[i].status);
         var status_colour = '';
         var sent_date = obj[i].sent_date;
-        var delivered_date = obj[i].delivered_date;
+        var arranged_date = obj[i].arranged_date;
 
         // Change date for sent date
         if (obj[i].sent_date == null) {
             sent_date = '-';
         }
 
-        if (obj[i].delivered_date == null) {
-            delivered_date = '-';
+        if (obj[i].arranged_date == null) {
+          arranged_date = '-';
         }
         
         // For status colour change
         if (obj[i].status == 'sent') {
             status_colour = 'warning';
         }
-        else if (obj[i].status == 'delivered'){
+        else if (obj[i].status == 'arranged'){
             status_colour = 'success';
         }
         else {
@@ -90,9 +74,9 @@ function getInventory(obj) {
                                 <td>${obj[i].product_weight}</td>
                                 <td>${obj[i].product_dimension}</td>
                                 <td>${obj[i].stored_date}</td>
+                                <td>${arranged_date}</td>
                                 <td>${sent_date}</td>
-                                <td>${delivered_date}</td>
-                                <td><span class="badge bg-${status_colour}">${obj[i].status}</span></td>
+                                <td style="text-transform: uppercase;"><span class="badge bg-${status_colour}">${obj[i].status}</span></td>
                             </tr>`;
     }
     inventoryDisplay += `</table>
@@ -108,13 +92,15 @@ function getInventoryCount(obj) {
     // console.log(obj);
 
     for (var i=0; i < obj.length; i++){
-        // Checking if value exist or not
-        if(obj[i].product_name in dict && obj[i].delivered_date == null){
-            dict[obj[i].product_name] += 1
+      // Checking if value exist or not
+      if (obj[i].arranged_date == null) {
+        if(obj[i].product_name in dict){
+          dict[obj[i].product_name] += 1
         } else{
-            dict[obj[i].product_name] = 1
+          dict[obj[i].product_name] = 1
         }
-    }
+      }
+  }
 
     // console.log(dict);
 
@@ -139,96 +125,6 @@ function getInventoryCount(obj) {
 
     document.getElementById('displayInventoryCount').innerHTML = inventoryCountDisplay;          
 }
-
-function companyInventorySent(obj) {
-  var displayCompanyInventorySent = `<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for product name">
-                  <div class="scrollable">
-                  <table id="inventoryDisplay" class="table table-striped-responsive">
-                  <tr class="header">
-                    <th></th>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Brand</th>
-                    <th>Category</th>
-                    <th>Colour</th>
-                    <th>Size</th>
-                    <th>Weight</th>
-                    <th>Dimension</th>
-                    <th>Stored Date</th>
-                    <th>Sent Date</th>
-                    <th>Delivered Date</th>
-                    <th onclick="sortTable(11)" style="cursor:pointer;">Status</th>
-                    <th></th>
-                  </tr>`;   
-
-  for (var i=0; i < obj.length; i++){
-      // console.log(obj[i].status);
-      var status_colour = '';
-      var sent_date = obj[i].sent_date;
-      var delivered_date = obj[i].delivered_date;
-
-      // Change date for sent date
-      if (obj[i].sent_date == null) {
-          sent_date = '-';
-      }
-
-      if (obj[i].delivered_date == null) {
-          delivered_date = '-';
-      }
-      
-      // For status colour change
-      if (obj[i].status == 'sent') {
-          status_colour = 'warning';
-      }
-      else if (obj[i].status == 'delivered'){
-          status_colour = 'success';
-      }
-      else {
-          status_colour = 'info';
-      }
-
-      displayCompanyInventorySent += `<tr>
-                              <td>
-                              <form class="row g-3" action="assets/classes/deleteInventory.php?product_id=${obj[i].product_id}" method="post">      
-                                <button type="submit" class="btn-sm btn-danger">Delete</button>
-                              </form>
-                              </td>
-                              <td>${i+1}</td>
-                              <td>${obj[i].product_name}</td>
-                              <td>${obj[i].product_brand}</td>
-                              <td>${obj[i].product_type}</td>
-                              <td>${obj[i].product_colour}</td>
-                              <td>${obj[i].product_size}</td>
-                              <td>${obj[i].product_weight}</td>
-                              <td>${obj[i].product_dimension}</td>
-                              <td>${obj[i].stored_date}</td>
-                              <td>${sent_date}</td>
-                              <td>${delivered_date}</td>
-                              <td><span class="badge bg-${status_colour}">${obj[i].status}</span></td>
-                              <td>
-                              <form class="row g-3" action="assets/classes/updateInventoryStatus.php?product_id=${obj[i].product_id}" method="post">
-                                <select class="form-select-sm" id="status" name="status" aria-label="status">
-                                  <option value="stored">Stored</option>
-                                  <option value="delivered">Delivered</option>
-                                </select>
-                                
-                                <input type="date" class="form-control-sm" id="date" name="date">
-                             
-                               
-                                <button type="submit" class="btn-sm btn-dark">Submit</button>
-                                
-                              </form>
-                              </td>
-                          </tr>`;
-  }
-  displayCompanyInventorySent += `</table>
-                      </div>`;
-
-  // console.log(document.getElementById('displayDashboard').innerHTML);
-  document.getElementById('displayCompanyInventorySent').innerHTML = displayCompanyInventorySent;   
-  
-}   
-
                                  
 function sortTable(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;

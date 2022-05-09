@@ -5,6 +5,7 @@ require_once('inventoryDAO.php');
 
 $dao = new InventoryDAO();
 $account_id = $_GET['account_id'];
+// $account_id = 2;
 // var_dump($account_id);
 $account_id = (int)$account_id;
 // var_dump($account_id);
@@ -23,8 +24,8 @@ foreach ( $products as $aProduct ) {
     $item["product_weight"] = $aProduct->getProductWeight();
     $item["product_dimension"] = $aProduct->getProductDimension();
     $item["stored_date"] = $aProduct->getStoredDate();
+    $item["arranged_date"] = $aProduct->getArrangedDate();
     $item["sent_date"] = $aProduct->getSentDate();
-    $item["delivered_date"] = $aProduct->getDeliveredDate();
     $item["status"] = $aProduct->getStatus();
     $items[] = $item;
 }
