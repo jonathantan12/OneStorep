@@ -15,8 +15,10 @@ class Order {
     private $address2;
     private $postal_code;
     private $unit_number;
+    private $customer_name;
+    private $customer_contact;
 
-    public function __construct($order_id, $account_id, $product_id, $product_name, $product_brand ,$product_type, $product_colour, $product_size, $product_weight ,$product_dimension, $address1, $address2, $postal_code, $unit_number) {
+    public function __construct($order_id, $account_id, $product_id, $product_name, $product_brand ,$product_type, $product_colour, $product_size, $product_weight ,$product_dimension, $address1, $address2, $postal_code, $unit_number, $customer_name, $customer_contact) {
         $this->order_id = $order_id;
         $this->account_id = $account_id;
         $this->product_id = $product_id;
@@ -31,6 +33,8 @@ class Order {
         $this->address2 = $address2;
         $this->postal_code = $postal_code;
         $this->unit_number = $unit_number;
+        $this->customer_name = $customer_name;
+        $this->customer_contact = $customer_contact;
     }
 
     public function getOrderId() {
@@ -77,6 +81,12 @@ class Order {
     }
     public function getUnitNumber() {
         return $this->unit_number;
+    }
+    public function getCustomerName() {
+        return $this->customer_name;
+    }
+    public function getCustomerContact() {
+        return $this->customer_contact;
     }
 
 }

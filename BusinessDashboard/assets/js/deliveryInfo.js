@@ -13,19 +13,31 @@ function deliveryInfo(product_id) {
 }
 
 function deliveryInfoDisplay(obj) {
-  console.log(obj);
-  console.log(obj[0].unit_number);
-  var deliveryInfoDisplay = `${obj[0].unit_number}`;
+  var deliveryInfoDisplay = `<section class="section contact">
+                                <br>
+                                <div class="col-xl">       
+                                    <div class="info-box card">
+                                    <i class="bi bi-truck"></i>
+                                    <h3>Product Name: ${obj[0].product_name}</h3>
+                                    <h3>Product Brand: ${obj[0].product_brand}</h3>
+                                    <h3>Product Type: ${obj[0].product_type}</h3>
+                                    <h3>Product Colour: ${obj[0].product_colour}</h3>
+                                    <h3>Product Size: ${obj[0].product_size}</h3>
+                                    <h3>Product Weight: ${obj[0].product_weight}</h3>
+                                    <h3>Product Dimension: ${obj[0].product_dimension}</h3>
+                                    </br>
+                                    <h3>Customer Name: ${obj[0].customer_name}</h3>
+                                    <h3>Customer Contact: ${obj[0].customer_contact}</h3>
+                                    <h3>Address Line 1: ${obj[0].address1}</h3>
+                                    <h3>Address Line 2: ${obj[0].address2}</h3>
+                                    <h3>Unit Number: ${obj[0].unit_number}</h3>
+                                    <h3>Postal Code: ${obj[0].postal_code}</h3>
+                                    
+                                    </div>
+                                </div>
+
+
+                                </section>`;
 
   document.getElementById('deliveryInfo').innerHTML = deliveryInfoDisplay;  
-  // document.getElementById('floatingAccountId').value = obj[0].account_id;
-  // document.getElementById('floatingProductId').value = obj[0].product_id;
-  // document.getElementById('floatingName').value = obj[0].product_name;
-  // document.getElementById('floatingBrand').value = obj[0].product_brand;
-  // document.getElementById('floatingCategory').value = obj[0].product_type;
-  // document.getElementById('floatingColour').value = obj[0].product_colour;
-  // document.getElementById('floatingSize').value = obj[0].product_size;
-  // document.getElementById('floatingWeight').value = obj[0].product_weight;
-  // document.getElementById('floatingDimension').value = obj[0].product_dimension;
-
 }

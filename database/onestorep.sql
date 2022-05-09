@@ -116,6 +116,8 @@ CREATE TABLE IF NOT EXISTS `orders` (
     `address2` varchar(64),
     `postal_code` varchar(64) NOT NULL,
     `unit_number` varchar(64) NOT NULL,
+    `customer_name` varchar(64) NOT NULL,
+    `customer_contact` varchar(64) NOT NULL,
     PRIMARY KEY (`order_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
@@ -123,11 +125,11 @@ CREATE TABLE IF NOT EXISTS `orders` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `orders` (`order_id` ,`account_id`, `product_id`, `product_name`, `product_brand`, `product_type`, `product_colour`, `product_size`, `product_weight`, `product_dimension`, `address1`, `address2`, `postal_code`, `unit_number`) VALUES
-(1, 1, 11, 'New Era LA CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01'),
-(2, 1, 12, 'New Era LA CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01'),
-(3, 1, 13, 'New Era LA CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01'),
-(4, 1, 14, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01'),
-(5, 1, 15, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01');
+INSERT INTO `orders` (`order_id` ,`account_id`, `product_id`, `product_name`, `product_brand`, `product_type`, `product_colour`, `product_size`, `product_weight`, `product_dimension`, `address1`, `address2`, `postal_code`, `unit_number`, `customer_name`, `customer_contact`) VALUES
+(1, 1, 11, 'New Era LA CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01', 'Jonathan', '91187877'),
+(2, 1, 12, 'New Era LA CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01', 'Jonathan', '91187877'),
+(3, 1, 13, 'New Era LA CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01', 'Jonathan', '91187877'),
+(4, 1, 14, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01', 'Jonathan', '91187877'),
+(5, 1, 15, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01', 'Jonathan', '91187877');
 
 COMMIT;

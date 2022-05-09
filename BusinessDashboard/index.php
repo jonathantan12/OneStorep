@@ -429,7 +429,7 @@
               <div class="card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Current Inventory</h5>
+                  <h5 class="card-title">Available Inventory</h5>
                   
                   <!-- Javascript table display -->
                   <div id="displayInventoryCount"> </div>

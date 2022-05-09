@@ -18,9 +18,11 @@
     $address2 = $_POST['floatingAddress2'];
     $postal_code = $_POST['floatingPostal'];
     $unit_number = $_POST['floatingUnit'];
+    $customer_name = $_POST['floatingCustomerName'];
+    $customer_contact = $_POST['floatingCustomerContact'];
 
     $dao = new OrderDAO();
-    $insertOK = $dao->arrangeOrder($account_id, $product_id, $product_name, $product_brand ,$product_type, $product_colour, $product_size, $product_weight ,$product_dimension, $address1, $address2, $postal_code, $unit_number);
+    $insertOK = $dao->arrangeOrder($account_id, $product_id, $product_name, $product_brand ,$product_type, $product_colour, $product_size, $product_weight ,$product_dimension, $address1, $address2, $postal_code, $unit_number, $customer_name, $customer_contact);
     // var_dump($insertOK);
     $updateOK = $dao->updateOrderToArranged($product_id);
 

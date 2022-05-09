@@ -19,7 +19,7 @@ function inventoryDashboard(account_id) {
 
 function getInventory(obj) {
   var inventoryDisplay = `<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for product name">
-                  <input type="text" id="filterDeliveredDate" onkeyup="filterDeliveredDate()" placeholder="Filter Delivered Date">
+                  <!-- <input type="text" id="filterDeliveredDate" onkeyup="filterDeliveredDate()" placeholder="Filter Delivered Date"> -->
                   <div class="scrollable">
                   <table id="inventoryDisplay" class="table table-striped-responsive">
                   <tr class="header">
@@ -85,7 +85,7 @@ function getInventory(obj) {
         inventoryDisplay += `<td><a class="btn-sm btn-block btn-dark" href="deliveryInfo.php?product_id=${btoa(obj[i].product_id)}" role="button">Delivery Info</a></td></tr>`;
       }
       else {
-        inventoryDisplay += `<td></td></tr>`;
+        inventoryDisplay += `<td><a class="btn-sm btn-block btn-dark" href="deliveryInfo.php?product_id=${btoa(obj[i].product_id)}" role="button">Delivery Info</a></td></tr>`;
       }
                           
   }
@@ -103,7 +103,7 @@ function getInventoryCount(obj) {
 
   for (var i=0; i < obj.length; i++){
       // Checking if value exist or not
-      if (obj[i].delivered_date == null) {
+      if (obj[i].sent_date == null) {
         if(obj[i].product_name in dict){
           dict[obj[i].product_name] += 1
         } else{

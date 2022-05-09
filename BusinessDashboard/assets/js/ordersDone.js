@@ -28,7 +28,7 @@ function getOrdersDone(obj) {
     // COUNTER
     for (var i=0; i < obj.length; i++){
         // Checking if value exist or not
-        var yearMonth = obj[i].sent_date;
+        var yearMonth = obj[i].arranged_date;
         if (yearMonth != null){
             yearMonth = yearMonth.slice(0,7);
             if(yearMonth in dict){
@@ -84,7 +84,7 @@ function getOrdersDone(obj) {
     // COUNTER
     for (var i=0; i < obj.length; i++){
         // Checking if value exist or not
-        var yearMonth = obj[i].sent_date;
+        var yearMonth = obj[i].arranged_date;
         if (yearMonth != null){
             yearMonth = yearMonth.slice(0,7);
             if(yearMonth in dict){
@@ -141,13 +141,13 @@ function getIndOrdersDone(obj) {
   // COUNTER
   for (var i=0; i < obj.length; i++){
     // Checking if value exist or not
-    var yearMonth = obj[i].sent_date;
+    var yearMonth = obj[i].arranged_date;
     if (yearMonth != null){
         yearMonth = yearMonth.slice(0,7);
         if(yearMonth in dict){
-          dict[yearMonth].push([obj[i].product_id, obj[i].product_name, obj[i].sent_date])
+          dict[yearMonth].push([obj[i].product_id, obj[i].product_name, obj[i].arranged_date])
         } else{
-          let temp = [obj[i].product_id, obj[i].product_name, obj[i].sent_date]
+          let temp = [obj[i].product_id, obj[i].product_name, obj[i].arranged_date]
           dict[yearMonth] = [temp]
         }
     }
@@ -170,7 +170,7 @@ function getIndOrdersDone(obj) {
   for (var key in dict2){
     getIndOrdersDoneDisplay += `<tr>
                             <td>${key}</td>
-                            <td><table class="table table-striped-responsive"><tr><th>Product ID</th><th>Product Name</th><th>Delivered Date</th></tr>`;
+                            <td><table class="table table-striped-responsive"><tr><th>Product ID</th><th>Product Name</th><th>Arranged Date</th></tr>`;
                             for (let i = 0; i < dict2[key].length; i++) {
                               getIndOrdersDoneDisplay += `
                                                           <tr>`;

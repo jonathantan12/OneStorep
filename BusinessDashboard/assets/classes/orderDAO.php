@@ -17,7 +17,7 @@ class OrderDAO {
         while($row = $stmt->fetch()) {
             $result[] = new Order($row['order_id'], $row['account_id'], $row['product_id'], $row['product_name'], $row['product_brand'] ,$row['product_type']
             , $row['product_colour'], $row['product_size'], $row['product_weight'], $row['product_dimension'], $row['address1'], $row['address2']
-            , $row['postal_code'], $row['unit_number']);
+            , $row['postal_code'], $row['unit_number'], $row['customer_name'], $row['customer_contact']);
         }
         $stmt = null;
         $pdo = null;
@@ -25,12 +25,12 @@ class OrderDAO {
         return $result;
     }
 
-    public function arrangeOrder($account_id, $product_id, $product_name, $product_brand ,$product_type, $product_colour, $product_size, $product_weight ,$product_dimension, $address1, $address2, $postal_code, $unit_number) {
+    public function arrangeOrder($account_id, $product_id, $product_name, $product_brand ,$product_type, $product_colour, $product_size, $product_weight ,$product_dimension, $address1, $address2, $postal_code, $unit_number, $customer_name, $customer_contact) {
         $connMgr = new ConnectionManager();
         $pdo = $connMgr->getConnection();
 
-        $sql = "INSERT INTO orders (account_id, product_id, product_name, product_brand ,product_type, product_colour, product_size, product_weight , product_dimension, address1, address2, postal_code, unit_number) 
-                VALUES (:account_id, :product_id, :product_name, :product_brand , :product_type, :product_colour, :product_size, :product_weight, :product_dimension, :address1, :address2, :postal_code, :unit_number)";
+        $sql = "INSERT INTO orders (account_id, product_id, product_name, product_brand ,product_type, product_colour, product_size, product_weight , product_dimension, address1, address2, postal_code, unit_number, customer_name, customer_contact) 
+                VALUES (:account_id, :product_id, :product_name, :product_brand , :product_type, :product_colour, :product_size, :product_weight, :product_dimension, :address1, :address2, :postal_code, :unit_number, :customer_name, :customer_contact)";
         $stmt = $pdo->prepare($sql);
 
         $stmt->bindParam(":account_id",$account_id,PDO::PARAM_STR);
@@ -46,6 +46,9 @@ class OrderDAO {
         $stmt->bindParam(":address2",$address2,PDO::PARAM_STR);
         $stmt->bindParam(":postal_code",$postal_code,PDO::PARAM_STR);
         $stmt->bindParam(":unit_number",$unit_number,PDO::PARAM_STR);
+        $stmt->bindParam(":customer_name",$customer_name,PDO::PARAM_STR);
+        $stmt->bindParam(":customer_contact",$customer_contact,PDO::PARAM_STR);
+
         
         $isAddOK = $stmt->execute();
         $stmt = null;

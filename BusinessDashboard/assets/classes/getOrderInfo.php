@@ -23,6 +23,8 @@ foreach ($order as $aOrder) {
     $item["address2"] = $aOrder->getAddress2();
     $item["postal_code"] = $aOrder->getPostalCode();
     $item["unit_number"] = $aOrder->getUnitNumber();
+    $item["customer_name"] = $aOrder->getCustomerName();
+    $item["customer_contact"] = $aOrder->getCustomerContact();
     $items[] = $item;
 }
 

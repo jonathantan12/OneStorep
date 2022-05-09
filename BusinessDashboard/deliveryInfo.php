@@ -150,6 +150,7 @@
   <main id="main" class="main">
     <div class="pagetitle">
       <h1>Delivery Information</h1>
+      <br>
       <p>Please note that all changes regarding the details after delivery have been placed can only be editted by contacting the Admin. Thank you! - OneStorep</p>
       <br>
     </div><!-- End Page Title -->

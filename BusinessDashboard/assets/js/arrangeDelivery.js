@@ -91,6 +91,18 @@ function arrangeDeliveryForm(obj) {
                           <input type="text" class="form-control" id="floatingUnit" name="floatingUnit" placeholder="Unit Number" required>
                           <label for="floatingUnit">Unit Number</label>
                         </div>
+                      </div>      
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingCustomerName" name="floatingCustomerName" placeholder="Customer's Name" required>
+                          <label for="floatingCustomerName">Customer's Name</label>
+                        </div>
+                      </div>  
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingCustomerContact" name="floatingCustomerContact" placeholder="Customer's Contact Number" required>
+                          <label for="floatingCustomerContact">Customer's Contact Number</label>
+                        </div>
                       </div>           
                       
                       <div class="text-end">
