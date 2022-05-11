@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `admin`
+-- Dumping data for table `orders`
 --
 
 INSERT INTO `orders` (`order_id` ,`account_id`, `product_id`, `product_name`, `product_brand`, `product_type`, `product_colour`, `product_size`, `product_weight`, `product_dimension`, `address1`, `address2`, `postal_code`, `unit_number`, `customer_name`, `customer_contact`) VALUES
@@ -132,4 +132,42 @@ INSERT INTO `orders` (`order_id` ,`account_id`, `product_id`, `product_name`, `p
 (4, 1, 14, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01', 'Jonathan', '91187877'),
 (5, 1, 15, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '107 Towner Road', null, '321107', '#01-01', 'Jonathan', '91187877');
 
+COMMIT;
+
+--
+-- Multiple Orders table
+--
+
+DROP TABLE IF EXISTS `multiple_orders`;
+CREATE TABLE IF NOT EXISTS `multiple_orders` (
+    `order_id` INT(64) NOT NULL AUTO_INCREMENT,
+    `account_id` INT(64) NOT NULL,
+    `product_name1` varchar(64) NOT NULL,
+    `product_quantity1` varchar(64) NOT NULL,
+    `product_name2` varchar(64),
+    `product_quantity2` varchar(64),
+    `product_name3` varchar(64),
+    `product_quantity3` varchar(64),
+    `product_name4` varchar(64),
+    `product_quantity4` varchar(64),
+    `product_name5` varchar(64),
+    `product_quantity5` varchar(64),
+    `address1` varchar(64) NOT NULL,
+    `address2` varchar(64),
+    `postal_code` varchar(64) NOT NULL,
+    `unit_number` varchar(64) NOT NULL,
+    `customer_name` varchar(64) NOT NULL,
+    `customer_contact` varchar(64) NOT NULL,
+    PRIMARY KEY (`order_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `multiple_orders` (`order_id` ,`account_id`, `product_name1`, `product_quantity1`, `product_name2`, `product_quantity2`, `product_name3`, `product_quantity3`, `product_name4`, `product_quantity4`, `product_name5`, `product_quantity5`, `address1`, `address2`, `postal_code`, `unit_number`, `customer_name`, `customer_contact`) 
+VALUES
+(1, 2, 'New Era LA CAP, small', '1', 'New Era LA CAP, free size', '1', null, null, null, null, null, null, '107 Towner Road', null, '321107', '#01-01', 'Jonathan', '91187877'),
+(2, 2, 'New Era LA CAP, small', '1', 'New Era LA CAP, free size', '1', null, null, null, null, null, null, '107 Towner Road', null, '321107', '#01-01', 'Jonathan', '91187877'),
+(3, 2, 'New Era LA CAP, small', '1', 'New Era LA CAP, free size', '1', null, null, null, null, null, null, '107 Towner Road', null, '321107', '#01-01', 'Jonathan', '91187877');
 COMMIT;

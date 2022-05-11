@@ -166,11 +166,15 @@ function getIndOrdersDone(obj) {
       dict2[key] = value;
   }
   // END OF SORTING THE DICTIONARY INTO DESCENDING ORDER
-
   for (var key in dict2){
     getIndOrdersDoneDisplay += `<tr>
                             <td>${key}</td>
-                            <td><table class="table table-striped-responsive"><tr><th>Product ID</th><th>Product Name</th><th>Arranged Date</th></tr>`;
+                            <td><table class="table table-striped-responsive"><tr>
+                                                                            <th>Product ID</th>
+                                                                            <th>Product Name</th>
+                                                                            <th>Arranged Date</th>
+                                                                            <th></th>
+                                                                          </tr>`;
                             for (let i = 0; i < dict2[key].length; i++) {
                               getIndOrdersDoneDisplay += `
                                                           <tr>`;
@@ -178,6 +182,7 @@ function getIndOrdersDone(obj) {
                                                             getIndOrdersDoneDisplay += `<td>${dict2[key][i][j]}</td>
                                                             `;
                                                           }
+                              getIndOrdersDoneDisplay += `<td><a class="btn-sm btn-block btn-dark" href="deliveryInfo.php?product_id=${btoa(dict2[key][i][0])}" role="button">Delivery Info</a></td>`;             
                               getIndOrdersDoneDisplay +=`</tr>`;
                             }
                           

@@ -87,6 +87,7 @@ function companyInventorySent(obj) {
                               <form class="row g-3" action="assets/classes/updateInventoryStatus.php?product_id=${obj[i].product_id}" method="post">
                                 <select class="form-select-sm" id="status" name="status" aria-label="status">
                                   <option value="stored">Stored</option>
+                                  <option value="arranged">Arranged</option>
                                   <option value="sent">Sent</option>
                                 </select>
                                 

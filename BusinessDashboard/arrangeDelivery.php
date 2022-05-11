@@ -8,6 +8,17 @@
     exit;
   }
 
+  if ($_SESSION["account_id"] != $_GET['account_id']){
+    $account_id = $_SESSION["account_id"];
+    header("location: arrangeDelivery.php?account_id=$account_id");
+    exit;
+  }
+
+  if($_SESSION['role'] != 'user'){
+    header("location: dashboardLogin.html");
+    exit;
+  }
+
   $company_name = $_SESSION['company_name'];
 
 ?>
@@ -72,7 +83,21 @@
             <li class="nav-item">
                 <a class="dropdown-item d-flex align-items-center" href="index.php?account_id=$account_id">
                 <i class="bi bi-grid"></i>
-                <span>Dashboard</span>
+                <span>Available Inventory</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="dropdown-item d-flex align-items-center" href="arrangeDelivery.php?account_id=$account_id">
+                <i class="bi bi-box-seam"></i>
+                <span>Arrange Delivery</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="dropdown-item d-flex align-items-center" href="toBeSent.php?account_id=$account_id">
+                <i class="bi bi-truck"></i>
+                <span>Orders to be Sent</span>
                 </a>
             </li>
 
@@ -112,12 +137,26 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link" href="index.php?account_id=$account_id">
+        <a class="nav-link collapsed" href="index.php?account_id=$account_id">
           <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
+          <span>Available Inventory</span>
         </a>
       </li>
       <!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link" href="arrangeDelivery.php?account_id=$account_id">
+          <i class="bi bi-box-seam"></i>
+          <span>Arrange Delivery</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="toBeSent.php?account_id=$account_id">
+          <i class="bi bi-truck"></i>
+          <span>Orders to be Sent</span>
+        </a>
+      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="ordersDone.php">
@@ -215,9 +254,9 @@
   <script type="text/javascript">    
     window.onload = function(){
         var params = new URLSearchParams(location.search);
-        var product_id = atob(params.get('product_id'));
+        var account_id = params.get('account_id');
         // console.log(product_id);
-        arrangeDelivery(product_id);
+        arrangeDelivery(account_id);
         // console.log(document.getElementById('arrangeDeliveryForm'));
 
     };

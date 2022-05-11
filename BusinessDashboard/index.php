@@ -109,7 +109,21 @@
             <li class="nav-item">
                 <a class="dropdown-item d-flex align-items-center" href="index.php?account_id=$account_id">
                 <i class="bi bi-grid"></i>
-                <span>Dashboard</span>
+                <span>Available Inventory</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="dropdown-item d-flex align-items-center" href="arrangeDelivery.php?account_id=$account_id">
+                <i class="bi bi-box-seam"></i>
+                <span>Arrange Delivery</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="dropdown-item d-flex align-items-center" href="toBeSent.php?account_id=$account_id">
+                <i class="bi bi-truck"></i>
+                <span>Orders to be Sent</span>
                 </a>
             </li>
             
@@ -155,7 +169,21 @@
       <li class="nav-item">
         <a class="nav-link " href="index.php?account_id=$account_id">
           <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
+          <span>Available Inventory</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="arrangeDelivery.php?account_id=$account_id">
+          <i class="bi bi-box-seam"></i>
+          <span>Arrange Delivery</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="toBeSent.php?account_id=$account_id">
+          <i class="bi bi-truck"></i>
+          <span>Orders to be Sent</span>
         </a>
       </li>
       <!-- End Dashboard Nav -->
@@ -407,7 +435,7 @@
 
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Dashboard</h1>
+      <h1>Inventory</h1>
       <br>
       <!-- <nav>
         <ol class="breadcrumb">
@@ -429,7 +457,7 @@
               <div class="card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Available Inventory</h5>
+                  <h5 class="card-title">Total Available Inventory</h5>
                   
                   <!-- Javascript table display -->
                   <div id="displayInventoryCount"> </div>
@@ -444,7 +472,7 @@
               <div class="card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Inventory</h5>
+                  <h5 class="card-title">Available Inventory</h5>
 
                   <!-- Javascript table display -->
                   <div id="displayDashboard"> </div>

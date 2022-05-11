@@ -1,4 +1,4 @@
-function arrangeDelivery(product_id) {
+function arrangeDelivery(account_id) {
     var request = new XMLHttpRequest(); // Prep to make an HTTP request
     
     request.onreadystatechange = function() {
@@ -8,7 +8,7 @@ function arrangeDelivery(product_id) {
         }
     }
 
-    request.open("GET", "./assets/classes/getItemInfo.php?product_id=" + product_id, true);
+    request.open("GET", "./assets/classes/getInventory.php?account_id=" + account_id, true);
     request.send();
 }
 
@@ -16,58 +16,280 @@ function arrangeDeliveryForm(obj) {
     var arrangeDeliveryFormDisplay = `
                 <!-- Arranging Delivery Form -->
                 <br>
-                  <form class="row g-3" action="assets/classes/arrangeOrder.php" method="post">
-                      <input type="hidden" id="floatingAccountId" name="floatingAccountId">
-                      <div class="col-md-2">
-                        <div class="form-floating">
-                          <input type="text" class="form-control" id="floatingProductId" name="floatingProductId" readonly>
-                          <label for="floatingProductId">Product ID</label>
-                        </div>
-                      </div>
-                      <div class="col-md-10"></div>
+                  <form class="row g-3" action="assets/classes/insertMultipleOrder.php" method="post">
+                      <input type="hidden" id="floatingAccountId" name="floatingAccountId">`;
                       
-                      <div class="col-md-12">
-                        <div class="form-floating">
-                          <input type="text" class="form-control" id="floatingName" name="floatingName" placeholder="Product Name" readonly>
-                          <label for="floatingName">Product Name</label>
+    
+    //PRODUCT 1
+    arrangeDeliveryFormDisplay += `<div><h4 style="margin-bottom: 0px">Product 1:</h4></div>
+                        <div class="col-md-9">
+                          <div>
+                            <select class="form-select" name="product_name1" required>
+                              <option value="" disabled selected>Select Product</option>`;
+
+    var temp_list = [];
+    for (var i=0; i < obj.length; i++){  
+      var temp_string = obj[i].product_name + ', ' + obj[i].product_size;
+
+      if (temp_list.includes(temp_string) == false) {
+        temp_list.push(temp_string);
+      }    
+    }
+
+    for (var j=0; j < temp_list.length; j++) {
+      arrangeDeliveryFormDisplay += 
+                            `<option value="${temp_list[j]}">${temp_list[j]}</option>`;
+    }             
+    // QUANTITY
+    arrangeDeliveryFormDisplay += `</select>
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-floating">
-                          <input type="text" class="form-control" id="floatingBrand" name="floatingBrand" placeholder="Product Brand" readonly>
-                          <label for="floatingBrand">Product Brand</label>
+                        <div class="col-md-3">
+                        <div>
+                          <select class="form-select" name="product_quantity1" required>
+                            <option value="" disabled selected>Quantity</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">12</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                          </select>
                         </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-floating">
-                          <input type="text" class="form-control" id="floatingCategory" name="floatingCategory" placeholder="Product Category" readonly>
-                          <label for="floatingCategory">Product Category</label>
+                      </div> `;
+
+    //PRODUCT 2
+    arrangeDeliveryFormDisplay += `<h4 style="margin-bottom: 0px">Product 2:</h4>
+                        <div class="col-md-9">
+                          <div>
+                            <select class="form-select" name="product_name2">
+                              <option value="" disabled selected>Select Product</option>`;
+
+    var temp_list = [];
+    for (var i=0; i < obj.length; i++){  
+      var temp_string = obj[i].product_name + ', ' + obj[i].product_size;
+
+      if (temp_list.includes(temp_string) == false) {
+        temp_list.push(temp_string);
+      }    
+    }
+
+    for (var j=0; j < temp_list.length; j++) {
+      arrangeDeliveryFormDisplay += 
+                            `<option value="${temp_list[j]}">${temp_list[j]}</option>`;
+    }      
+
+    // QUANTITY       
+    arrangeDeliveryFormDisplay += `</select>
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-floating">
-                          <input type="text" class="form-control" id="floatingColour" name="floatingColour" placeholder="Colour" readonly>
-                          <label for="floatingColour">Colour</label>
+                        <div class="col-md-3">
+                        <div>
+                          <select class="form-select" name="product_quantity2">
+                            <option value="" disabled selected>Quantity</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">12</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                          </select>
                         </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-floating">
-                          <input type="text" class="form-control" id="floatingSize" name="floatingSize" placeholder="Size" readonly>
-                          <label for="floatingSize">Size</label>
+                      </div> `;
+    // END OF PRODUCT 2
+
+    //PRODUCT 3
+    arrangeDeliveryFormDisplay += `<h4 style="margin-bottom: 0px">Product 3:</h4>
+                        <div class="col-md-9">
+                          <div>
+                            <select class="form-select" name="product_name3">
+                              <option value="" disabled selected>Select Product</option>`;
+
+    var temp_list = [];
+    for (var i=0; i < obj.length; i++){  
+      var temp_string = obj[i].product_name + ', ' + obj[i].product_size;
+
+      if (temp_list.includes(temp_string) == false) {
+        temp_list.push(temp_string);
+      }    
+    }
+
+    for (var j=0; j < temp_list.length; j++) {
+      arrangeDeliveryFormDisplay += 
+                            `<option value="${temp_list[j]}">${temp_list[j]}</option>`;
+    }      
+
+    // QUANTITY       
+    arrangeDeliveryFormDisplay += `</select>
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-floating">
-                          <input type="text" class="form-control" id="floatingWeight" name="floatingWeight" placeholder="Product Weight" readonly>
-                          <label for="floatingWeight">Product Weight</label>
+                        <div class="col-md-3">
+                        <div>
+                          <select class="form-select" name="product_quantity3">
+                            <option value="" disabled selected>Quantity</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">12</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                          </select>
                         </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-floating">
-                          <input type="text" class="form-control" id="floatingDimension" name="floatingDimension" placeholder="Product Dimension" readonly>
-                          <label for="floatingDimension">Product Dimension</label>
+                      </div> `;
+    // END OF PRODUCT 3
+
+    //PRODUCT 4
+    arrangeDeliveryFormDisplay += `<h4 style="margin-bottom: 0px">Product 4:</h4>
+                        <div class="col-md-9">
+                          <div>
+                            <select class="form-select" name="product_name4">
+                              <option value="" disabled selected>Select Product</option>`;
+
+    var temp_list = [];
+    for (var i=0; i < obj.length; i++){  
+      var temp_string = obj[i].product_name + ', ' + obj[i].product_size;
+
+      if (temp_list.includes(temp_string) == false) {
+        temp_list.push(temp_string);
+      }    
+    }
+
+    for (var j=0; j < temp_list.length; j++) {
+      arrangeDeliveryFormDisplay += 
+                            `<option value="${temp_list[j]}">${temp_list[j]}</option>`;
+    }      
+
+    // QUANTITY       
+    arrangeDeliveryFormDisplay += `</select>
+                          </div>
                         </div>
-                      </div>
+                        <div class="col-md-3">
+                        <div>
+                          <select class="form-select" name="product_quantity4">
+                            <option value="" disabled selected>Quantity</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">12</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                          </select>
+                        </div>
+                      </div> `;
+    // END OF PRODUCT 4
+
+    //PRODUCT 5
+    arrangeDeliveryFormDisplay += `<h4 style="margin-bottom: 0px">Product 5:</h4>
+                        <div class="col-md-9">
+                          <div>
+                            <select class="form-select" name="product_name5">
+                              <option value="" disabled selected>Select Product</option>`;
+
+    var temp_list = [];
+    for (var i=0; i < obj.length; i++){  
+      var temp_string = obj[i].product_name + ', ' + obj[i].product_size;
+
+      if (temp_list.includes(temp_string) == false) {
+        temp_list.push(temp_string);
+      }    
+    }
+
+    for (var j=0; j < temp_list.length; j++) {
+      arrangeDeliveryFormDisplay += 
+                            `<option value="${temp_list[j]}">${temp_list[j]}</option>`;
+    }      
+
+    // QUANTITY       
+    arrangeDeliveryFormDisplay += `</select>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                        <div>
+                          <select class="form-select" name="product_quantity5">
+                            <option value="" disabled selected>Quantity</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">12</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                          </select>
+                        </div>
+                      </div> `;
+    // END OF PRODUCT 5
+
+    arrangeDeliveryFormDisplay += ` 
+                      <div><br><br><h4>Customer Address Details</h4></div>
                       <div class="col-md-6">
                         <div class="form-floating">
                           <input type="text" class="form-control" id="floatingAddress1" name="floatingAddress1" placeholder="Address Line 1" required>
@@ -110,16 +332,17 @@ function arrangeDeliveryForm(obj) {
                       </div> 
                   </form><!-- Arranging Delivery Form -->
                                     `;
-
+                                    
     document.getElementById('arrangeDeliveryForm').innerHTML = arrangeDeliveryFormDisplay;  
     document.getElementById('floatingAccountId').value = obj[0].account_id;
-    document.getElementById('floatingProductId').value = obj[0].product_id;
-    document.getElementById('floatingName').value = obj[0].product_name;
-    document.getElementById('floatingBrand').value = obj[0].product_brand;
-    document.getElementById('floatingCategory').value = obj[0].product_type;
-    document.getElementById('floatingColour').value = obj[0].product_colour;
-    document.getElementById('floatingSize').value = obj[0].product_size;
-    document.getElementById('floatingWeight').value = obj[0].product_weight;
-    document.getElementById('floatingDimension').value = obj[0].product_dimension;
+    // console.log(document.getElementById('product_name1').value);
+
+    // document.getElementById('floatingName').value = obj[0].product_name;
+    // document.getElementById('floatingBrand').value = obj[0].product_brand;
+    // document.getElementById('floatingCategory').value = obj[0].product_type;
+    // document.getElementById('floatingColour').value = obj[0].product_colour;
+    // document.getElementById('floatingSize').value = obj[0].product_size;
+    // document.getElementById('floatingWeight').value = obj[0].product_weight;
+    // document.getElementById('floatingDimension').value = obj[0].product_dimension;
 
 }

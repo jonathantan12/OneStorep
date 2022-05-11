@@ -64,13 +64,6 @@ class InventoryDAO {
         $pdo = null;    
 
         return $isAddOK;
-
-        // if ($isAddOK) {
-        //     echo "<script>alert('Product successfully added!'); location.reload();</script>";
-        // } 
-        // else{
-        //     echo "<script>alert('Failed login, please try again!'); location.reload();</script>";
-        // }
     }
 
     public function updateInventoryStatus($status, $product_id, $date) {
@@ -83,7 +76,7 @@ class InventoryDAO {
             UPDATE inventory SET sent_date=null WHERE product_id=:product_id;';
         }
         elseif ($status === 'arranged') {
-            $sql = 'UPDATE inventory SET status=:status, arranged_date=:date WHERE product_id=:product_id
+            $sql = 'UPDATE inventory SET status=:status, arranged_date=:date WHERE product_id=:product_id;
             UPDATE inventory SET sent_date=null WHERE product_id=:product_id;';
         }
         elseif ($status === 'sent') {

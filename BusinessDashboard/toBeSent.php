@@ -8,19 +8,8 @@
     exit;
   }
 
-  if ($_SESSION["account_id"] != $_GET['account_id']){
-    $account_id = $_SESSION["account_id"];
-    header("location: ordersDone.php?account_id=$account_id");
-    exit;
-  }
-
-  if($_SESSION['role'] != 'user'){
-    header("location: dashboardLogin.html");
-    exit;
-  }
-
   $company_name = $_SESSION['company_name'];
-//   $account_id = $_SESSION['account_id'];
+
 ?>
 
 <!DOCTYPE html>
@@ -133,7 +122,6 @@
 
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
-
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
@@ -142,7 +130,6 @@
           <span>Available Inventory</span>
         </a>
       </li>
-      <!-- End Dashboard Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="arrangeDelivery.php?account_id=$account_id">
@@ -152,14 +139,14 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="toBeSent.php?account_id=$account_id">
+        <a class="nav-link" href="toBeSent.php?account_id=$account_id">
           <i class="bi bi-truck"></i>
           <span>Orders to be Sent</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="ordersDone.php">
+        <a class="nav-link collapsed" href="ordersDone.php">
           <i class="bi bi-archive"></i>
           <span>Orders Fulfilled by Month</span>
         </a>
@@ -188,7 +175,9 @@
 
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Orders Fulfilled by Month</h1>
+      <h1>Orders to be Sent</h1>
+      <br>
+      <p>Please note that all changes regarding the details after delivery have been placed can only be editted by contacting the Admin. Thank you! <br> - OneStorep</p>
       <br>
     </div><!-- End Page Title -->
    
@@ -199,28 +188,13 @@
         <div class="col-lg">
           <div class="row">
 
-            <!-- Orders Fulfilled by Month -->
+            <!-- Arrange Delivery Card -->
             <div class="col-12">
               <div class="card">
 
                 <div class="card-body">
-                    <h5 class="card-title">Consolidated Orders Fulfilled By Month</h5>
                     <!-- Javascript table display -->
-                    <div id="displayOrdersDoneTable"> </div>
-
-                </div>
-
-              </div>
-            </div><!-- End of Consolidated Inventory -->
-
-            <!-- Orders Fulfilled by Month with Individual Breakdown -->
-            <div class="col-12">
-              <div class="card">
-
-                <div class="card-body">
-                    <h5 class="card-title">Orders Fulfilled Monthly Individual Breakdown</h5>
-                    <!-- Javascript table display -->
-                    <div id="displayIndOrdersDoneTable"> </div>
+                    <div id="displayMultipleOrder"> </div>
 
                 </div>
 
@@ -264,13 +238,14 @@
   
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/ordersDone.js"></script>
+  <script src="assets/js/toBeSent.js"></script>
 
   <script type="text/javascript">    
     window.onload = function(){
         var params = new URLSearchParams(location.search);
         var account_id = params.get('account_id');
-        ordersDoneDashboard(account_id);
+        toBeSent(account_id);
+
     };
 
   </script>

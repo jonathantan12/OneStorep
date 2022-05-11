@@ -19,7 +19,7 @@ function inventoryDashboard(account_id) {
 
 function getInventory(obj) {
   var inventoryDisplay = `<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for product name">
-                  <input type="text" id="filterStatus" onkeyup="filterStatus()" placeholder="Filter Status">
+                  <!-- <input type="text" id="filterStatus" onkeyup="filterStatus()" placeholder="Filter Status"> -->
                   <div class="scrollable">
                   <table id="inventoryDisplay" class="table table-striped-responsive">
                   <tr class="header">
@@ -31,37 +31,32 @@ function getInventory(obj) {
                     <th>Size</th>
                     <th>Weight</th>
                     <th>Dimension</th>
-                    <th>Stored Date</th>
-                    <th>Arranged Date</th>
-                    <th>Sent Date</th>
-                    <th onclick="sortTable(11)" style="cursor:pointer;">Status</th>
-                    <th></th>
+                    <th onclick="sortTable(8)" style="cursor:pointer;">Stored Date</th>
                   </tr>`;   
 
   for (var i=0; i < obj.length; i++){
-      // console.log(obj[i].status);
-      var status_colour = '';
-      var sent_date = obj[i].sent_date;
-      var arranged_date = obj[i].arranged_date;
+      // var status_colour = '';
+      // var sent_date = obj[i].sent_date;
+      // var arranged_date = obj[i].arranged_date;
 
-      if (obj[i].arranged_date == null) {
-        arranged_date = '-';
-      }
-      // Change date for sent date
-      if (obj[i].sent_date == null) {
-        sent_date = '-';
-      }
+      // if (obj[i].arranged_date == null) {
+      //   arranged_date = '-';
+      // }
+      // // Change date for sent date
+      // if (obj[i].sent_date == null) {
+      //   sent_date = '-';
+      // }
       
-      // For status colour change
-      if (obj[i].status == 'sent') {
-          status_colour = 'warning';
-      }
-      else if (obj[i].status == 'arranged'){
-          status_colour = 'success';
-      }
-      else {
-          status_colour = 'info';
-      }
+      // // For status colour change
+      // if (obj[i].status == 'sent') {
+      //     status_colour = 'warning';
+      // }
+      // else if (obj[i].status == 'arranged'){
+      //     status_colour = 'success';
+      // }
+      // else {
+      //     status_colour = 'info';
+      // }
 
       inventoryDisplay += `<tr>
                               <td>${i+1}</td>
@@ -72,21 +67,19 @@ function getInventory(obj) {
                               <td>${obj[i].product_size}</td>
                               <td>${obj[i].product_weight}</td>
                               <td>${obj[i].product_dimension}</td>
-                              <td>${obj[i].stored_date}</td>
-                              <td>${arranged_date}</td>
-                              <td>${sent_date}</td>
-                              <td style="text-transform: uppercase;"><span class="badge bg-${status_colour}">${obj[i].status}</span></td>`;
+                              <td>${obj[i].stored_date}</td>`;
+                              // <td><a class="btn-sm btn-block btn-dark" href="arrangeDelivery.php?product_id=${btoa(obj[i].product_id)}" role="button">Arrange Delivery</a></td></tr>`;
 
-      if (obj[i].status == 'stored') {
-        inventoryDisplay += `<td><a class="btn-sm btn-block btn-dark" href="arrangeDelivery.php?product_id=${btoa(obj[i].product_id)}" role="button">Arrange Delivery</a></td></tr>`;
+      // if (obj[i].status == 'stored') {
+      //   inventoryDisplay += `<td><a class="btn-sm btn-block btn-dark" href="arrangeDelivery.php?product_id=${btoa(obj[i].product_id)}" role="button">Arrange Delivery</a></td></tr>`;
 
-      }
-      else if (obj[i].status == 'arranged'){
-        inventoryDisplay += `<td><a class="btn-sm btn-block btn-dark" href="deliveryInfo.php?product_id=${btoa(obj[i].product_id)}" role="button">Delivery Info</a></td></tr>`;
-      }
-      else {
-        inventoryDisplay += `<td><a class="btn-sm btn-block btn-dark" href="deliveryInfo.php?product_id=${btoa(obj[i].product_id)}" role="button">Delivery Info</a></td></tr>`;
-      }
+      // }
+      // else if (obj[i].status == 'arranged'){
+      //   inventoryDisplay += `<td><a class="btn-sm btn-block btn-dark" href="deliveryInfo.php?product_id=${btoa(obj[i].product_id)}" role="button">Delivery Info</a></td></tr>`;
+      // }
+      // else {
+      //   inventoryDisplay += `<td><a class="btn-sm btn-block btn-dark" href="deliveryInfo.php?product_id=${btoa(obj[i].product_id)}" role="button">Delivery Info</a></td></tr>`;
+      // }
                           
   }
   inventoryDisplay += `</table>
@@ -99,15 +92,15 @@ function getInventory(obj) {
 
 function getInventoryCount(obj) {
   let dict = {};
-  // console.log(obj);
-
+  console.log(obj);
   for (var i=0; i < obj.length; i++){
+      let product = obj[i].product_name + ', ' + obj[i].product_size;
       // Checking if value exist or not
       if (obj[i].arranged_date == null) {
-        if(obj[i].product_name in dict){
-          dict[obj[i].product_name] += 1
+        if(product in dict){
+          dict[product] += 1
         } else{
-          dict[obj[i].product_name] = 1
+          dict[product] = 1
         }
       }
   }

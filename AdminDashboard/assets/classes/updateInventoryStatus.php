@@ -4,10 +4,14 @@
     require_once("connectionManager.php");
 
     session_start();
-    
     $status = $_POST['status'];
+    var_dump($status);
+
     $product_id = $_GET['product_id'];
+    var_dump($product_id);
+
     $date = $_POST['date'];
+    var_dump($date);
 
     $dao = new InventoryDAO();
     $insertOK = $dao->updateInventoryStatus($status, $product_id, $date);
