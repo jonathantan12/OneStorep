@@ -17,63 +17,6 @@ function getOrdersDone(obj) {
     let dict = {};
     let dict2 = {};
 
-    var getOrdersDoneDisplay = `<input type="text" id="filterOrdersDoneTable" onkeyup="filterMonthYear()" placeholder="Month-Year">
-    <div style="overflow-x:auto;">
-    <table id="getOrdersDoneDisplay" class="table table-striped-responsive">
-    <tr class="header">
-      <th onclick="sortTable(0)" style="cursor:pointer; width:60%;">Year-Month</th>
-      <th>Number of Orders Fulfilled</th>
-    </tr>`; 
-
-    // COUNTER
-    for (var i=0; i < obj.length; i++){
-        // Checking if value exist or not
-        var yearMonth = obj[i].arranged_date;
-        if (yearMonth != null){
-            yearMonth = yearMonth.slice(0,7);
-            if(yearMonth in dict){
-                dict[yearMonth] += 1
-            } else{
-                dict[yearMonth] = 1
-            }
-        }
-    }
-    
-
-    // SORTING THE DICTIONARY INTO DESCENDING ORDER
-    var keys = Object.keys(dict); // or loop over the object to get the array
-    // keys will be in any order
-    keys.sort().reverse(); // maybe use custom sort, to change direction use .reverse()
-    // keys now will be in wanted order
-
-    for (var i=0; i<keys.length; i++) { // now lets iterate in sort order
-        var key = keys[i];
-        var value = dict[key];
-        /* do something with key & value here */
-        dict2[key] = value;
-    }
-    // END OF SORTING THE DICTIONARY INTO DESCENDING ORDER
-
-    // console.log(dict2);
-    for (var key in dict2){
-        // console.log(dict[key]);
-        // console.log(key);
-        getOrdersDoneDisplay += `<tr>
-                                <td>${key}</td>
-                                <td>${dict[key]}</td>
-                            </tr>`;
-    }        
-
-    getOrdersDoneDisplay += `</table>
-                        </div>`;
-
-    document.getElementById('displayOrdersDoneTable').innerHTML = getOrdersDoneDisplay;   
-}
-
-function getOrdersDone(obj) {
-    let dict = {};
-    let dict2 = {};
-
     var getOrdersDoneDisplay = `<div style="overflow-x:auto;">
                                   <table id="getOrdersDoneDisplay" class="table table-striped-responsive">
                                   <tr class="header">
@@ -84,7 +27,7 @@ function getOrdersDone(obj) {
     // COUNTER
     for (var i=0; i < obj.length; i++){
         // Checking if value exist or not
-        var yearMonth = obj[i].arranged_date;
+        var yearMonth = obj[i].sent_date;
         if (yearMonth != null){
             yearMonth = yearMonth.slice(0,7);
             if(yearMonth in dict){
@@ -141,13 +84,13 @@ function getIndOrdersDone(obj) {
   // COUNTER
   for (var i=0; i < obj.length; i++){
     // Checking if value exist or not
-    var yearMonth = obj[i].arranged_date;
+    var yearMonth = obj[i].sent_date;
     if (yearMonth != null){
         yearMonth = yearMonth.slice(0,7);
         if(yearMonth in dict){
-          dict[yearMonth].push([obj[i].product_id, obj[i].product_name, obj[i].arranged_date])
+          dict[yearMonth].push([obj[i].product_id, obj[i].product_name, obj[i].sent_date])
         } else{
-          let temp = [obj[i].product_id, obj[i].product_name, obj[i].arranged_date]
+          let temp = [obj[i].product_id, obj[i].product_name, obj[i].sent_date]
           dict[yearMonth] = [temp]
         }
     }
@@ -172,7 +115,7 @@ function getIndOrdersDone(obj) {
                             <td><table class="table table-striped-responsive"><tr>
                                                                             <th>Product ID</th>
                                                                             <th>Product Name</th>
-                                                                            <th>Arranged Date</th>
+                                                                            <th>Sent Date</th>
                                                                             <th></th>
                                                                           </tr>`;
                             for (let i = 0; i < dict2[key].length; i++) {

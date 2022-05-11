@@ -13,6 +13,15 @@ function arrangeDelivery(account_id) {
 }
 
 function arrangeDeliveryForm(obj) {
+    var new_obj = [];
+    for (var i=0; i < obj.length; i++){  
+      if (obj[i].status == 'stored') {
+        new_obj.push(obj[i]);
+      }
+    }
+
+    console.log(new_obj);
+
     var arrangeDeliveryFormDisplay = `
                 <!-- Arranging Delivery Form -->
                 <br>
@@ -25,12 +34,12 @@ function arrangeDeliveryForm(obj) {
                         <div class="col-md-9">
                           <div>
                             <select class="form-select" name="product_name1" required>
-                              <option value="" disabled selected>Select Product</option>`;
+                              <option value="" selected>Select Product</option>`;
 
     var temp_list = [];
-    for (var i=0; i < obj.length; i++){  
-      var temp_string = obj[i].product_name + ', ' + obj[i].product_size;
-
+    for (var i=0; i < new_obj.length; i++){  
+      var temp_string = new_obj[i].product_name + ' (' + new_obj[i].product_size + ')';
+      // KEEPING THE UNIQUE VALUES ONLY
       if (temp_list.includes(temp_string) == false) {
         temp_list.push(temp_string);
       }    
@@ -47,7 +56,7 @@ function arrangeDeliveryForm(obj) {
                         <div class="col-md-3">
                         <div>
                           <select class="form-select" name="product_quantity1" required>
-                            <option value="" disabled selected>Quantity</option>
+                            <option value="" selected>Quantity</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -77,11 +86,11 @@ function arrangeDeliveryForm(obj) {
                         <div class="col-md-9">
                           <div>
                             <select class="form-select" name="product_name2">
-                              <option value="" disabled selected>Select Product</option>`;
+                              <option value="" selected>Select Product</option>`;
 
     var temp_list = [];
-    for (var i=0; i < obj.length; i++){  
-      var temp_string = obj[i].product_name + ', ' + obj[i].product_size;
+    for (var i=0; i < new_obj.length; i++){  
+      var temp_string = new_obj[i].product_name + ' (' + new_obj[i].product_size + ')';
 
       if (temp_list.includes(temp_string) == false) {
         temp_list.push(temp_string);
@@ -100,7 +109,7 @@ function arrangeDeliveryForm(obj) {
                         <div class="col-md-3">
                         <div>
                           <select class="form-select" name="product_quantity2">
-                            <option value="" disabled selected>Quantity</option>
+                            <option value="" selected>Quantity</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -131,11 +140,11 @@ function arrangeDeliveryForm(obj) {
                         <div class="col-md-9">
                           <div>
                             <select class="form-select" name="product_name3">
-                              <option value="" disabled selected>Select Product</option>`;
+                              <option value="" selected>Select Product</option>`;
 
     var temp_list = [];
-    for (var i=0; i < obj.length; i++){  
-      var temp_string = obj[i].product_name + ', ' + obj[i].product_size;
+    for (var i=0; i < new_obj.length; i++){  
+      var temp_string = new_obj[i].product_name + ' (' + new_obj[i].product_size + ')';
 
       if (temp_list.includes(temp_string) == false) {
         temp_list.push(temp_string);
@@ -154,7 +163,7 @@ function arrangeDeliveryForm(obj) {
                         <div class="col-md-3">
                         <div>
                           <select class="form-select" name="product_quantity3">
-                            <option value="" disabled selected>Quantity</option>
+                            <option value="" selected>Quantity</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -185,11 +194,11 @@ function arrangeDeliveryForm(obj) {
                         <div class="col-md-9">
                           <div>
                             <select class="form-select" name="product_name4">
-                              <option value="" disabled selected>Select Product</option>`;
+                              <option value="" selected>Select Product</option>`;
 
     var temp_list = [];
-    for (var i=0; i < obj.length; i++){  
-      var temp_string = obj[i].product_name + ', ' + obj[i].product_size;
+    for (var i=0; i < new_obj.length; i++){  
+      var temp_string = new_obj[i].product_name + ' (' + new_obj[i].product_size + ')';
 
       if (temp_list.includes(temp_string) == false) {
         temp_list.push(temp_string);
@@ -208,7 +217,7 @@ function arrangeDeliveryForm(obj) {
                         <div class="col-md-3">
                         <div>
                           <select class="form-select" name="product_quantity4">
-                            <option value="" disabled selected>Quantity</option>
+                            <option value="" selected>Quantity</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -239,11 +248,11 @@ function arrangeDeliveryForm(obj) {
                         <div class="col-md-9">
                           <div>
                             <select class="form-select" name="product_name5">
-                              <option value="" disabled selected>Select Product</option>`;
+                              <option value="" selected>Select Product</option>`;
 
     var temp_list = [];
-    for (var i=0; i < obj.length; i++){  
-      var temp_string = obj[i].product_name + ', ' + obj[i].product_size;
+    for (var i=0; i < new_obj.length; i++){  
+      var temp_string = new_obj[i].product_name + ' (' + new_obj[i].product_size + ')';
 
       if (temp_list.includes(temp_string) == false) {
         temp_list.push(temp_string);
@@ -262,7 +271,7 @@ function arrangeDeliveryForm(obj) {
                         <div class="col-md-3">
                         <div>
                           <select class="form-select" name="product_quantity5">
-                            <option value="" disabled selected>Quantity</option>
+                            <option value="" selected>Quantity</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>

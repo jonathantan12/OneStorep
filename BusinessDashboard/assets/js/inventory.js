@@ -33,7 +33,7 @@ function getInventory(obj) {
                     <th>Dimension</th>
                     <th onclick="sortTable(8)" style="cursor:pointer;">Stored Date</th>
                   </tr>`;   
-
+  var counter = 0;
   for (var i=0; i < obj.length; i++){
       // var status_colour = '';
       // var sent_date = obj[i].sent_date;
@@ -58,8 +58,10 @@ function getInventory(obj) {
       //     status_colour = 'info';
       // }
 
-      inventoryDisplay += `<tr>
-                              <td>${i+1}</td>
+      if (obj[i].status == 'stored'){
+        counter += 1;
+        inventoryDisplay += `<tr>
+                              <td>${counter}</td>
                               <td>${obj[i].product_name}</td>
                               <td>${obj[i].product_brand}</td>
                               <td>${obj[i].product_type}</td>
@@ -68,6 +70,8 @@ function getInventory(obj) {
                               <td>${obj[i].product_weight}</td>
                               <td>${obj[i].product_dimension}</td>
                               <td>${obj[i].stored_date}</td>`;
+      }
+    
                               // <td><a class="btn-sm btn-block btn-dark" href="arrangeDelivery.php?product_id=${btoa(obj[i].product_id)}" role="button">Arrange Delivery</a></td></tr>`;
 
       // if (obj[i].status == 'stored') {
@@ -79,9 +83,8 @@ function getInventory(obj) {
       // }
       // else {
       //   inventoryDisplay += `<td><a class="btn-sm btn-block btn-dark" href="deliveryInfo.php?product_id=${btoa(obj[i].product_id)}" role="button">Delivery Info</a></td></tr>`;
-      // }
-                          
-  }
+      // }              
+    }
   inventoryDisplay += `</table>
                       </div>`;
 
@@ -92,9 +95,9 @@ function getInventory(obj) {
 
 function getInventoryCount(obj) {
   let dict = {};
-  console.log(obj);
+  // console.log(obj);
   for (var i=0; i < obj.length; i++){
-      let product = obj[i].product_name + ', ' + obj[i].product_size;
+      let product = obj[i].product_name + ' (' + obj[i].product_size+ ')';
       // Checking if value exist or not
       if (obj[i].arranged_date == null) {
         if(product in dict){

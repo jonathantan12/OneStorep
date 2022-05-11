@@ -57,6 +57,33 @@ class multipleOrderDAO {
 
         return $isAddOK;
     }
+
+    public function updateInventory($product_name1, $product_quantity1, $product_name2, $product_quantity2, $product_name3, $product_quantity3, 
+    $product_name4, $product_quantity4, $product_name4, $product_quantity4) {
+        $connMgr = new ConnectionManager();
+        $pdo = $connMgr->getConnection();
+        date_default_timezone_set("Asia/Singapore");
+        $arranged_date = date("Y-m-d");
+        $status = 'arranged';
+        
+        if (!($product_name1 == null)){
+            $sql = 'UPDATE inventory SET status=:status, arranged_date=:arranged_date WHERE product_name=:product_name LIMIT :product_quantity1';
+            // SELECT * FROM inventory WHERE account_id=3 AND product_name="New Era NY CAP" AND status="stored" LIMIT 3
+        }
+        // $sql = 'UPDATE inventory SET status=:status, arranged_date=:arranged_date WHERE product_id=:product_id';
+        // WHERE account_id in (SELECT * FROM inventory WHERE account_id=2 AND product_name="New Era NY CAP" AND status="stored" LIMIT 3);
+        
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+        $stmt->bindParam(':product_id', $product_id, PDO::PARAM_STR);
+        $stmt->bindParam(':arranged_date', $arranged_date, PDO::PARAM_STR);
+        
+        $isUpdateOK = $stmt->execute();
+        $stmt = null;
+        $pdo = null;    
+
+        return $isUpdateOK;
+    }
 }
 
 ?>
