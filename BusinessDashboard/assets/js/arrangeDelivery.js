@@ -142,6 +142,8 @@ function arrangeDeliveryForm(obj) {
 
 }
 
+var count = 0;
+
 function duplicateForm() {
   var div = document.getElementById('form-wrapper'); // Clone this
   var firstForm = document.getElementById('form-wrapper'); // Clone this
@@ -152,4 +154,9 @@ function duplicateForm() {
   formClone.getElementsByTagName("h4")[0].innerHTML = "Product 2:";
   div.appendChild(formClone);
 
+  count = count + 1;
+  console.log(count);
+  if (count>4){
+  document.getElementById("add-more-forms").disabled = true;;
+  }
 }
