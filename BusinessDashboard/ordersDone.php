@@ -104,7 +104,7 @@
             <li>
               <a class="dropdown-item d-flex align-items-center" href="ordersDone.php?account_id=$account_id">
                 <i class="bi bi-archive"></i>
-                <span>Orders Fulfilled by Month</span>
+                <span>Orders Fulfilled</span>
               </a>
             </li>
 
@@ -161,10 +161,10 @@
       <li class="nav-item">
         <a class="nav-link" href="ordersDone.php">
           <i class="bi bi-archive"></i>
-          <span>Orders Fulfilled by Month</span>
+          <span>Orders Fulfilled</span>
         </a>
       </li>
-      <!-- End Orders Fulfilled by Month -->
+      <!-- End Orders Fulfilled -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-contact.php">
@@ -188,7 +188,7 @@
 
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Orders Fulfilled by Month</h1>
+      <h1>Orders Fulfilled</h1>
       <br>
     </div><!-- End Page Title -->
    
@@ -199,12 +199,12 @@
         <div class="col-lg">
           <div class="row">
 
-            <!-- Orders Fulfilled by Month -->
+            <!-- Orders Fulfilled -->
             <div class="col-12">
               <div class="card">
 
                 <div class="card-body">
-                    <h5 class="card-title">Consolidated Orders Fulfilled By Month</h5>
+                    <h5 class="card-title">Consolidated Orders Fulfilled</h5>
                     <!-- Javascript table display -->
                     <div id="displayOrdersDoneTable"> </div>
 
@@ -213,19 +213,19 @@
               </div>
             </div><!-- End of Consolidated Inventory -->
 
-            <!-- Orders Fulfilled by Month with Individual Breakdown -->
+            <!-- Orders Fulfilled with Individual Breakdown -->
             <div class="col-12">
               <div class="card">
 
                 <div class="card-body">
-                    <h5 class="card-title">Orders Fulfilled Monthly Individual Breakdown</h5>
+                    <h5 class="card-title">Orders Fulfilled with Individual Breakdown</h5>
                     <!-- Javascript table display -->
                     <div id="displayIndOrdersDoneTable"> </div>
 
                 </div>
 
               </div>
-            </div><!-- End of Orders Fulfilled by Month with Individual Breakdown-->
+            </div><!-- End of Orders Fulfilled with Individual Breakdown-->
 
           </div>
         </div><!-- End Left side columns -->

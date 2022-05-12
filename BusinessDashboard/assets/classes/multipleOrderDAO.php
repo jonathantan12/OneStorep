@@ -58,29 +58,140 @@ class multipleOrderDAO {
         return $isAddOK;
     }
 
-    public function updateInventory($product_name1, $product_quantity1, $product_name2, $product_quantity2, $product_name3, $product_quantity3, 
-    $product_name4, $product_quantity4, $product_name4, $product_quantity4) {
+    public function updateInventory($account_id, $product_name1, $product_quantity1, $product_name2, $product_quantity2, $product_name3, $product_quantity3, 
+    $product_name4, $product_quantity4, $product_name5, $product_quantity5) {
         $connMgr = new ConnectionManager();
         $pdo = $connMgr->getConnection();
         date_default_timezone_set("Asia/Singapore");
         $arranged_date = date("Y-m-d");
         $status = 'arranged';
-        
-        if (!($product_name1 == null)){
-            $sql = 'UPDATE inventory SET status=:status, arranged_date=:arranged_date WHERE product_name=:product_name LIMIT :product_quantity1';
-            // SELECT * FROM inventory WHERE account_id=3 AND product_name="New Era NY CAP" AND status="stored" LIMIT 3
+        $stored_status = 'stored';
+
+        if (!($product_name1 == "")){
+            // $sql = 'UPDATE inventory SET status=:status, arranged_date=:arranged_date WHERE product_name=:product_name LIMIT :product_quantity1';
+            $sql = "UPDATE inventory SET status=:status, arranged_date=:arranged_date
+            WHERE product_id 
+            IN (SELECT product_id 
+            FROM (SELECT product_id FROM inventory WHERE account_id=:account_id AND product_name=:product_name AND product_size=:product_size AND status=:stored_status LIMIT :product_quantity1) tmp )";
+            
+            $temp_list = explode(" (", $product_name1);
+            $product_name = $temp_list[0];
+            $product_size = substr($temp_list[1] , 0, -1);
+            
+            // var_dump($status);
+            // var_dump($arranged_date);
+            // var_dump($account_id);
+            // var_dump($product_name);
+            // var_dump($product_size);
+            // var_dump($product_quantity1);
+            // var_dump($stored_status);
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+            $stmt->bindParam(':arranged_date', $arranged_date, PDO::PARAM_STR);
+            $stmt->bindParam(':account_id', $account_id, PDO::PARAM_STR);
+            $stmt->bindParam(':product_name', $product_name, PDO::PARAM_STR);
+            $stmt->bindParam(':product_size', $product_size, PDO::PARAM_STR);
+            $stmt->bindParam(':product_quantity1', $product_quantity1, PDO::PARAM_INT);
+            $stmt->bindParam(':stored_status', $stored_status, PDO::PARAM_STR);
+
+            $isUpdateOK = $stmt->execute();
         }
-        // $sql = 'UPDATE inventory SET status=:status, arranged_date=:arranged_date WHERE product_id=:product_id';
-        // WHERE account_id in (SELECT * FROM inventory WHERE account_id=2 AND product_name="New Era NY CAP" AND status="stored" LIMIT 3);
+
+        if (!($product_name2 == "")){
+            $sql = "UPDATE inventory SET status=:status, arranged_date=:arranged_date
+            WHERE product_id 
+            IN (SELECT product_id 
+            FROM (SELECT product_id FROM inventory WHERE account_id=:account_id AND product_name=:product_name AND product_size=:product_size AND status=:stored_status LIMIT :product_quantity1) tmp )";
+            
+            $temp_list = explode(" (", $product_name2);
+            $product_name = $temp_list[0];
+            $product_size = substr($temp_list[1] , 0, -1);
+            
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+            $stmt->bindParam(':arranged_date', $arranged_date, PDO::PARAM_STR);
+            $stmt->bindParam(':account_id', $account_id, PDO::PARAM_STR);
+            $stmt->bindParam(':product_name', $product_name, PDO::PARAM_STR);
+            $stmt->bindParam(':product_size', $product_size, PDO::PARAM_STR);
+            $stmt->bindParam(':product_quantity1', $product_quantity2, PDO::PARAM_INT);
+            $stmt->bindParam(':stored_status', $stored_status, PDO::PARAM_STR);
+
+            $isUpdateOK = $stmt->execute();
+
+        }
+
+        if (!($product_name3 == "")){
+            $sql = "UPDATE inventory SET status=:status, arranged_date=:arranged_date
+            WHERE product_id 
+            IN (SELECT product_id 
+            FROM (SELECT product_id FROM inventory WHERE account_id=:account_id AND product_name=:product_name AND product_size=:product_size AND status=:stored_status LIMIT :product_quantity1) tmp )";
+            
+            $temp_list = explode(" (", $product_name3);
+            $product_name = $temp_list[0];
+            $product_size = substr($temp_list[1] , 0, -1);
+            
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+            $stmt->bindParam(':arranged_date', $arranged_date, PDO::PARAM_STR);
+            $stmt->bindParam(':account_id', $account_id, PDO::PARAM_STR);
+            $stmt->bindParam(':product_name', $product_name, PDO::PARAM_STR);
+            $stmt->bindParam(':product_size', $product_size, PDO::PARAM_STR);
+            $stmt->bindParam(':product_quantity1', $product_quantity3, PDO::PARAM_INT);
+            $stmt->bindParam(':stored_status', $stored_status, PDO::PARAM_STR);
+
+            $isUpdateOK = $stmt->execute();
+            
+        }
+
+        if (!($product_name4 == "")){
+            $sql = "UPDATE inventory SET status=:status, arranged_date=:arranged_date
+            WHERE product_id 
+            IN (SELECT product_id 
+            FROM (SELECT product_id FROM inventory WHERE account_id=:account_id AND product_name=:product_name AND product_size=:product_size AND status=:stored_status LIMIT :product_quantity1) tmp )";
+            
+            $temp_list = explode(" (", $product_name4);
+            $product_name = $temp_list[0];
+            $product_size = substr($temp_list[1] , 0, -1);
+            
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+            $stmt->bindParam(':arranged_date', $arranged_date, PDO::PARAM_STR);
+            $stmt->bindParam(':account_id', $account_id, PDO::PARAM_STR);
+            $stmt->bindParam(':product_name', $product_name, PDO::PARAM_STR);
+            $stmt->bindParam(':product_size', $product_size, PDO::PARAM_STR);
+            $stmt->bindParam(':product_quantity1', $product_quantity4, PDO::PARAM_INT);
+            $stmt->bindParam(':stored_status', $stored_status, PDO::PARAM_STR);
+
+            $isUpdateOK = $stmt->execute();
         
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':status', $status, PDO::PARAM_STR);
-        $stmt->bindParam(':product_id', $product_id, PDO::PARAM_STR);
-        $stmt->bindParam(':arranged_date', $arranged_date, PDO::PARAM_STR);
-        
-        $isUpdateOK = $stmt->execute();
+        }
+
+        if (!($product_name5 == "")){
+            $sql = "UPDATE inventory SET status=:status, arranged_date=:arranged_date
+            WHERE product_id 
+            IN (SELECT product_id 
+            FROM (SELECT product_id FROM inventory WHERE account_id=:account_id AND product_name=:product_name AND product_size=:product_size AND status=:stored_status LIMIT :product_quantity1) tmp )";
+            
+            $temp_list = explode(" (", $product_name5);
+            $product_name = $temp_list[0];
+            $product_size = substr($temp_list[1] , 0, -1);
+            
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+            $stmt->bindParam(':arranged_date', $arranged_date, PDO::PARAM_STR);
+            $stmt->bindParam(':account_id', $account_id, PDO::PARAM_STR);
+            $stmt->bindParam(':product_name', $product_name, PDO::PARAM_STR);
+            $stmt->bindParam(':product_size', $product_size, PDO::PARAM_STR);
+            $stmt->bindParam(':product_quantity1', $product_quantity5, PDO::PARAM_INT);
+            $stmt->bindParam(':stored_status', $stored_status, PDO::PARAM_STR);
+
+            $isUpdateOK = $stmt->execute(); 
+
+        } 
+
         $stmt = null;
-        $pdo = null;    
+        $pdo = null;   
 
         return $isUpdateOK;
     }

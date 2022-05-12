@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `inventory` (
     `sent_date` date,
     `status` varchar(64) NOT NULL,
     PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `inventory`
@@ -66,7 +66,22 @@ INSERT INTO `inventory` (`product_id`, `account_id`, `product_name`, `product_br
 (7, 2, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '2021-02-01', null, null, 'stored'),
 (8, 2, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '2021-02-01', null, null, 'stored'),
 (9, 2, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '2021-02-01', null, null, 'stored'),
-(10, 3, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '2021-02-01', null, null, 'stored');
+(10, 3, 'New Era NY CAP', 'New Era', 'cap', 'black', 'free size', '0.5', '30x30x30', '2021-02-01', null, null, 'stored'),
+(11, 2, 'Nike Shoe', 'New Era', 'cap', 'black', '9.5', '1', '30x30x30', '2021-02-01', null, null, 'stored'),
+(12, 2, 'Nike Shoe', 'New Era', 'cap', 'black', '9.5', '1', '30x30x30', '2021-02-01', null, null, 'stored'),
+(13, 2, 'Nike Shoe', 'New Era', 'cap', 'black', '9.5', '1', '30x30x30', '2021-02-01', null, null, 'stored'),
+(14, 2, 'Nike Shoe', 'New Era', 'cap', 'black', '10', '1', '30x30x30', '2021-02-01', null, null, 'stored'),
+(15, 2, 'Nike Shoe', 'New Era', 'cap', 'black', '10', '1', '30x30x30', '2021-02-01', null, null, 'stored'),
+(16, 2, 'Nike Shoe', 'New Era', 'cap', 'black', '10', '1', '30x30x30', '2021-02-01', null, null, 'stored'),
+(17, 2, 'Nike Shoe', 'New Era', 'cap', 'black', '11', '1', '30x30x30', '2021-02-01', null, null, 'stored'),
+(18, 2, 'Nike Shoe', 'New Era', 'cap', 'black', '11', '1', '30x30x30', '2021-02-01', null, null, 'stored'),
+(19, 2, 'Nike Shoe', 'New Era', 'cap', 'black', '11', '1', '30x30x30', '2021-02-01', null, null, 'stored'),
+(20, 2, 'Nike Shoe', 'New Era', 'cap', 'black', '12', '1', '30x30x30', '2021-02-01', null, null, 'stored'),
+(21, 2, 'Nike Shoe', 'New Era', 'cap', 'black', '12', '1', '30x30x30', '2021-02-01', null, null, 'stored'),
+(22, 2, 'Nike Shoe', 'New Era', 'cap', 'black', '12', '1', '30x30x30', '2021-02-01', null, null, 'stored'),
+(23, 2, 'Nike Shoe', 'New Era', 'cap', 'black', '13', '1', '30x30x30', '2021-02-01', null, null, 'stored'),
+(24, 2, 'Nike Shoe', 'New Era', 'cap', 'black', '13', '1', '30x30x30', '2021-02-01', null, null, 'stored'),
+(25, 2, 'Nike Shoe', 'New Era', 'cap', 'black', '13', '1', '30x30x30', '2021-02-01', null, null, 'stored');
 
 COMMIT;
 
@@ -165,9 +180,9 @@ CREATE TABLE IF NOT EXISTS `multiple_orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `multiple_orders` (`order_id` ,`account_id`, `product_name1`, `product_quantity1`, `product_name2`, `product_quantity2`, `product_name3`, `product_quantity3`, `product_name4`, `product_quantity4`, `product_name5`, `product_quantity5`, `address1`, `address2`, `postal_code`, `unit_number`, `customer_name`, `customer_contact`) 
-VALUES
-(1, 2, 'New Era LA CAP, small', '1', 'New Era LA CAP, free size', '1', null, null, null, null, null, null, '107 Towner Road', null, '321107', '#01-01', 'Jonathan', '91187877'),
-(2, 2, 'New Era LA CAP, small', '1', 'New Era LA CAP, free size', '1', null, null, null, null, null, null, '107 Towner Road', null, '321107', '#01-01', 'Jonathan', '91187877'),
-(3, 2, 'New Era LA CAP, small', '1', 'New Era LA CAP, free size', '1', null, null, null, null, null, null, '107 Towner Road', null, '321107', '#01-01', 'Jonathan', '91187877');
-COMMIT;
+-- INSERT INTO `multiple_orders` (`order_id` ,`account_id`, `product_name1`, `product_quantity1`, `product_name2`, `product_quantity2`, `product_name3`, `product_quantity3`, `product_name4`, `product_quantity4`, `product_name5`, `product_quantity5`, `address1`, `address2`, `postal_code`, `unit_number`, `customer_name`, `customer_contact`) 
+-- VALUES
+-- (1, 2, 'New Era LA CAP, small', '1', 'New Era LA CAP, free size', '1', null, null, null, null, null, null, '107 Towner Road', null, '321107', '#01-01', 'Jonathan', '91187877'),
+-- (2, 2, 'New Era LA CAP, small', '1', 'New Era LA CAP, free size', '1', null, null, null, null, null, null, '107 Towner Road', null, '321107', '#01-01', 'Jonathan', '91187877'),
+-- (3, 2, 'New Era LA CAP, small', '1', 'New Era LA CAP, free size', '1', null, null, null, null, null, null, '107 Towner Road', null, '321107', '#01-01', 'Jonathan', '91187877');
+-- COMMIT;

@@ -93,7 +93,7 @@
             <li>
               <a class="dropdown-item d-flex align-items-center" href="ordersDone.php?account_id=$account_id">
                 <i class="bi bi-archive"></i>
-                <span>Orders Fulfilled by Month</span>
+                <span>Orders Fulfilled</span>
               </a>
             </li>
 
@@ -148,10 +148,10 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="ordersDone.php">
           <i class="bi bi-archive"></i>
-          <span>Orders Fulfilled by Month</span>
+          <span>Orders Fulfilled</span>
         </a>
       </li>
-      <!-- End Orders Fulfilled by Month -->
+      <!-- End Orders Fulfilled -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-contact.php">
@@ -199,7 +199,7 @@
                 </div>
 
               </div>
-            </div><!-- End of Orders Fulfilled by Month with Individual Breakdown-->
+            </div>
 
           </div>
         </div><!-- End Left side columns -->

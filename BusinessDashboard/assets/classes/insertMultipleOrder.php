@@ -33,10 +33,10 @@
     $dao = new multipleOrderDAO();
     $insertOK = $dao->insertMultipleOrder($account_id, $product_name1, $product_quantity1, $product_name2 ,$product_quantity2, $product_name3, $product_quantity3, $product_name4 ,$product_quantity4, $product_name5, $product_quantity5 ,$address1, $address2, $postal_code, $unit_number, $customer_name, $customer_contact);
     // var_dump($insertOK);
-    // $updateOK = $dao->insertMultipleOrder($product_id);
+    $updateOK = $dao->updateInventory($account_id, $product_name1, $product_quantity1, $product_name2 ,$product_quantity2, $product_name3, $product_quantity3, $product_name4 ,$product_quantity4, $product_name5, $product_quantity5);
 
     // if ($insertOK && $updateOK) {
-    if ($insertOK) {
+    if ($insertOK && $updateOK) {
         // echo "<script>alert('Product successfully added!'); javascript:history.go(-1); location.reload(); </script>";
         // echo "<script>alert('Delivery successfully placed!'); document.referrer ? window.location = document.referrer : history.back(); </script>";
         echo "<script>alert('Delivery successfully arranged!');</script>";

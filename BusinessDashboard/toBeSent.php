@@ -93,7 +93,7 @@
             <li>
               <a class="dropdown-item d-flex align-items-center" href="ordersDone.php?account_id=$account_id">
                 <i class="bi bi-archive"></i>
-                <span>Orders Fulfilled by Month</span>
+                <span>Orders Fulfilled</span>
               </a>
             </li>
 
@@ -148,10 +148,10 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="ordersDone.php">
           <i class="bi bi-archive"></i>
-          <span>Orders Fulfilled by Month</span>
+          <span>Orders Fulfilled</span>
         </a>
       </li>
-      <!-- End Orders Fulfilled by Month -->
+      <!-- End Orders Fulfilled -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-contact.php">
@@ -177,7 +177,9 @@
     <div class="pagetitle">
       <h1>Orders to be Sent</h1>
       <br>
-      <p>Please note that all changes regarding the details after delivery have been placed can only be editted by contacting the Admin. Thank you! <br> - OneStorep</p>
+      <div class="alert alert-danger" role="alert">
+        <p style="font-weight:bold;">Please note that all changes regarding the details after delivery have been placed can only be editted by contacting the Admin. Thank you! <br><br> - OneStorep</p>
+      </div>  
       <br>
     </div><!-- End Page Title -->
    
@@ -199,7 +201,7 @@
                 </div>
 
               </div>
-            </div><!-- End of Orders Fulfilled by Month with Individual Breakdown-->
+            </div><!-- End of Orders Fulfilled with Individual Breakdown-->
 
           </div>
         </div><!-- End Left side columns -->
