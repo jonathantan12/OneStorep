@@ -180,7 +180,6 @@
       <div class="alert alert-danger" role="alert">
         <p style="font-weight:bold;">Please note that all changes regarding the details after delivery have been placed can only be editted by contacting the Admin. Thank you! <br><br> - OneStorep</p>
       </div>  
-      <br>
     </div><!-- End Page Title -->
    
     <section class="section dashboard">

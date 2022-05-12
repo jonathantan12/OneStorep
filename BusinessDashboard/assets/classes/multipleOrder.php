@@ -19,8 +19,13 @@ class multipleOrder {
     private $unit_number;
     private $customer_name;
     private $customer_contact;
+    private $order_status;
+    private $arranged_date;
+    private $sent_date;
 
-    public function __construct($order_id, $account_id, $product_name1, $product_quantity1, $product_name2 ,$product_quantity2, $product_name3, $product_quantity3, $product_name4 ,$product_quantity4, $product_name5, $product_quantity5, $address1, $address2, $postal_code, $unit_number, $customer_name, $customer_contact) {
+    public function __construct($order_id, $account_id, $product_name1, $product_quantity1, $product_name2 ,
+    $product_quantity2, $product_name3, $product_quantity3, $product_name4 ,$product_quantity4, $product_name5, $product_quantity5, 
+    $address1, $address2, $postal_code, $unit_number, $customer_name, $customer_contact, $order_status, $arranged_date, $sent_date) {
         $this->order_id = $order_id;
         $this->account_id = $account_id;
         $this->product_name1 = $product_name1;
@@ -39,6 +44,9 @@ class multipleOrder {
         $this->unit_number = $unit_number;
         $this->customer_name = $customer_name;
         $this->customer_contact = $customer_contact;
+        $this->order_status = $order_status;
+        $this->arranged_date = $arranged_date;
+        $this->sent_date = $sent_date;
     }
 
     public function getOrderId() {
@@ -97,6 +105,15 @@ class multipleOrder {
     }
     public function getCustomerContact() {
         return $this->customer_contact;
+    }
+    public function getOrderStatus() {
+        return $this->order_status;
+    }
+    public function getArrangedDate() {
+        return $this->arranged_date;
+    }
+    public function getSentDate() {
+        return $this->sent_date;
     }
 
 }

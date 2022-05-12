@@ -193,7 +193,6 @@
       <div class="alert alert-danger" role="alert">
         <p style="font-weight:bold;">Please ensure that you have sufficient <a href="index.php" class="alert-link" style="text-decoration: underline;">inventory</a> before arranging for delivery. Thank you! <br><br> - OneStorep</p>
       </div>  
-      <br>
     </div><!-- End Page Title -->
 
     <section class="section dashboard">

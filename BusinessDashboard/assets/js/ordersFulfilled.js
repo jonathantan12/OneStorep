@@ -1,14 +1,10 @@
-var params = new URLSearchParams(location.search);
-var account_id = params.get('account_id');
-// console.log(account_id);
-
-function toBeSent(account_id) {
+function ordersFulfilledDashboard(account_id) {
     var request = new XMLHttpRequest(); // Prep to make an HTTP request
     
     request.onreadystatechange = function() {
         if( this.readyState == 4 && this.status == 200 ) {
             let obj = JSON.parse(this.responseText);
-            getMultipleOrder(obj);
+            getOrdersFulfilled(obj);
         }
     }
 
@@ -16,8 +12,9 @@ function toBeSent(account_id) {
     request.send();
 }
 
-function getMultipleOrder(obj) {
-    var displayMultipleOrder = `<br>
+function getOrdersFulfilled(obj) {
+    console.log(obj);
+    var displayOrdersFulfilled = `<br>
                   <div class="scrollable">
                   <table id="multipleDisplay" class="table table-striped-responsive">
                   <tr class="header">
@@ -29,47 +26,47 @@ function getMultipleOrder(obj) {
                     <th>Unit Number</th>
                     <th>Customer Name</th>
                     <th>Customer Contact</th>
-                    <th>Date Arranged</th>
+                    <th>Date Sent</th>
                   </tr>`;   
 
 
     for (var i=0; i < obj.length; i++){
-        if (obj[i].order_status == "arranged") {
-            displayMultipleOrder += `<tr>
+        if (obj[i].order_status == "sent") {
+            displayOrdersFulfilled += `<tr>
                                     <td>${obj[i].order_id}</td>
                                     <td>
                                         <table>
                                         <tr><td>${obj[i].product_quantity1}x ${obj[i].product_name1}</td></tr>`;
             
                                     if (obj[i].product_quantity2 == "") {
-                                        displayMultipleOrder += '';
+                                        displayOrdersFulfilled += '';
                                     }
                                     else {
-                                        displayMultipleOrder += `<tr><td>${obj[i].product_quantity2}x ${obj[i].product_name2}</td></tr>`;
+                                        displayOrdersFulfilled += `<tr><td>${obj[i].product_quantity2}x ${obj[i].product_name2}</td></tr>`;
                                     }
 
                                     if (obj[i].product_quantity3 == "") {
-                                        displayMultipleOrder += '';
+                                        displayOrdersFulfilled += '';
                                     }
                                     else {
-                                        displayMultipleOrder += `<tr><td>${obj[i].product_quantity3}x ${obj[i].product_name3}</td></tr>`;
+                                        displayOrdersFulfilled += `<tr><td>${obj[i].product_quantity3}x ${obj[i].product_name3}</td></tr>`;
                                     }
 
                                     if (obj[i].product_quantity4 == "") {
-                                        displayMultipleOrder += '';
+                                        displayOrdersFulfilled += '';
                                     }
                                     else {
-                                        displayMultipleOrder += `<tr><td>${obj[i].product_quantity4}x ${obj[i].product_name4}</td></tr>`;
+                                        displayOrdersFulfilled += `<tr><td>${obj[i].product_quantity4}x ${obj[i].product_name4}</td></tr>`;
                                     }
 
                                     if (obj[i].product_quantity5 == "") {
-                                        displayMultipleOrder += '';
+                                        displayOrdersFulfilled += '';
                                     }
                                     else {
-                                        displayMultipleOrder += `<tr><td>${obj[i].product_quantity5}x ${obj[i].product_name5}</td></tr>`;
+                                        displayOrdersFulfilled += `<tr><td>${obj[i].product_quantity5}x ${obj[i].product_name5}</td></tr>`;
                                     }
                                             
-            displayMultipleOrder += `</table>
+            displayOrdersFulfilled += `</table>
                                     </td>
                                     <td>${obj[i].address1}</td>
                                     <td>${obj[i].address2}</td>
@@ -77,14 +74,14 @@ function getMultipleOrder(obj) {
                                     <td>${obj[i].unit_number}</td>
                                     <td>${obj[i].customer_name}</td>
                                     <td>${obj[i].customer_contact}</td>
-                                    <td>${obj[i].arranged_date}</td>`;        
+                                    <td>${obj[i].sent_date}</td>`;        
             }                  
     }
-    displayMultipleOrder += `</table>
+    displayOrdersFulfilled += `</table>
                       </div>`;
 
   // console.log(document.getElementById('displayDashboard').innerHTML);
-  document.getElementById('displayMultipleOrder').innerHTML = displayMultipleOrder;   
+  document.getElementById('displayOrdersFulfilled').innerHTML = displayOrdersFulfilled;   
   
 }   
 

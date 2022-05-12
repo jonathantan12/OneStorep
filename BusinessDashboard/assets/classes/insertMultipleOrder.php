@@ -31,7 +31,8 @@
     $customer_contact = $_POST['floatingCustomerContact'];
 
     $dao = new multipleOrderDAO();
-    $insertOK = $dao->insertMultipleOrder($account_id, $product_name1, $product_quantity1, $product_name2 ,$product_quantity2, $product_name3, $product_quantity3, $product_name4 ,$product_quantity4, $product_name5, $product_quantity5 ,$address1, $address2, $postal_code, $unit_number, $customer_name, $customer_contact);
+    $insertOK = $dao->insertMultipleOrder($account_id, $product_name1, $product_quantity1, $product_name2 ,$product_quantity2, $product_name3, $product_quantity3, $product_name4 ,$product_quantity4, 
+    $product_name5, $product_quantity5 ,$address1, $address2, $postal_code, $unit_number, $customer_name, $customer_contact);
     // var_dump($insertOK);
     $updateOK = $dao->updateInventory($account_id, $product_name1, $product_quantity1, $product_name2 ,$product_quantity2, $product_name3, $product_quantity3, $product_name4 ,$product_quantity4, $product_name5, $product_quantity5);
 

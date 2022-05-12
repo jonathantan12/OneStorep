@@ -227,6 +227,20 @@
               </div>
             </div><!-- End of Orders Fulfilled with Individual Breakdown-->
 
+            <!-- Multiple Orders Display -->
+            <div class="col-12">
+              <div class="card">
+
+                <div class="card-body">
+                    <h5 class="card-title">Orders Fulfilled</h5>
+                    <!-- Javascript table display -->
+                    <div id="displayOrdersFulfilled"> </div>
+
+                </div>
+
+              </div>
+            </div><!-- End of Multiple Orders Display-->
+
           </div>
         </div><!-- End Left side columns -->
 
@@ -265,12 +279,14 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/ordersDone.js"></script>
+  <script src="assets/js/ordersFulfilled.js"></script>
 
   <script type="text/javascript">    
     window.onload = function(){
         var params = new URLSearchParams(location.search);
         var account_id = params.get('account_id');
         ordersDoneDashboard(account_id);
+        ordersFulfilledDashboard(account_id);
     };
 
   </script>

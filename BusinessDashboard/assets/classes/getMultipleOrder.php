@@ -28,6 +28,9 @@ foreach ($order as $aOrder) {
     $item["unit_number"] = $aOrder->getUnitNumber();
     $item["customer_name"] = $aOrder->getCustomerName();
     $item["customer_contact"] = $aOrder->getCustomerContact();
+    $item["order_status"] = $aOrder->getOrderStatus();
+    $item["arranged_date"] = $aOrder->getArrangedDate();
+    $item["sent_date"] = $aOrder->getSentDate();
     $items[] = $item;
 }
 

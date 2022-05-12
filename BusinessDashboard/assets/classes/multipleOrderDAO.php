@@ -17,7 +17,8 @@ class multipleOrderDAO {
         while($row = $stmt->fetch()) {
             $result[] = new multipleOrder($row['order_id'], $row['account_id'], $row['product_name1'], $row['product_quantity1'], $row['product_name2'] 
             ,$row['product_quantity2'], $row['product_name3'], $row['product_quantity3'], $row['product_name4'], $row['product_quantity4'], $row['product_name5'],
-            $row['product_quantity5'], $row['address1'], $row['address2'], $row['postal_code'], $row['unit_number'], $row['customer_name'], $row['customer_contact']);
+            $row['product_quantity5'], $row['address1'], $row['address2'], $row['postal_code'], $row['unit_number'], $row['customer_name'], $row['customer_contact']
+            , $row['order_status'], $row['arranged_date'], $row['sent_date']);
         }
         $stmt = null;
         $pdo = null;
@@ -25,12 +26,23 @@ class multipleOrderDAO {
         return $result;
     }
 
-    public function insertMultipleOrder($account_id, $product_name1, $product_quantity1, $product_name2 ,$product_quantity2, $product_name3, $product_quantity3, $product_name4 ,$product_quantity4, $product_name5, $product_quantity5 ,$address1, $address2, $postal_code, $unit_number, $customer_name, $customer_contact) {
+    public function insertMultipleOrder($account_id, $product_name1, $product_quantity1, $product_name2 ,$product_quantity2, $product_name3, $product_quantity3, $product_name4 ,$product_quantity4, 
+    $product_name5, $product_quantity5 ,$address1, $address2, $postal_code, $unit_number, $customer_name, $customer_contact) {
         $connMgr = new ConnectionManager();
         $pdo = $connMgr->getConnection();
 
-        $sql = "INSERT INTO multiple_orders (account_id, product_name1, product_quantity1, product_name2 ,product_quantity2, product_name3, product_quantity3, product_name4 , product_quantity4, product_name5, product_quantity5 ,address1, address2, postal_code, unit_number, customer_name, customer_contact) 
-                VALUES (:account_id, :product_name1, :product_quantity1, :product_name2 , :product_quantity2, :product_name3, :product_quantity3, :product_name4, :product_quantity4, :product_name5, :product_quantity5,:address1, :address2, :postal_code, :unit_number, :customer_name, :customer_contact)";
+        date_default_timezone_set("Asia/Singapore");
+        $order_status = "arranged";
+        $arranged_date = date("Y-m-d h:i");
+        $sent_date = "";
+
+        $sql = "INSERT INTO multiple_orders (account_id, product_name1, product_quantity1, product_name2 ,product_quantity2, product_name3, product_quantity3
+                , product_name4 , product_quantity4, product_name5, product_quantity5 ,address1, address2, postal_code, unit_number
+                , customer_name, customer_contact, order_status, arranged_date, sent_date) 
+                VALUES (:account_id, :product_name1, :product_quantity1, :product_name2 , :product_quantity2, :product_name3, :product_quantity3
+                , :product_name4, :product_quantity4, :product_name5, :product_quantity5,:address1, :address2, :postal_code, :unit_number
+                , :customer_name, :customer_contact, :order_status, :arranged_date, :sent_date)";
+
         $stmt = $pdo->prepare($sql);
 
         $stmt->bindParam(":account_id",$account_id,PDO::PARAM_STR);
@@ -50,8 +62,12 @@ class multipleOrderDAO {
         $stmt->bindParam(":unit_number",$unit_number,PDO::PARAM_STR);
         $stmt->bindParam(":customer_name",$customer_name,PDO::PARAM_STR);
         $stmt->bindParam(":customer_contact",$customer_contact,PDO::PARAM_STR);
+        $stmt->bindParam(":order_status",$order_status,PDO::PARAM_STR);
+        $stmt->bindParam(":arranged_date",$arranged_date,PDO::PARAM_STR);
+        $stmt->bindParam(":sent_date",$sent_date,PDO::PARAM_STR);
 
         $isAddOK = $stmt->execute();
+
         $stmt = null;
         $pdo = null;    
 
@@ -63,7 +79,8 @@ class multipleOrderDAO {
         $connMgr = new ConnectionManager();
         $pdo = $connMgr->getConnection();
         date_default_timezone_set("Asia/Singapore");
-        $arranged_date = date("Y-m-d");
+        $arranged_date = date("Y-m-d h:i");
+        // var_dump($arranged_date);
         $status = 'arranged';
         $stored_status = 'stored';
 
