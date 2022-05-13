@@ -23,16 +23,18 @@ function arrangeDeliveryForm(obj) {
     var arrangeDeliveryFormDisplay = `
                 <!-- Arranging Delivery Form -->
                 <br>
-                  <form class="row g-2" action="assets/classes/insertMultipleOrder.php" method="post">
+                  <form action="assets/classes/insertMultipleOrder.php" method="post">
                       <input type="hidden" id="floatingAccountId" name="floatingAccountId">`;
                       
     
     //PRODUCT 1
     arrangeDeliveryFormDisplay += `
-                      <div id="form-wrapper">
+                      <div class="form-wrapper">
+                      <div class="form-inner">
+                        <div class="row g-3">
                         <h4 style="margin-bottom: 0px">Product 1:</h4>
-                          <div class="col-md-9">
-                            <div>
+                          <div class="col-md-6">
+                            <div class="selectingProduct">
                               <select class="form-select" name="product_name1" required>
                                 <option value="" selected>Select Product</option>`;
 
@@ -54,38 +56,41 @@ function arrangeDeliveryForm(obj) {
                           </div>
                         </div>
                         <div class="col-md-3">
-                        <div>
-                          <select class="form-select" name="product_quantity1" required>
-                            <option value="" selected>Quantity</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">12</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
-                          </select>
-                        </div>
+                          <div class="selectingQuantity">
+                            <select class="form-select" name="product_quantity1" required>
+                              <option value="" selected>Quantity</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                              <option value="10">10</option>
+                              <option value="11">12</option>
+                              <option value="12">12</option>
+                              <option value="13">13</option>
+                              <option value="14">14</option>
+                              <option value="15">15</option>
+                              <option value="16">16</option>
+                              <option value="17">17</option>
+                              <option value="18">18</option>
+                              <option value="19">19</option>
+                              <option value="20">20</option>
+                            </select>
+                          </div>
                       </div>               
-                    </div>        
-                    <button type="button" id="add-more-forms" onclick="duplicateForm()">Add more rooms</button>
+                    </div><br> 
+                  </div>   
+                </div>    
+                <button type="button" class="btn btn-dark" id="add-more-forms" onclick="duplicateForm()">+Add Product</button>
                       `;
 
     arrangeDeliveryFormDisplay += ` 
                       <div><br><br><h4>Customer Address Details</h4></div>
+                      <div class="row g-3">
                       <div class="col-md-6">
                         <div class="form-floating">
                           <input type="text" class="form-control" id="floatingAddress1" name="floatingAddress1" placeholder="Address Line 1" required>
@@ -125,7 +130,8 @@ function arrangeDeliveryForm(obj) {
                       
                       <div class="text-end">
                         <button type="submit" class="btn btn-dark" onclick="return confirm('Please ensure that all the details being submitted is accurate. Otherwise, the details submitted can only be edited by contacting our customer support. Thank you! -OneStorep')">Submit</button>
-                      </div>       
+                      </div>    
+                      </div">   
                   </form>
                <!-- Arranging Delivery Form -->`;
                                     
@@ -142,21 +148,35 @@ function arrangeDeliveryForm(obj) {
 
 }
 
-var count = 0;
+// CREATING MAXIMUM FIVE ITEMS AND RE-CREATE FORM
+var count = 1;
 
 function duplicateForm() {
-  var div = document.getElementById('form-wrapper'); // Clone this
-  var firstForm = document.getElementById('form-wrapper'); // Clone this
+  // var div = document.getElementById('form-wrapper'); 
+  var div = document.getElementsByClassName('form-wrapper')[0]; 
+  var firstForm = document.getElementsByClassName('form-inner')[0]; // Clone this
   // console.log(firstForm);
 
   let formClone = firstForm.cloneNode(true);
 
-  formClone.getElementsByTagName("h4")[0].innerHTML = "Product 2:";
-  div.appendChild(formClone);
-
   count = count + 1;
   console.log(count);
-  if (count>4){
-  document.getElementById("add-more-forms").disabled = true;;
+
+  if (count<=5){
+    document.getElementById("add-more-forms").disabled = false;
+    formClone.getElementsByTagName("h4")[0].innerHTML = "Product " + count + ":";
+    formClone.getElementsByClassName("selectingProduct")[0].getElementsByClassName("form-select")[0].name = 'product_name' + count;
+    formClone.getElementsByClassName("selectingQuantity")[0].getElementsByClassName("form-select")[0].name = 'product_quantity' + count;
+
+    // formClone.getElementById("selectingProduct").innerHTML = "Product " + count + ":";
+    div.appendChild(formClone);
   }
+  else {
+    document.getElementById("add-more-forms").disabled = true;
+  }
+}
+
+function remove(el) {
+  var element = el;
+  element.remove();
 }
