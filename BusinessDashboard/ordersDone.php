@@ -205,27 +205,29 @@
 
                 <div class="card-body">
                     <h5 class="card-title">Consolidated Orders Fulfilled</h5>
-                    <!-- Javascript table display -->
+
                     <div id="displayOrdersDoneTable"> </div>
 
                 </div>
 
               </div>
-            </div><!-- End of Consolidated Inventory -->
+            </div>
+            <!-- End of Consolidated Inventory -->
 
             <!-- Orders Fulfilled with Individual Breakdown -->
-            <div class="col-12">
+            <!-- <div class="col-12">
               <div class="card">
 
                 <div class="card-body">
                     <h5 class="card-title">Orders Fulfilled with Individual Breakdown</h5>
-                    <!-- Javascript table display -->
+                    
                     <div id="displayIndOrdersDoneTable"> </div>
 
                 </div>
 
               </div>
-            </div><!-- End of Orders Fulfilled with Individual Breakdown-->
+            </div> -->
+            <!-- End of Orders Fulfilled with Individual Breakdown-->
 
             <!-- Multiple Orders Display -->
             <div class="col-12">
@@ -278,7 +280,7 @@
   
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/ordersDone.js"></script>
+  <!-- <script src="assets/js/ordersDone.js"></script> -->
   <script src="assets/js/ordersFulfilled.js"></script>
 
   <script type="text/javascript">    

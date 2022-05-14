@@ -41,28 +41,28 @@ function getMultipleOrder(obj) {
                                         <table>
                                         <tr><td>${obj[i].product_quantity1}x ${obj[i].product_name1}</td></tr>`;
             
-                                    if (obj[i].product_quantity2 == null) {
+                                    if (obj[i].product_quantity2 == null || obj[i].product_quantity2 == "") {
                                         displayMultipleOrder += '';
                                     }
                                     else {
                                         displayMultipleOrder += `<tr><td>${obj[i].product_quantity2}x ${obj[i].product_name2}</td></tr>`;
                                     }
 
-                                    if (obj[i].product_quantity3 == null) {
+                                    if (obj[i].product_quantity3 == null || obj[i].product_quantity3 == "") {
                                         displayMultipleOrder += '';
                                     }
                                     else {
                                         displayMultipleOrder += `<tr><td>${obj[i].product_quantity3}x ${obj[i].product_name3}</td></tr>`;
                                     }
 
-                                    if (obj[i].product_quantity4 == null) {
+                                    if (obj[i].product_quantity4 == null || obj[i].product_quantity4 == "") {
                                         displayMultipleOrder += '';
                                     }
                                     else {
                                         displayMultipleOrder += `<tr><td>${obj[i].product_quantity4}x ${obj[i].product_name4}</td></tr>`;
                                     }
 
-                                    if (obj[i].product_quantity5 == null) {
+                                    if (obj[i].product_quantity5 == null || obj[i].product_quantity5 == "") {
                                         displayMultipleOrder += '';
                                     }
                                     else {
