@@ -167,6 +167,16 @@ CREATE TABLE IF NOT EXISTS `multiple_orders` (
     `product_quantity4` varchar(64),
     `product_name5` varchar(64),
     `product_quantity5` varchar(64),
+    `product_name6` varchar(64),
+    `product_quantity6` varchar(64),
+    `product_name7` varchar(64),
+    `product_quantity7` varchar(64),
+    `product_name8` varchar(64),
+    `product_quantity8` varchar(64),
+    `product_name9` varchar(64),
+    `product_quantity9` varchar(64),
+    `product_name10` varchar(64),
+    `product_quantity10` varchar(64),
     `address1` varchar(64) NOT NULL,
     `address2` varchar(64),
     `postal_code` varchar(64) NOT NULL,
@@ -184,10 +194,11 @@ CREATE TABLE IF NOT EXISTS `multiple_orders` (
 --
 
 INSERT INTO `multiple_orders` (`order_id` ,`account_id`, `product_name1`, `product_quantity1`, `product_name2`
-, `product_quantity2`, `product_name3`, `product_quantity3`, `product_name4`, `product_quantity4`, `product_name5`, `product_quantity5`
+, `product_quantity2`, `product_name3`, `product_quantity3`, `product_name4`, `product_quantity4`, `product_name5`, `product_quantity5` , `product_name6`
+, `product_quantity6`, `product_name7`, `product_quantity7`, `product_name8`, `product_quantity8`, `product_name9`, `product_quantity9`, `product_name10`, `product_quantity10`
 , `address1`, `address2`, `postal_code`, `unit_number`, `customer_name`, `customer_contact`, `order_status`, `arranged_date`, `sent_date`) 
 VALUES
-(1, 2, 'New Era LA CAP, small', '1', 'New Era LA CAP, free size', '1', "", "", "", "", "", "", '107 Towner Road', "", '321107', '#01-01', 'Jonathan', '91187877', 'sent', '2021-03-01 01:00', '2021-03-02 01:00'),
-(2, 2, 'New Era LA CAP, small', '1', 'New Era LA CAP, free size', '1', "", "", "", "", "", "", '107 Towner Road', "", '321107', '#01-01', 'Jonathan', '91187877', 'sent', '2021-03-01 01:00', '2021-03-02 01:00'),
-(3, 2, 'New Era LA CAP, small', '1', 'New Era LA CAP, free size', '1', "", "", "", "", "", "", '107 Towner Road', "", '321107', '#01-01', 'Jonathan', '91187877', 'sent', '2021-03-01 01:00', '2021-03-02 01:00');
+(1, 2, 'New Era LA CAP (small)', '1', 'New Era LA CAP (free size)', '1', "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", '107 Towner Road', "", '321107', '#01-01', 'Jonathan', '91187877', 'sent', '2021-03-01 01:00', '2021-03-02 01:00'),
+(2, 2, 'New Era LA CAP (small)', '1', 'New Era LA CAP (free size)', '1', "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", '107 Towner Road', "", '321107', '#01-01', 'Jonathan', '91187877', 'sent', '2021-03-01 01:00', '2021-03-02 01:00'),
+(3, 2, 'New Era LA CAP (small)', '1', 'New Era LA CAP (free size)', '1', "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", '107 Towner Road', "", '321107', '#01-01', 'Jonathan', '91187877', 'sent', '2021-03-01 01:00', '2021-03-02 01:00');
 COMMIT;

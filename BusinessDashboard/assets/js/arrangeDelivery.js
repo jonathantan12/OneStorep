@@ -85,7 +85,8 @@ function arrangeDeliveryForm(obj) {
                     </div><br> 
                   </div>   
                 </div>    
-                <button type="button" class="btn btn-dark" id="add-more-forms" onclick="duplicateForm()">+Add Product</button>
+                <button type="button" class="btn btn-dark" id="add-more-forms" onclick="duplicateForm()">+ Add Product</button>
+                <button type="button" class="btn btn-dark" id="remove-forms" onclick="remove()">- Remove Product</button>
                       `;
 
     arrangeDeliveryFormDisplay += ` 
@@ -158,11 +159,10 @@ function duplicateForm() {
   // console.log(firstForm);
 
   let formClone = firstForm.cloneNode(true);
-
-  count = count + 1;
+  
+  count += 1;
   console.log(count);
-
-  if (count<=5){
+  if (count<=10){
     document.getElementById("add-more-forms").disabled = false;
     formClone.getElementsByTagName("h4")[0].innerHTML = "Product " + count + ":";
     formClone.getElementsByClassName("selectingProduct")[0].getElementsByClassName("form-select")[0].name = 'product_name' + count;
@@ -176,7 +176,9 @@ function duplicateForm() {
   }
 }
 
-function remove(el) {
-  var element = el;
+function remove() {
+  var formInnerLength = document.getElementsByClassName('form-inner').length;
+  var element = document.getElementsByClassName('form-inner')[formInnerLength-1];
   element.remove();
+  count -= 1;
 }

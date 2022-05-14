@@ -15,6 +15,19 @@
     $product_quantity4 = $_POST['product_quantity4'];
     $product_name5 = $_POST['product_name5'];
     $product_quantity5 = $_POST['product_quantity5'];
+    $product_name6 = $_POST['product_name6'];
+    $product_quantity6 = $_POST['product_quantity6'];
+    $product_name7 = $_POST['product_name7'];
+    $product_quantity7 = $_POST['product_quantity7'];
+    $product_name8 = $_POST['product_name8'];
+    $product_quantity8 = $_POST['product_quantity8'];
+    $product_name9 = $_POST['product_name9'];
+    $product_quantity9 = $_POST['product_quantity9'];
+    $product_name10 = $_POST['product_name10'];
+    $product_quantity10 = $_POST['product_quantity10'];
+
+    var_dump($product_name1);
+    var_dump($product_quantity1);
     // $product_name2 ='';
     // $product_quantity2 ='';
     // $product_name3 ='';
@@ -31,10 +44,15 @@
     $customer_contact = $_POST['floatingCustomerContact'];
 
     $dao = new multipleOrderDAO();
-    $insertOK = $dao->insertMultipleOrder($account_id, $product_name1, $product_quantity1, $product_name2 ,$product_quantity2, $product_name3, $product_quantity3, $product_name4 ,$product_quantity4, 
-    $product_name5, $product_quantity5 ,$address1, $address2, $postal_code, $unit_number, $customer_name, $customer_contact);
+    $insertOK = $dao->insertMultipleOrder($account_id, $product_name1, $product_quantity1, $product_name2 ,$product_quantity2, $product_name3, $product_quantity3
+    , $product_name4 ,$product_quantity4, $product_name5, $product_quantity5, $product_name6, $product_quantity6, $product_name7, $product_quantity7
+    , $product_name8, $product_quantity8, $product_name9, $product_quantity9, $product_name10, $product_quantity10 
+    , $address1, $address2, $postal_code, $unit_number, $customer_name, $customer_contact);
+
     // var_dump($insertOK);
-    $updateOK = $dao->updateInventory($account_id, $product_name1, $product_quantity1, $product_name2 ,$product_quantity2, $product_name3, $product_quantity3, $product_name4 ,$product_quantity4, $product_name5, $product_quantity5);
+    $updateOK = $dao->updateInventory($account_id, $product_name1, $product_quantity1, $product_name2 ,$product_quantity2, $product_name3, $product_quantity3
+    , $product_name4 ,$product_quantity4, $product_name5, $product_quantity5, $product_name6, $product_quantity6, $product_name7, $product_quantity7
+    , $product_name8, $product_quantity8, $product_name9, $product_quantity9, $product_name10, $product_quantity10);
 
     // if ($insertOK && $updateOK) {
     if ($insertOK && $updateOK) {

@@ -5,6 +5,7 @@ require_once('multipleOrderDAO.php');
 
 $dao = new multipleOrderDAO();
 $account_id = 2;
+
 // $account_id = $_GET['account_id'];
 $order = $dao->getOrder($account_id); 
 
@@ -22,6 +23,16 @@ foreach ($order as $aOrder) {
     $item["product_quantity4"] = $aOrder->getProductQuantity4();
     $item["product_name5"] = $aOrder->getProductName5();
     $item["product_quantity5"] = $aOrder->getProductQuantity5();
+    $item["product_name6"] = $aOrder->getProductName6();
+    $item["product_quantity6"] = $aOrder->getProductQuantity6();
+    $item["product_name7"] = $aOrder->getProductName7();
+    $item["product_quantity7"] = $aOrder->getProductQuantity7();
+    $item["product_name8"] = $aOrder->getProductName8();
+    $item["product_quantity8"] = $aOrder->getProductQuantity8();
+    $item["product_name9"] = $aOrder->getProductName9();
+    $item["product_quantity9"] = $aOrder->getProductQuantity9();
+    $item["product_name10"] = $aOrder->getProductName10();
+    $item["product_quantity10"] = $aOrder->getProductQuantity10();
     $item["address1"] = $aOrder->getAddress1();
     $item["address2"] = $aOrder->getAddress2();
     $item["postal_code"] = $aOrder->getPostalCode();

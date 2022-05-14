@@ -1,5 +1,5 @@
 <?php
-require_once("order.php");
+require_once("multipleOrder.php");
 require_once("connectionManager.php");
 
 class multipleOrderDAO {
@@ -17,8 +17,9 @@ class multipleOrderDAO {
         while($row = $stmt->fetch()) {
             $result[] = new multipleOrder($row['order_id'], $row['account_id'], $row['product_name1'], $row['product_quantity1'], $row['product_name2'] 
             ,$row['product_quantity2'], $row['product_name3'], $row['product_quantity3'], $row['product_name4'], $row['product_quantity4'], $row['product_name5'],
-            $row['product_quantity5'], $row['address1'], $row['address2'], $row['postal_code'], $row['unit_number'], $row['customer_name'], $row['customer_contact']
-            , $row['order_status'], $row['arranged_date'], $row['sent_date']);
+            $row['product_quantity5'], $row['product_name6'], $row['product_quantity6'],$row['product_name7'], $row['product_quantity7'],
+            $row['product_name8'], $row['product_quantity8'], $row['product_name9'], $row['product_quantity9'],$row['product_name10'], $row['product_quantity10'],
+            $row['address1'], $row['address2'], $row['postal_code'], $row['unit_number'], $row['customer_name'], $row['customer_contact'], $row['order_status'], $row['arranged_date'], $row['sent_date']);
         }
         $stmt = null;
         $pdo = null;
@@ -27,7 +28,8 @@ class multipleOrderDAO {
     }
 
     public function insertMultipleOrder($account_id, $product_name1, $product_quantity1, $product_name2 ,$product_quantity2, $product_name3, $product_quantity3, $product_name4 ,$product_quantity4, 
-    $product_name5, $product_quantity5 ,$address1, $address2, $postal_code, $unit_number, $customer_name, $customer_contact) {
+    $product_name5, $product_quantity5, $product_name6, $product_quantity6, $product_name7, $product_quantity7, $product_name8, $product_quantity8, $product_name9, $product_quantity9,
+    $product_name10, $product_quantity10, $address1, $address2, $postal_code, $unit_number, $customer_name, $customer_contact) {
         $connMgr = new ConnectionManager();
         $pdo = $connMgr->getConnection();
 
@@ -37,11 +39,13 @@ class multipleOrderDAO {
         $sent_date = "";
 
         $sql = "INSERT INTO multiple_orders (account_id, product_name1, product_quantity1, product_name2 ,product_quantity2, product_name3, product_quantity3
-                , product_name4 , product_quantity4, product_name5, product_quantity5 ,address1, address2, postal_code, unit_number
-                , customer_name, customer_contact, order_status, arranged_date, sent_date) 
-                VALUES (:account_id, :product_name1, :product_quantity1, :product_name2 , :product_quantity2, :product_name3, :product_quantity3
-                , :product_name4, :product_quantity4, :product_name5, :product_quantity5,:address1, :address2, :postal_code, :unit_number
-                , :customer_name, :customer_contact, :order_status, :arranged_date, :sent_date)";
+                , product_name4 , product_quantity4, product_name5, product_quantity5, product_name6, product_quantity6, product_name7, product_quantity7
+                , product_name8, product_quantity8, product_name9, product_quantity9, product_name10, product_quantity10
+                , address1, address2, postal_code, unit_number, customer_name, customer_contact, order_status, arranged_date, sent_date) 
+                VALUES (:account_id, :product_name1, :product_quantity1, :product_name2, :product_quantity2, :product_name3, :product_quantity3
+                , :product_name4, :product_quantity4, :product_name5, :product_quantity5, :product_name6, :product_quantity6, :product_name7, :product_quantity7
+                , :product_name8, :product_quantity8, :product_name9, :product_quantity9, :product_name10, :product_quantity10
+                ,:address1, :address2, :postal_code, :unit_number, :customer_name, :customer_contact, :order_status, :arranged_date, :sent_date)";
 
         $stmt = $pdo->prepare($sql);
 
@@ -56,6 +60,16 @@ class multipleOrderDAO {
         $stmt->bindParam(":product_quantity4",$product_quantity4,PDO::PARAM_STR);
         $stmt->bindParam(":product_name5",$product_name5,PDO::PARAM_STR);
         $stmt->bindParam(":product_quantity5",$product_quantity5,PDO::PARAM_STR);
+        $stmt->bindParam(":product_name6",$product_name6,PDO::PARAM_STR);
+        $stmt->bindParam(":product_quantity6",$product_quantity6,PDO::PARAM_STR);
+        $stmt->bindParam(":product_name7",$product_name7,PDO::PARAM_STR);
+        $stmt->bindParam(":product_quantity7",$product_quantity7,PDO::PARAM_STR);
+        $stmt->bindParam(":product_name8",$product_name8,PDO::PARAM_STR);
+        $stmt->bindParam(":product_quantity8",$product_quantity8,PDO::PARAM_STR);
+        $stmt->bindParam(":product_name9",$product_name9,PDO::PARAM_STR);
+        $stmt->bindParam(":product_quantity9",$product_quantity9,PDO::PARAM_STR);
+        $stmt->bindParam(":product_name10",$product_name10,PDO::PARAM_STR);
+        $stmt->bindParam(":product_quantity10",$product_quantity10,PDO::PARAM_STR);
         $stmt->bindParam(":address1",$address1,PDO::PARAM_STR);
         $stmt->bindParam(":address2",$address2,PDO::PARAM_STR);
         $stmt->bindParam(":postal_code",$postal_code,PDO::PARAM_STR);
@@ -75,7 +89,8 @@ class multipleOrderDAO {
     }
 
     public function updateInventory($account_id, $product_name1, $product_quantity1, $product_name2, $product_quantity2, $product_name3, $product_quantity3, 
-    $product_name4, $product_quantity4, $product_name5, $product_quantity5) {
+    $product_name4, $product_quantity4, $product_name5, $product_quantity5, $product_name6, $product_quantity6, $product_name7, $product_quantity7, 
+    $product_name8, $product_quantity8, $product_name9, $product_quantity9, $product_name10, $product_quantity10) {
         $connMgr = new ConnectionManager();
         $pdo = $connMgr->getConnection();
         date_default_timezone_set("Asia/Singapore");
@@ -201,6 +216,117 @@ class multipleOrderDAO {
             $stmt->bindParam(':product_name', $product_name, PDO::PARAM_STR);
             $stmt->bindParam(':product_size', $product_size, PDO::PARAM_STR);
             $stmt->bindParam(':product_quantity1', $product_quantity5, PDO::PARAM_INT);
+            $stmt->bindParam(':stored_status', $stored_status, PDO::PARAM_STR);
+
+            $isUpdateOK = $stmt->execute(); 
+
+        } 
+
+        if (!($product_name6 == "")){
+            $sql = "UPDATE inventory SET status=:status, arranged_date=:arranged_date
+            WHERE product_id 
+            IN (SELECT product_id 
+            FROM (SELECT product_id FROM inventory WHERE account_id=:account_id AND product_name=:product_name AND product_size=:product_size AND status=:stored_status LIMIT :product_quantity1) tmp )";
+            
+            $temp_list = explode(" (", $product_name6);
+            $product_name = $temp_list[0];
+            $product_size = substr($temp_list[1] , 0, -1);
+            
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+            $stmt->bindParam(':arranged_date', $arranged_date, PDO::PARAM_STR);
+            $stmt->bindParam(':account_id', $account_id, PDO::PARAM_STR);
+            $stmt->bindParam(':product_name', $product_name, PDO::PARAM_STR);
+            $stmt->bindParam(':product_size', $product_size, PDO::PARAM_STR);
+            $stmt->bindParam(':product_quantity1', $product_quantity6, PDO::PARAM_INT);
+            $stmt->bindParam(':stored_status', $stored_status, PDO::PARAM_STR);
+
+            $isUpdateOK = $stmt->execute(); 
+        } 
+
+        if (!($product_name7 == "")){
+            $sql = "UPDATE inventory SET status=:status, arranged_date=:arranged_date
+            WHERE product_id 
+            IN (SELECT product_id 
+            FROM (SELECT product_id FROM inventory WHERE account_id=:account_id AND product_name=:product_name AND product_size=:product_size AND status=:stored_status LIMIT :product_quantity1) tmp )";
+            
+            $temp_list = explode(" (", $product_name7);
+            $product_name = $temp_list[0];
+            $product_size = substr($temp_list[1] , 0, -1);
+            
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+            $stmt->bindParam(':arranged_date', $arranged_date, PDO::PARAM_STR);
+            $stmt->bindParam(':account_id', $account_id, PDO::PARAM_STR);
+            $stmt->bindParam(':product_name', $product_name, PDO::PARAM_STR);
+            $stmt->bindParam(':product_size', $product_size, PDO::PARAM_STR);
+            $stmt->bindParam(':product_quantity1', $product_quantity7, PDO::PARAM_INT);
+            $stmt->bindParam(':stored_status', $stored_status, PDO::PARAM_STR);
+
+            $isUpdateOK = $stmt->execute(); 
+
+        } 
+
+        if (!($product_name8 == "")){
+            $sql = "UPDATE inventory SET status=:status, arranged_date=:arranged_date
+            WHERE product_id 
+            IN (SELECT product_id 
+            FROM (SELECT product_id FROM inventory WHERE account_id=:account_id AND product_name=:product_name AND product_size=:product_size AND status=:stored_status LIMIT :product_quantity1) tmp )";
+            
+            $temp_list = explode(" (", $product_name8);
+            $product_name = $temp_list[0];
+            $product_size = substr($temp_list[1] , 0, -1);
+            
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+            $stmt->bindParam(':arranged_date', $arranged_date, PDO::PARAM_STR);
+            $stmt->bindParam(':account_id', $account_id, PDO::PARAM_STR);
+            $stmt->bindParam(':product_name', $product_name, PDO::PARAM_STR);
+            $stmt->bindParam(':product_size', $product_size, PDO::PARAM_STR);
+            $stmt->bindParam(':product_quantity1', $product_quantity8, PDO::PARAM_INT);
+            $stmt->bindParam(':stored_status', $stored_status, PDO::PARAM_STR);
+
+            $isUpdateOK = $stmt->execute(); 
+        } 
+        if (!($product_name9 == "")){
+            $sql = "UPDATE inventory SET status=:status, arranged_date=:arranged_date
+            WHERE product_id 
+            IN (SELECT product_id 
+            FROM (SELECT product_id FROM inventory WHERE account_id=:account_id AND product_name=:product_name AND product_size=:product_size AND status=:stored_status LIMIT :product_quantity1) tmp )";
+            
+            $temp_list = explode(" (", $product_name9);
+            $product_name = $temp_list[0];
+            $product_size = substr($temp_list[1] , 0, -1);
+            
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+            $stmt->bindParam(':arranged_date', $arranged_date, PDO::PARAM_STR);
+            $stmt->bindParam(':account_id', $account_id, PDO::PARAM_STR);
+            $stmt->bindParam(':product_name', $product_name, PDO::PARAM_STR);
+            $stmt->bindParam(':product_size', $product_size, PDO::PARAM_STR);
+            $stmt->bindParam(':product_quantity1', $product_quantity9, PDO::PARAM_INT);
+            $stmt->bindParam(':stored_status', $stored_status, PDO::PARAM_STR);
+
+            $isUpdateOK = $stmt->execute(); 
+
+        } 
+        if (!($product_name10 == "")){
+            $sql = "UPDATE inventory SET status=:status, arranged_date=:arranged_date
+            WHERE product_id 
+            IN (SELECT product_id 
+            FROM (SELECT product_id FROM inventory WHERE account_id=:account_id AND product_name=:product_name AND product_size=:product_size AND status=:stored_status LIMIT :product_quantity1) tmp )";
+            
+            $temp_list = explode(" (", $product_name10);
+            $product_name = $temp_list[0];
+            $product_size = substr($temp_list[1] , 0, -1);
+            
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+            $stmt->bindParam(':arranged_date', $arranged_date, PDO::PARAM_STR);
+            $stmt->bindParam(':account_id', $account_id, PDO::PARAM_STR);
+            $stmt->bindParam(':product_name', $product_name, PDO::PARAM_STR);
+            $stmt->bindParam(':product_size', $product_size, PDO::PARAM_STR);
+            $stmt->bindParam(':product_quantity1', $product_quantity10, PDO::PARAM_INT);
             $stmt->bindParam(':stored_status', $stored_status, PDO::PARAM_STR);
 
             $isUpdateOK = $stmt->execute(); 
