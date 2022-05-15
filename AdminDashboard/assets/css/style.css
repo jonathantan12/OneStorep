@@ -1132,6 +1132,12 @@ h1, h2, h3, h4, h5, h6 {
   overflow: scroll;
 }
 
+/* Scrollable */
+.scrollableOrdersToBeSent {
+  height: 200px;
+  overflow: scroll;
+}
+
 /* ADDED THIS IN */
 #myInput {
   /* background-image: url('/css/searchicon.png'); Add a search icon to input */

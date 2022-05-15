@@ -143,30 +143,25 @@
     <div class="pagetitle">
       <h1 id="company_name"></h1>
       <br>
-      <div class="alert alert-danger" role="alert">
-        <p style="font-weight:bold;">Please ensure that the client has sufficient inventory to fulfill the orders.</p>
-      </div>  
     </div><!-- End Page Title -->
    
     <section class="section dashboard">
       <div class="row">
-        
+
         <!-- Left side columns -->
         <div class="col-lg">
           <div class="row">
-
+          
             <div class="col-12">
               <div class="card">
 
                 <div class="card-body">
                     <!-- Javascript table display -->
-                    <div id="displaySingleOrder"> </div>
-
+                    <div id="displayOrdersDoneTable"> </div>
                 </div>
 
               </div>
-            </div><!-- End of Orders Fulfilled with Individual Breakdown-->
-
+            </div>
             <!-- Arrange Delivery Card -->
             <div class="col-12">
               <div class="card">
@@ -178,7 +173,8 @@
                 </div>
 
               </div>
-            </div><!-- End of Orders Fulfilled with Individual Breakdown-->
+            </div>
+            <!-- End of Orders Fulfilled with Individual Breakdown-->
 
           </div>
         </div><!-- End Left side columns -->
@@ -217,18 +213,18 @@
   
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/toBeSent.js"></script>
+  <script src="assets/js/ordersFulfilled.js"></script>
 
   <script type="text/javascript">    
     window.onload = function(){
         var params = new URLSearchParams(location.search);
         var account_id = params.get('account_id');
         var company_name = params.get('company_name');
-        
-        toBeSent(account_id);
-        toBeSentSingle(account_id);
-        
-        document.getElementById("company_name").innerText = company_name + " Orders to be Sent";
+        console.log(account_id);
+        ordersFulfilled(account_id);
+        ordersDoneDashboard(account_id);
+
+        document.getElementById("company_name").innerText = company_name + " Orders Fulfilled";
     };
 
   </script>

@@ -26,8 +26,8 @@
     $product_name10 = $_POST['product_name10'];
     $product_quantity10 = $_POST['product_quantity10'];
 
-    var_dump($product_name1);
-    var_dump($product_quantity1);
+    // var_dump($product_name1);
+    // var_dump($product_quantity1);
     // $product_name2 ='';
     // $product_quantity2 ='';
     // $product_name3 ='';

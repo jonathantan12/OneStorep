@@ -1,10 +1,10 @@
-function toBeSent($account_id) {
+function ordersFulfilled($account_id) {
     var request = new XMLHttpRequest(); // Prep to make an HTTP request
 
     request.onreadystatechange = function() {
         if( this.readyState == 4 && this.status == 200 ) {
             let obj = JSON.parse(this.responseText);
-            getMultipleOrder(obj);
+            getFulfilledOrder(obj);
         }
     }
     
@@ -12,7 +12,7 @@ function toBeSent($account_id) {
     request.send();
 }
 
-function getMultipleOrder(obj) {
+function getFulfilledOrder(obj) {
     var displayMultipleOrder = `<br>
                   <div class="scrollable">
                   <table id="multipleDisplay" class="table table-striped-responsive">
@@ -27,12 +27,11 @@ function getMultipleOrder(obj) {
                     <th>Customer Name</th>
                     <th>Customer Contact</th>
                     <th>Date Arranged</th>
-                    <th></th>
                   </tr>`;   
 
 
     for (var i=0; i < obj.length; i++){
-        if (obj[i].order_status == "arranged") {
+        if (obj[i].order_status == "sent") {
             displayMultipleOrder += `<tr>
                                     <td>${obj[i].account_id}</th>
                                     <td>${obj[i].order_id}</td>
@@ -112,12 +111,7 @@ function getMultipleOrder(obj) {
                                     <td>${obj[i].unit_number}</td>
                                     <td>${obj[i].customer_name}</td>
                                     <td>${obj[i].customer_contact}</td>
-                                    <td>${obj[i].arranged_date}</td>
-                                    <td>
-                                        <form class="row g-3" action="assets/classes/fulfillMultipleOrder.php?order_id=${obj[i].order_id}" method="post">      
-                                            <button type="submit" class="btn-sm btn-dark">Order Fulfilled</button>
-                                        </form>
-                                    </td>`;        
+                                    <td>${obj[i].arranged_date}</td>`;        
             }                  
     }
     displayMultipleOrder += `</table>
@@ -128,126 +122,75 @@ function getMultipleOrder(obj) {
   
 }   
 
-function toBeSentSingle($account_id) {
+function ordersDoneDashboard(account_id) {
     var request = new XMLHttpRequest(); // Prep to make an HTTP request
-
+    
     request.onreadystatechange = function() {
         if( this.readyState == 4 && this.status == 200 ) {
             let obj = JSON.parse(this.responseText);
-            getSingleOrder(obj);
+            getOrdersDone(obj);
         }
     }
-    
-    request.open("GET", "./assets/classes/getInventory.php?account_id=" + atob($account_id), true);
+
+    request.open("GET", "./assets/classes/getInventory.php?account_id=" + atob(account_id), true);
     request.send();
 }
 
-// function getSingleOrder(obj){
-//     console.log(obj);
-// }
+function getOrdersDone(obj) {
+    let dict = {};
+    let dict2 = {};
 
-function getSingleOrder(obj) {
-    // console.log(obj);
-    var displaySingleOrder = `<br><input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for product name">
-                    <div class="scrollableOrdersToBeSent">
-                    <table id="singleOrder" class="table table-striped-responsive">
-                    <tr class="header">
-                      <th></th>
-                      <th></th>
-                      <th>Name</th>
-                      <th>Brand</th>
-                      <th>Category</th>
-                      <th>Colour</th>
-                      <th>Size</th>
-                      <th>Weight</th>
-                      <th>Dimension</th>
-                      <th>Stored Date</th>
-                      <th>Arranged Date</th>
-                      <th onclick="sortTable(11)" style="cursor:pointer;">Status</th>
-                      <th></th>
-                    </tr>`;   
-  
+    var getOrdersDoneDisplay = `<div style="overflow-x:auto;">
+                                  <table id="getOrdersDoneDisplay" class="table table-striped-responsive">
+                                  <tr class="header">
+                                    <th onclick="sortTable(0)" style="cursor:pointer; width:25%;">Year-Month</th>
+                                    <th style="width:50%;">Product Name</th>
+                                    <th>Number of Orders Fulfilled</th>
+                                </tr>`; 
+
+    // COUNTER
     for (var i=0; i < obj.length; i++){
-        // console.log(obj[i].status);
-        var status_colour = '';
-        var sent_date = obj[i].sent_date;
-        var arranged_date = obj[i].arranged_date;
-        // console.log(sent_date);
-  
-        // Change date for sent date
-        if (obj[i].sent_date == null) {
-            sent_date = '-';
-        }
-  
-        if (obj[i].arranged_date == null) {
-          arranged_date = '-';
-        }
-  
-        // For status colour change
-        if (obj[i].status == 'sent') {
-            status_colour = 'warning';
-        }
-        else if (obj[i].status == 'arranged'){
-            status_colour = 'success';
-        }
-        else {
-            status_colour = 'info';
-        }
-
-        // DISPLAYING ROW WITH ONLY ARRANGED
-        if (obj[i].status == 'arranged'){
-            displaySingleOrder += `<tr>
-                                    <td>
-                                    </td>
-                                    <td>${i+1}</td>
-                                    <td>${obj[i].product_name}</td>
-                                    <td>${obj[i].product_brand}</td>
-                                    <td>${obj[i].product_type}</td>
-                                    <td>${obj[i].product_colour}</td>
-                                    <td>${obj[i].product_size}</td>
-                                    <td>${obj[i].product_weight}</td>
-                                    <td>${obj[i].product_dimension}</td>
-                                    <td>${obj[i].stored_date}</td>
-                                    <td>${arranged_date}</td>
-                                    <td><span class="badge bg-${status_colour}" style="text-transform: uppercase;">${obj[i].status}</span></td>
-                                    <td>
-                                        <form class="row g-3" action="assets/classes/updateInventoryToFulfilled.php?product_id=${obj[i].product_id}" method="post">      
-                                            <button type="submit" class="btn-sm btn-dark">Fulfill</button>
-                                        </form>
-                                    </td>
-                                </tr>`;
+        // Checking if value exist or not
+        var yearMonth = obj[i].sent_date;
+        if (yearMonth != null){
+            yearMonth = yearMonth.slice(0,7);
+            if(yearMonth + ',' + obj[i].product_name + ' (' + obj[i].product_size + ')' in dict){
+                dict[yearMonth + ',' + obj[i].product_name + ' (' + obj[i].product_size + ')'] += 1
+            } else{
+                dict[yearMonth + ',' + obj[i].product_name + ' (' + obj[i].product_size + ')'] = 1
+            }
         }
     }
-    displaySingleOrder += `</table>
+
+    // SORTING THE DICTIONARY INTO DESCENDING ORDER
+    var keys = Object.keys(dict); // or loop over the object to get the array
+    // keys will be in any order
+    keys.sort().reverse(); // maybe use custom sort, to change direction use .reverse()
+    // keys now will be in wanted order
+
+    for (var i=0; i<keys.length; i++) { // now lets iterate in sort order
+        var key = keys[i];
+        var value = dict[key];
+        /* do something with key & value here */
+        dict2[key] = value;
+    }
+    // END OF SORTING THE DICTIONARY INTO DESCENDING ORDER
+
+    // console.log(dict2);
+    for (var key in dict2){
+        // console.log(dict[key]);
+        var newYearMonth = key.slice(0,7);
+        var newProductName = key.slice(8);
+        
+        getOrdersDoneDisplay += `<tr>
+                                <td>${newYearMonth}</td>
+                                <td>${newProductName}</td>
+                                <td>${dict2[key]}</td>
+                            </tr>`;
+    }        
+
+    getOrdersDoneDisplay += `</table>
                         </div>`;
-  
-    // console.log(document.getElementById('displayDashboard').innerHTML);
-    document.getElementById('displaySingleOrder').innerHTML = displaySingleOrder;   
-    
-}   
 
-// ADDED THIS IN FOR SEARCH BAR IN THE DASHBOARD
-function myFunction(){
-    // Declare variables
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("displaySingleOrder");
-    tr = table.getElementsByTagName("tr");
-  
-    // Loop through all table rows, and hide those who don't match the search query
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[2];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }
-    }
-  }
-
-
-
+    document.getElementById('displayOrdersDoneTable').innerHTML = getOrdersDoneDisplay;   
+}

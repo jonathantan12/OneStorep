@@ -20,7 +20,7 @@ function inventoryDashboard(account_id) {
 
 function getInventory(obj) {
     var inventoryDisplay = `<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for product name">
-                    <input type="text" id="filterDeliveredDate" onkeyup="filterDeliveredDate()" placeholder="Filter Delivered Date">
+                    <input type="text" id="filterDeliveredDate" onkeyup="filterDeliveredDate()" placeholder="Filter Sent Date">
                     <div class="scrollable">
                     <table id="inventoryDisplay" class="table table-striped-responsive">
                     <tr class="header">

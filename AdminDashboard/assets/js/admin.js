@@ -45,7 +45,7 @@ function retrieveAllUsers(obj) {
                               <td><a class="btn btn-primary" href="companyInventoryUpload.php?account_id=${account_id}&company_name=${obj[i]['company_name']}" role="button">Upload</a></td>
                               <td><a class="btn btn-secondary" href="companyInventorySent.php?account_id=${account_id}&company_name=${obj[i]['company_name']}" role="button">Edit</a></td>
                               <td><a class="btn btn-warning" href="toBeSent.php?account_id=${account_id}&company_name=${obj[i]['company_name']}" role="button">Orders</a></td>
-                              <td><a class="btn btn-success" href=".php?account_id=${account_id}&company_name=${obj[i]['company_name']}" role="button">Fulfilled</a></td>
+                              <td><a class="btn btn-success" href="ordersFulfilled.php?account_id=${account_id}&company_name=${obj[i]['company_name']}" role="button">Fulfilled</a></td>
                           </tr>`;
     }         
     displayCompanies += `</table>`;

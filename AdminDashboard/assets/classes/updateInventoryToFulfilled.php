@@ -4,11 +4,12 @@
     require_once("connectionManager.php");
 
     session_start();
-    $status = $_POST['status'];
+    $status = "sent";
 
     $product_id = $_GET['product_id'];
 
-    $date = $_POST['date'];
+    date_default_timezone_set("Asia/Singapore");
+    $date = date("Y-m-d h:i");
 
     $dao = new InventoryDAO();
     $insertOK = $dao->updateInventoryStatus($status, $product_id, $date);
