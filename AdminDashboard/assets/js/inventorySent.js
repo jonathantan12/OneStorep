@@ -1,9 +1,9 @@
-var params = new URLSearchParams(location.search);
-var account_id = params.get('account_id');
+// var params = new URLSearchParams(location.search);
+// var account_id = params.get('account_id');
 // console.log(account_id);
-var company_name = params.get('company_name');
+// var company_name = params.get('company_name');
 
-function companyInventorySentDashboard(account_id) {
+function companyInventorySentDashboard(account_id, company_name) {
   var request = new XMLHttpRequest(); // Prep to make an HTTP request
   
   request.onreadystatechange = function() {

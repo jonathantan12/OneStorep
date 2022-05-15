@@ -89,12 +89,27 @@
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 
-            <!-- <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-contact.php">
-                <i class="bi bi-question-circle"></i>
-                <span>Contact the Team</span>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="index.php">
+                <i class="bi bi-grid"></i>
+                <span>Control Panel</span>
               </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="addUserPage.php">
+                <i class="bi bi-arrow-up-square"></i>
+                <span>Add User</span>
+              </a>
+            </li>
+            
+            <!-- <li class="nav-item">
+                <a class="dropdown-item d-flex align-items-center" href="toBeSent.php?account_id=$account_id">
+                <i class="bi bi-truck"></i>
+                <span>Orders to be Sent</span>
+                </a>
             </li> -->
+
             <li>
               <hr class="dropdown-divider">
             </li>
@@ -123,10 +138,17 @@
       <li class="nav-item">
         <a class="nav-link " href="index.php">
           <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
+          <span>Control Panel</span>
         </a>
       </li>
       <!-- End Dashboard Nav -->
+
+      <!-- <li class="nav-item">
+        <a class="nav-link collapsed" href="toBeSent.php?account_id=$account_id">
+          <i class="bi bi-truck"></i>
+          <span>Orders to be Sent</span>
+        </a>
+      </li> -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="addUserPage.php">

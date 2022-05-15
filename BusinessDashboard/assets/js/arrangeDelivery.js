@@ -138,14 +138,6 @@ function arrangeDeliveryForm(obj) {
                                     
     document.getElementById('arrangeDeliveryForm').innerHTML = arrangeDeliveryFormDisplay;  
     document.getElementById('floatingAccountId').value = obj[0].account_id;
-    // console.log(document.getElementById('product_name1').value);
-
-    // document.getElementById('floatingBrand').value = obj[0].product_brand;
-    // document.getElementById('floatingCategory').value = obj[0].product_type;
-    // document.getElementById('floatingColour').value = obj[0].product_colour;
-    // document.getElementById('floatingSize').value = obj[0].product_size;
-    // document.getElementById('floatingWeight').value = obj[0].product_weight;
-    // document.getElementById('floatingDimension').value = obj[0].product_dimension;
 
 }
 
@@ -156,7 +148,6 @@ function duplicateForm() {
   // var div = document.getElementById('form-wrapper'); 
   var div = document.getElementsByClassName('form-wrapper')[0]; 
   var firstForm = document.getElementsByClassName('form-inner')[0]; // Clone this
-  // console.log(firstForm);
 
   let formClone = firstForm.cloneNode(true);
   

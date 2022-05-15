@@ -111,7 +111,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="index.php?account_id=$account_id">
           <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
+          <span>Control Panel</span>
         </a>
       </li>
       <!-- End Dashboard Nav -->

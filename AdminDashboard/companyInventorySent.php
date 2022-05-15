@@ -243,10 +243,12 @@
 
   <script type="text/javascript">
     window.onload = function(){
-        companyInventorySentDashboard(account_id);
-
         var params = new URLSearchParams(location.search);
+        var account_id = params.get('account_id');
         var company_name = params.get('company_name');
+        
+        companyInventorySentDashboard(account_id, company_name);
+
         document.getElementById('DisplayCompanyName').innerHTML = company_name + ' Dashboard';
     };
 
