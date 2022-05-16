@@ -88,6 +88,24 @@
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 
             <li>
+              <a class="dropdown-item d-flex align-items-center" href="index.php">
+                <i class="bi bi-grid"></i>
+                <span>Control Panel</span>
+              </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="addUserPage.php">
+                <i class="bi bi-arrow-up-square"></i>
+                <span>Add User</span>
+              </a>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            
+            <li>
               <a class="dropdown-item d-flex align-items-center" href='assets/classes/logout.php'>
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>

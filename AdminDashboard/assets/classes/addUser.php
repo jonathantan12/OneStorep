@@ -6,7 +6,7 @@
     session_start();
     
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $companyName = $_POST['companyName'];
     $contactNumber = $_POST['contactNumber'];
     $role = 'user';

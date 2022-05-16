@@ -13,9 +13,10 @@
 
     $dao = new AdminDAO();
     $userDetails = $dao->retrieve($email);
-
+    // var_dump(password_hash('0000', PASSWORD_DEFAULT));
     $success = false;
-    if($userDetails and $password === $userDetails[0]->getPassword()){
+    // if($userDetails and $password === $userDetails[0]->getPassword()){
+    if($userDetails and password_verify($password, $userDetails[0]->getPassword())) {
         $account_id = $userDetails[0]->getAccountId(); // Account ID
         $_SESSION["account_id"] = $account_id; // SESSION THE ACCOUNT_ID
 
